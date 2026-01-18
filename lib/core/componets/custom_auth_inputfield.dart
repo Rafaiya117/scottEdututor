@@ -1,0 +1,90 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:scoctt_edututo/features/auth/login/login_provider.dart';
+
+class CustomAuthInputfield extends ConsumerWidget {
+  final String label;
+  final String hintText;
+  final double height;
+  final double width;
+  final TextEditingController controller;
+  final bool isPassword;
+
+  const CustomAuthInputfield({
+    super.key,
+    required this.label,
+    required this.hintText,
+    required this.height,
+    required this.width,
+    required this.controller,
+    this.isPassword = false, 
+  });
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final isVisible = ref.watch(passwordVisibilityProvider);
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          label,
+          style: GoogleFonts.poppins(
+            fontSize: 12.sp,
+            fontWeight: FontWeight.normal,
+            color: Colors.white,
+          ),
+        ),
+        SizedBox(height: 10.h),
+        TextFormField(
+          controller: controller,
+          obscureText: isPassword ? !isVisible : false,
+          decoration: InputDecoration(
+            hintText: hintText,
+            hintStyle: GoogleFonts.poppins(
+              fontSize: 10.sp,
+              fontWeight: FontWeight.w400,
+              color: Colors.white,
+            ),
+            // prefixIcon: isPassword
+            //   ? const Icon(Icons.lock_outline, color: Colors.white): null,
+            suffixIcon: isPassword
+              ? IconButton(
+                icon: Icon(
+                  isVisible ? Icons.visibility : Icons.visibility_off,
+                  color: Colors.white,
+                ),
+                onPressed: () {
+                  ref.read(passwordVisibilityProvider.notifier).state = !isVisible;
+                },
+              )
+            : null,
+            enabledBorder: OutlineInputBorder(
+              borderSide: const BorderSide(
+                width: 1, 
+                color: Colors.white
+              ),
+              borderRadius: BorderRadius.circular(12.0),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(12.0),
+              borderSide: const BorderSide(
+                width: 1, 
+                color: Colors.white
+              ),
+            ),
+            focusedErrorBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(12.0),
+              borderSide: const BorderSide(
+                width: 1, 
+                color: Colors.red
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
