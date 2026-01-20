@@ -26,7 +26,7 @@ class RoleCard extends ConsumerWidget {
     return GestureDetector(
       onTap: () {
         ref.read(selectedRoleProvider.notifier).state = role;
-        context.push('/login');
+        context.push('/login'); 
       },
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 200),
@@ -35,22 +35,18 @@ class RoleCard extends ConsumerWidget {
         padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
           gradient: isSelected
-            ? LinearGradient(
+            ? const LinearGradient(
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
               colors: [Colors.white, Colors.white],
-              stops: [0.42, 1.0], 
+              stops: [0.42, 1.0],
             )
-            : LinearGradient(
+            : const LinearGradient(
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
               colors: [Color(0xFF1F1F1F), Color(0xFF8D6C2F)],
             ),
-            borderRadius: BorderRadius.circular(8),
-          //   border: Border.all(
-          //     color: isSelected ? Colors.blue : Colors.grey.shade300,
-          //     width: 2,
-          // ),
+          borderRadius: BorderRadius.circular(8),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -60,9 +56,9 @@ class RoleCard extends ConsumerWidget {
             Text(
               role.name,
               style: GoogleFonts.poppins(
-                fontSize: 16, 
+                fontSize: 16,
                 fontWeight: FontWeight.w600,
-                color: Colors.white
+                color: Colors.white,
               ),
             ),
           ],

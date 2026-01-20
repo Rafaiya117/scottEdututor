@@ -11,7 +11,10 @@ class CustomAuthInputfield extends ConsumerWidget {
   final double width;
   final TextEditingController controller;
   final bool isPassword;
-
+  final Color? fillColor; 
+  final Color? textcolor;
+  final Color?iconcolor;
+  final Color? hintextclr;
   const CustomAuthInputfield({
     super.key,
     required this.label,
@@ -19,7 +22,11 @@ class CustomAuthInputfield extends ConsumerWidget {
     required this.height,
     required this.width,
     required this.controller,
-    this.isPassword = false, 
+    this.textcolor,
+    this.iconcolor,
+    this.hintextclr,
+    this.isPassword = false,
+    this.fillColor,
   });
 
   @override
@@ -46,41 +53,32 @@ class CustomAuthInputfield extends ConsumerWidget {
             hintStyle: GoogleFonts.poppins(
               fontSize: 10.sp,
               fontWeight: FontWeight.w400,
-              color: Colors.white,
+              color: hintextclr,
             ),
-            // prefixIcon: isPassword
-            //   ? const Icon(Icons.lock_outline, color: Colors.white): null,
             suffixIcon: isPassword
               ? IconButton(
-                icon: Icon(
-                  isVisible ? Icons.visibility : Icons.visibility_off,
-                  color: Colors.white,
-                ),
-                onPressed: () {
-                  ref.read(passwordVisibilityProvider.notifier).state = !isVisible;
-                },
-              )
-            : null,
+                  icon: Icon(
+                    isVisible ? Icons.visibility : Icons.visibility_off,
+                    color: iconcolor,
+                  ),
+                  onPressed: () {
+                    ref.read(passwordVisibilityProvider.notifier).state = !isVisible;
+                  },
+                )
+              : null,
+            filled: fillColor != null, 
+            fillColor: fillColor,
             enabledBorder: OutlineInputBorder(
-              borderSide: const BorderSide(
-                width: 1, 
-                color: Colors.white
-              ),
+              borderSide: const BorderSide(width: 1, color: Colors.white),
               borderRadius: BorderRadius.circular(12.0),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12.0),
-              borderSide: const BorderSide(
-                width: 1, 
-                color: Colors.white
-              ),
+              borderSide: const BorderSide(width: 1, color: Colors.white),
             ),
             focusedErrorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12.0),
-              borderSide: const BorderSide(
-                width: 1, 
-                color: Colors.red
-              ),
+              borderSide: const BorderSide(width: 1, color: Colors.red),
             ),
           ),
         ),

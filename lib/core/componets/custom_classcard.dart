@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:scoctt_edututo/features/Teacher/teacher_home/teacher_homepage_model.dart';
-import 'package:scoctt_edututo/features/Teacher/teacher_home/teacher_homepage_provider.dart';
+import 'package:scoctt_edututo/features/Teacher/home/home_model.dart';
+import 'package:scoctt_edututo/features/Teacher/home/home_provider.dart';
 
 class ClassCategoryCard extends ConsumerWidget {
   final double height;

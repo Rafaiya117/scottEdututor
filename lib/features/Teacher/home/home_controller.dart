@@ -1,4 +1,4 @@
-import 'package:scoctt_edututo/features/Teacher/teacher_home/teacher_homepage_model.dart';
+import 'package:scoctt_edututo/features/Teacher/home/home_model.dart';
 
 class TeacherHomepageController {
   List<ClassCategory> getClassCategory(){

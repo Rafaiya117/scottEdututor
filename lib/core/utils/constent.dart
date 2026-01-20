@@ -5,8 +5,8 @@ class AppGradient {
     begin: Alignment.topCenter,
     end: Alignment.bottomCenter,
     colors: [
-      Color(0xFF000000),
-      Color(0xFFD4B579),
+      Color(0xFF81705C),
+      Color(0xFF333332),
     ],
     // stops: [
     //   0.42, 

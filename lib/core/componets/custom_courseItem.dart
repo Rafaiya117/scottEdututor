@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:scoctt_edututo/features/Teacher/courses/course_view.dart';
+import 'package:scoctt_edututo/features/Teacher/courses/course_model.dart';
 
 class CourseItemCard extends ConsumerWidget {
   final double height;

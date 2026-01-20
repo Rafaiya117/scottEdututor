@@ -1,0 +1,65 @@
+// ignore_for_file: constant_pattern_never_matches_value_type
+
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:scoctt_edututo/core/componets/bottom_navbar.dart';
+import 'package:scoctt_edututo/features/Teacher/home/home_view.dart';
+import 'package:scoctt_edututo/features/settings/settings_view.dart';
+import 'package:scoctt_edututo/features/user_role/user_role_model.dart';
+import 'package:scoctt_edututo/features/user_role/user_role_provider.dart';
+
+class MainScaffold extends ConsumerWidget {
+  const MainScaffold({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final selectedItem = ref.watch(bottomNavProvider);
+    final role = ref.watch(selectedRoleProvider);
+
+    if (role == null) {
+      return const Scaffold(
+        body: Center(child: CircularProgressIndicator()),
+      );
+    }
+
+    Widget currentScreen() {
+      switch (selectedItem) {
+        case BottomNavItem.home:
+          switch (role.type) {
+            case UserRoleType.teacher:
+              return TeacherHomeView();
+            default:
+              return const SizedBox();
+          }
+
+        case BottomNavItem.profile:
+          switch (role.type) {
+            case UserRoleType.teacher:
+              return const SizedBox(); // TeacherProfileView later
+            default:
+              return const SizedBox();
+          }
+
+        case BottomNavItem.settings:
+          switch (role.type) {
+            case UserRoleType.teacher:
+              return const SettingsView();
+            default:
+              return const SizedBox();
+          }
+      }
+    }
+
+    return Stack(
+      children: [
+        currentScreen(), 
+        Positioned(
+          left: 0,
+          right: 0,
+          bottom: 0,
+          child: ReusableBottomNav(selectedItem: selectedItem),
+        ),
+      ],
+    );
+  }
+}

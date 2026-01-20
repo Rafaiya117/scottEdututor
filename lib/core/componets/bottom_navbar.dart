@@ -1,76 +1,63 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_riverpod/legacy.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:scoctt_edututo/config/app_router_config.dart';
+import 'package:scoctt_edututo/features/user_role/user_role_provider.dart';
 
-// !---------------------------!
-// !--------- Enum ------------!
-// !---------------------------!
 
-enum BottomNavItem {
-  profile,
-  home,
-  settings,
-}
+enum BottomNavItem { profile, home, settings }
 
-/// !---------------------------!
-/// !------- Provider ----------!
-/// !---------------------------!
-
-final bottomNavProvider = StateProvider<BottomNavItem>((ref) => BottomNavItem.home);
-
-/// ----------------------------
-/// Reusable Bottom Nav Widget
-/// ----------------------------
 class ReusableBottomNav extends ConsumerWidget {
-  const ReusableBottomNav({super.key});
+  final BottomNavItem selectedItem;
+  const ReusableBottomNav({super.key, required this.selectedItem});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final selectedItem = ref.watch(bottomNavProvider);
-
     Widget buildNavItem({
       required BottomNavItem item,
       required String asset,
+      required String name,
       bool isHome = false,
     }) {
-
-    final bool selected = selectedItem == item;
+      final selected = selectedItem == item;
       return GestureDetector(
         onTap: () {
+          debugPrint('*****tapped***** $item');
           ref.read(bottomNavProvider.notifier).state = item;
-          Navigator.pushNamed(context, bottomNavRoutes[item]!);
         },
         child: isHome
           ? Container(
-            height: 64,
-            width: 64,
-            decoration: const BoxDecoration(
-              color: Colors.black,
-              shape: BoxShape.circle,
-            ),
+            height: 72,
+            width: 72,
+            decoration: const BoxDecoration(shape: BoxShape.circle),
             child: Center(
-              child: SvgPicture.asset(
-                asset,
-                width: 28,
-                colorFilter: const ColorFilter.mode(
-                  Colors.white,
-                  BlendMode.srcIn,
-                ),
-              ),
+              child: SvgPicture.asset(asset, width: 100),
             ),
           )
-          : SvgPicture.asset(
-            asset,
-            width: 24,
-            colorFilter: ColorFilter.mode(
-              selected ? Colors.white : Colors.grey,
-              BlendMode.srcIn,
+          : Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            SvgPicture.asset(
+              asset,
+              width: 24,
+              colorFilter: ColorFilter.mode(
+                selected ? Colors.grey : Colors.white,
+                BlendMode.srcIn,
+              ),
             ),
-          ),
-        );
-      }
+            const SizedBox(height: 4),
+            Text(
+              name,
+              style: TextStyle(
+                fontSize: 10,
+                color: selected ? Colors.grey : Colors.white,
+                decoration: TextDecoration.none,
+              ),
+            ),
+          ],
+        ),
+      );
+    }
+
     return SizedBox(
       height: 80,
       child: Stack(
@@ -81,7 +68,7 @@ class ReusableBottomNav extends ConsumerWidget {
             left: 0,
             right: 0,
             child: Container(
-              height: 60,
+              height: 70,
               color: Colors.black,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -89,11 +76,12 @@ class ReusableBottomNav extends ConsumerWidget {
                   buildNavItem(
                     item: BottomNavItem.profile,
                     asset: 'assets/icons/profile.svg',
+                    name: 'Profile',
                   ),
-                  const SizedBox(width: 60),
                   buildNavItem(
                     item: BottomNavItem.settings,
                     asset: 'assets/icons/settings.svg',
+                    name: 'Settings',
                   ),
                 ],
               ),
@@ -106,7 +94,8 @@ class ReusableBottomNav extends ConsumerWidget {
             child: Center(
               child: buildNavItem(
                 item: BottomNavItem.home,
-                asset: 'assets/icons/home.svg',
+                asset: 'assets/icons/home_icon.svg',
+                name: 'Home',
                 isHome: true,
               ),
             ),
