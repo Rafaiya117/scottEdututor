@@ -20,16 +20,18 @@ class SettingsController {
         svgIconPath: 'assets/icons/help.svg',
         title: 'Privacy & Policy',
         subtitle: 'Get help with your account',
+        onTap: () => context.push('/privacy'),
       ),
       SettingsItemModel(
         svgIconPath: 'assets/icons/termcondition.svg',
         title: 'Terms & Condition',
         subtitle: 'Read our terms and privacy policy',
+        onTap: () => context.push('/terms'),
       ),
       SettingsItemModel(
         svgIconPath: 'assets/icons/logout_prefix.svg',
         title: 'Logout',
-        subtitle: 'Read our terms and privacy policy',
+        subtitle: '',
       ),
     ];
   }

@@ -6,14 +6,14 @@ import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:scoctt_edututo/core/utils/background_template.dart';
 import 'package:scoctt_edututo/core/utils/constent.dart';
-import 'package:scoctt_edututo/features/privacy/privacy_provider.dart';
+import 'package:scoctt_edututo/features/term_condition/term_condition_provider.dart';
 
-class PrivacyView extends ConsumerWidget {
-  const PrivacyView({super.key});
+class TermConditionView extends ConsumerWidget{
+  const TermConditionView({super.key});
 
   Widget build(BuildContext context, WidgetRef ref){
+    final termController = ref.watch(TermConditionControllerProvider);
 
-    final privacyController = ref.watch(PrivacyControllerProvider);
     return BackgroundTemplate(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(60.h),
@@ -39,7 +39,7 @@ class PrivacyView extends ConsumerWidget {
                   children: [
                     Center(
                       child: Text(
-                        'Privacy & Policy',
+                        'Terms and Condition',
                         style: GoogleFonts.inter(
                           fontSize: 20.sp,
                           fontWeight: FontWeight.bold,
@@ -71,7 +71,7 @@ class PrivacyView extends ConsumerWidget {
                 child: Column(
                   children: [
                     Text(
-                      privacyController.termsText,
+                      termController.termsText,
                       style: GoogleFonts.inter(
                         fontSize: 14.sp,
                         color: Colors.white,
@@ -90,3 +90,4 @@ class PrivacyView extends ConsumerWidget {
     );
   }
 }
+  

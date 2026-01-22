@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:scoctt_edututo/core/componets/bottom_navbar.dart';
 import 'package:scoctt_edututo/core/componets/custom_classcard.dart';
 import 'package:scoctt_edututo/core/utils/background_template.dart';
 import 'package:scoctt_edututo/features/Teacher/home/home_controller.dart';

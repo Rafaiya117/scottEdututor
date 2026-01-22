@@ -59,6 +59,7 @@ class LoginView extends ConsumerWidget {
               height: 44.h,
               width: double.infinity,
               controller: loginController.emailController,
+              hintextclr: Colors.white,
             ),
             SizedBox(height: 20.h),
             CustomAuthInputfield(
@@ -68,6 +69,7 @@ class LoginView extends ConsumerWidget {
               width: double.infinity,
               controller: loginController.passwordController,
               isPassword: true,
+              hintextclr: Colors.white,
             ),
             SizedBox(height: 20.h),
             Row(

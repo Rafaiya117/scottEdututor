@@ -1,4 +1,4 @@
-class PrivacyController {
+class TermConditionController {
   final String termsText = '''
 Terms & Conditions – Edututor App (Dummy Text)
 Last updated: [Date]

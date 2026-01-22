@@ -8,8 +8,14 @@ import 'package:scoctt_edututo/features/auth/change_password/change_password_vie
 import 'package:scoctt_edututo/features/auth/forgot_password/forgot_password_view.dart';
 import 'package:scoctt_edututo/features/auth/login/login_view.dart';
 import 'package:scoctt_edututo/features/auth/otp_controller/otp_view.dart';
+import 'package:scoctt_edututo/features/parents/child_prograss/child_progrss_view.dart';
+import 'package:scoctt_edututo/features/parents/lessons/lessons_view.dart';
+import 'package:scoctt_edututo/features/parents/parents_home/parents_view.dart';
+import 'package:scoctt_edututo/features/parents/prograss_details/prograss_details_view.dart';
+import 'package:scoctt_edututo/features/privacy/privacy_view.dart';
 import 'package:scoctt_edututo/features/settings/settings_view.dart';
 import 'package:scoctt_edututo/features/splash_screen.dart';
+import 'package:scoctt_edututo/features/term_condition/term_condition_view.dart';
 import 'package:scoctt_edututo/features/user_role/user_role_model.dart';
 import 'package:scoctt_edututo/features/user_role/user_role_view.dart';
 
@@ -46,10 +52,39 @@ final routerProvider = Provider<GoRouter>((ref) {
         path: '/change_password',
         builder: (context, state) => ChangePasswordView(),
       ),
+
+      //!------------- Parents ---------------------!
+
+      GoRoute(
+        path: '/parents_home',
+        builder: (context, state) => ParentsView(),
+      ),
+      GoRoute(
+        path: '/child_prograss',
+        builder: (context, state) => ChildProgrssView(),
+      ),
+      GoRoute(
+        path: '/lesson_view',
+        builder: (context, state) => LessonView(),
+      ),
+      GoRoute(
+        path: '/prograss_details',
+        builder: (context, state) => PrograssDetails(),
+      ),
+
       //!------------- Teacher Settings ------------!
+
       GoRoute(
         path: '/teacher_settings',
         builder: (context, state) => OtpView(),
+      ),
+      GoRoute(
+        path: '/privacy',
+        builder: (context, state) => PrivacyView(),
+      ),
+      GoRoute(
+        path: '/terms',
+        builder: (context, state) => TermConditionView(),
       ),
     ],
   );
