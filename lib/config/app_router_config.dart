@@ -11,6 +11,7 @@ import 'package:scoctt_edututo/features/auth/otp_controller/otp_view.dart';
 import 'package:scoctt_edututo/features/parents/child_prograss/child_progrss_view.dart';
 import 'package:scoctt_edututo/features/parents/lessons/lessons_view.dart';
 import 'package:scoctt_edututo/features/parents/parents_home/parents_view.dart';
+import 'package:scoctt_edututo/features/parents/parents_profile/profile_view.dart';
 import 'package:scoctt_edututo/features/parents/prograss_details/prograss_details_view.dart';
 import 'package:scoctt_edututo/features/privacy/privacy_view.dart';
 import 'package:scoctt_edututo/features/settings/settings_view.dart';
@@ -63,17 +64,24 @@ final routerProvider = Provider<GoRouter>((ref) {
         path: '/child_prograss',
         builder: (context, state) => ChildProgrssView(),
       ),
+      // 
       GoRoute(
-        path: '/lesson_view',
-        builder: (context, state) => LessonView(),
+        path: '/lesson_view/:id',
+        builder: (context, state) {
+          final lessonId = state.pathParameters['id']!;
+          return LessonView(lessonId: lessonId); 
+        },
       ),
       GoRoute(
         path: '/prograss_details',
         builder: (context, state) => PrograssDetails(),
       ),
+      GoRoute(
+        path: '/parents_profile',
+        builder: (context, state) => ParentsProfileView(),
+      ),
 
       //!------------- Teacher Settings ------------!
-
       GoRoute(
         path: '/teacher_settings',
         builder: (context, state) => OtpView(),
@@ -104,8 +112,8 @@ final Map<UserRoleType, Map<BottomNavItem, Widget>> roleScreens = {
     BottomNavItem.settings: SettingsView(),
   },
   UserRoleType.parent: {
-    //BottomNavItem.home: ParentHomeScreen(),
-    //BottomNavItem.profile: ParentProfileScreen(),
+    BottomNavItem.home: ParentsView(),
+    BottomNavItem.profile: ParentsProfileView(),
     //BottomNavItem.settings: ParentSettingsScreen(),
   },
   UserRoleType.admin: {

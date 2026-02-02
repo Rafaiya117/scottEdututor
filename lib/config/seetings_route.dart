@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:scoctt_edututo/core/componets/bottom_navbar.dart';
 import 'package:scoctt_edututo/features/Teacher/home/home_view.dart';
 import 'package:scoctt_edututo/features/parents/parents_home/parents_view.dart';
+import 'package:scoctt_edututo/features/parents/parents_profile/profile_view.dart';
 import 'package:scoctt_edututo/features/settings/settings_view.dart';
 import 'package:scoctt_edututo/features/user_role/user_role_model.dart';
 import 'package:scoctt_edututo/features/user_role/user_role_provider.dart';
@@ -37,8 +38,8 @@ class MainScaffold extends ConsumerWidget {
 
         case BottomNavItem.profile:
           switch (role.type) {
-            case UserRoleType.teacher:
-              return const SizedBox(); // TeacherProfileView later
+            case UserRoleType.parent:
+              return ParentsProfileView();
             default:
               return const SizedBox();
           }

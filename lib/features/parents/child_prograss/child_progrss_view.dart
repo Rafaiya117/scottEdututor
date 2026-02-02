@@ -4,13 +4,22 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:linear_progress_bar/linear_progress_bar.dart';
+import 'package:scoctt_edututo/core/componets/info_card.dart';
+import 'package:scoctt_edututo/core/componets/reusable_card.dart';
+import 'package:scoctt_edututo/core/componets/summary_card.dart';
 import 'package:scoctt_edututo/core/utils/background_template.dart';
+import 'package:scoctt_edututo/features/parents/child_prograss/child_prograss_provider.dart';
 
-class ChildProgrssView extends ConsumerWidget{
-  ChildProgrssView({super.key});
+class ChildProgrssView extends ConsumerWidget {
+  const ChildProgrssView({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref){
+  Widget build(BuildContext context, WidgetRef ref) {
+    // Get controller from provider
+    final controller = ref.watch(childProgressProvider);
+    final state = controller.getChildProgress();
+
     return BackgroundTemplate(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(60.h),
@@ -22,9 +31,8 @@ class ChildProgrssView extends ConsumerWidget{
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Padding(
-                padding:EdgeInsets.only(top: 45.h,left: 8.0.w),
+                padding: EdgeInsets.only(top: 45.h, left: 8.0.w),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     IconButton(
                       onPressed: () {
@@ -32,7 +40,7 @@ class ChildProgrssView extends ConsumerWidget{
                       },
                       icon: SvgPicture.asset('assets/icons/menu_icon.svg'),
                     ),
-                    SizedBox(width: 280.w,),
+                    SizedBox(width: 280.w),
                     GestureDetector(
                       onTap: () {
                         //context.push('/profile');
@@ -59,32 +67,132 @@ class ChildProgrssView extends ConsumerWidget{
           ),
         ),
       ),
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 64),
+      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12.h),
       body: Column(
         children: [
-          Container(
-            width: double.infinity,
-            height: 217,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(13.0),
-              color: Colors.white,
-            ),
-            child: Column(
-              children: [
-                TextButton(
-                  onPressed: (){
-                    context.push('/lesson_view');
-                  }, 
-                  child:Text(
-                    'Maria',
-                    style: GoogleFonts.inter(
-                      fontSize:12.sp,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.black,
+          // Summary Cards
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              SummaryCard(
+                value: '${state.totalScore}%',
+                label: 'Total Score',
+                color: const Color(0xFFCACACA),
+              ),
+              SummaryCard(
+                value: '${state.enrolledCourses}',
+                label: 'Enroll Courses',
+                color: const Color(0xFFE7FFEC),
+              ),
+            ],
+          ),
+          SizedBox(height: 20.h),
+
+          // Recent Quiz Results
+          ReusableCard(
+            title: 'Recent Quiz Results',
+            children: state.recentQuizzes
+              .map(
+                (quiz) => Padding(
+                  padding: EdgeInsets.only(bottom: 8.h),
+                  child: InfoRowCard(
+                    title: quiz.title,
+                    subtitle: quiz.score,
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 12.w,
+                      vertical: 8.h,
                     ),
                   ),
-                ),   
-              ],
+                ),
+              )
+            .toList(),
+          ),
+          SizedBox(height: 20.h),
+
+          // Enrolled Courses
+          ReusableCard(
+            title: 'Enrolled Courses',
+              children: state.courses
+                .map(
+                  (course) => Padding(
+                    padding: EdgeInsets.only(bottom: 8.h),
+                    child: InfoRowCard(
+                      title: course.title,
+                      subtitle: course.lessons,
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 12.w,
+                        vertical: 5.h,
+                      ),
+                      trailing: TextButton(
+                      onPressed: () {
+                        context.push('/lesson_view/${course.id}');
+                      },
+                      child: Text(
+                        'View Details',
+                        style: GoogleFonts.poppins(
+                          fontSize: 12.sp,
+                          fontWeight: FontWeight.w500,
+                          color: const Color(0xFF0010E9),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              )
+            .toList(),
+          ),
+          SizedBox(height: 20.h),
+          Container(
+            width: double.infinity,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 8.0,
+                vertical: 8.0,
+              ),
+              child: Column(
+                children: [
+                  Align(
+                    alignment: Alignment.topLeft,
+                    child: Text(
+                      'Progress Score',
+                      style: GoogleFonts.poppins(
+                        fontSize: 14.sp,
+                        fontWeight: FontWeight.w400,
+                        color: Color(0xFF000000),
+                      ),
+                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Text(
+                        '${state.progressPercent}%',
+                        style: GoogleFonts.poppins(
+                          fontSize: 12.sp,
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xFF000000),
+                        ),
+                      ),
+                      SizedBox(width: 5.w),
+                      Flexible(
+                        child: LinearProgressBar(
+                          maxSteps: 100,
+                          progressType: ProgressType.linear,
+                          currentStep: state.progressPercent,
+                          progressColor: Color(0xFFD0AD6B),
+                          backgroundColor: Colors.grey,
+                          borderRadius: BorderRadius.circular(10),
+                          minHeight: 10,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
         ],

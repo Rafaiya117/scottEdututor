@@ -56,7 +56,7 @@ class ParentsView extends ConsumerWidget{
                     SizedBox(width: 90.w,),
                     GestureDetector(
                       onTap: () {
-                        //context.push('/profile');
+                        context.push('/parents_profile');
                       },
                       child: Container(
                         width: 40.w,
@@ -85,27 +85,91 @@ class ParentsView extends ConsumerWidget{
         children: [
           Container(
             width: double.infinity,
-            height: 217.h,
+            //height: 217.h,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(13.0),
               color: Colors.white,
             ),
-            child: Column(
-              children: [
-                TextButton(
-                  onPressed: (){
-                    context.push('/child_prograss');
-                  }, 
-                  child:Text(
-                    'Maria',
-                    style: GoogleFonts.inter(
-                      fontSize:12.sp,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.black,
+            child: Padding(
+              padding:EdgeInsets.symmetric(horizontal: 12.w,vertical:24.h),
+              child: Column(
+                children: [
+                  Text(
+                    'View Your Child Prograss',
+                    style:GoogleFonts.poppins(
+                      fontSize: 20.sp,
+                      fontWeight: FontWeight.normal,
+                      color: Color(0xFF000000),
+                      //letterSpacing: 1
                     ),
                   ),
-                ),
-              ],
+                  SizedBox(height: 20.h,),
+                  Container(
+                    width:190.w,
+                    //height: 63.h,
+                    decoration: BoxDecoration(
+                      color: Color(0xFFFFE7BE),
+                      border: Border.all(
+                        color: Color(0xFFD0AD6B),
+                        width: 3.w,
+                      ),
+                      borderRadius: BorderRadius.circular(16.r),
+                    ),
+                    child: TextButton(
+                      onPressed: (){
+                        context.push('/child_prograss');
+                      }, 
+                      child:Column(
+                        children: [
+                          Text(
+                            'Maria',
+                            style: GoogleFonts.poppins(
+                              fontSize:20.sp,
+                              fontWeight: FontWeight.normal,
+                              color: Color(0xFF000000),
+                            ),
+                          ),
+                          //SizedBox(height: 5.h,),
+                          Text(
+                            'satyyy@gmail.com',
+                            style: GoogleFonts.poppins(
+                              fontSize:12.sp,
+                              fontWeight: FontWeight.normal,
+                              color: Color(0xFF000000),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 20.h,),
+                   Container(
+                    width:190.w,
+                    //height: 63.h,
+                    decoration: BoxDecoration(
+                      //color: Color(0xFFFFE7BE),
+                      border: Border.all(
+                        color: Color(0xFFD0AD6B),
+                        width: 3.w,
+                      ),
+                      borderRadius: BorderRadius.circular(16.r),
+                    ),
+                    child: TextButton(
+                      onPressed: (){
+                        context.push('/child_prograss');
+                      }, 
+                      child:Text(
+                        'Add Child',
+                        style: GoogleFonts.poppins(
+                          fontSize:20.sp,
+                          fontWeight: FontWeight.normal,
+                          color: Color(0xFF000000),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ],
