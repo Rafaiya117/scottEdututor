@@ -30,7 +30,7 @@ class SettingsController {
       ),
       SettingsItemModel(
         svgIconPath: 'assets/icons/logout_prefix.svg',
-        title: 'Logout',
+        title: 'Logout                           ',
         subtitle: '',
       ),
     ];

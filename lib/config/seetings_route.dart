@@ -48,11 +48,13 @@ class MainScaffold extends ConsumerWidget {
           switch (role.type) {
             case UserRoleType.teacher:
               return const SettingsView();
+            case UserRoleType.parent:
+              return const SettingsView();
             default:
               return const SizedBox();
           }
+        }
       }
-    }
 
     return Stack(
       children: [

@@ -4,7 +4,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:scoctt_edututo/core/componets/bottom_navbar.dart';
 import 'package:scoctt_edututo/core/utils/background_template.dart';
+import 'package:scoctt_edututo/features/user_role/user_role_provider.dart';
 
 class ParentsView extends ConsumerWidget{
   ParentsView({super.key});
@@ -56,7 +58,9 @@ class ParentsView extends ConsumerWidget{
                     SizedBox(width: 90.w,),
                     GestureDetector(
                       onTap: () {
-                        context.push('/parents_profile');
+                        //context.push('/parents_profile');
+                        ref.read(bottomNavProvider.notifier).state = BottomNavItem.profile;
+                        context.go('/main');
                       },
                       child: Container(
                         width: 40.w,

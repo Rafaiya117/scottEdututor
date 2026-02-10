@@ -114,7 +114,7 @@ final Map<UserRoleType, Map<BottomNavItem, Widget>> roleScreens = {
   UserRoleType.parent: {
     BottomNavItem.home: ParentsView(),
     BottomNavItem.profile: ParentsProfileView(),
-    //BottomNavItem.settings: ParentSettingsScreen(),
+    BottomNavItem.settings: SettingsView(),
   },
   UserRoleType.admin: {
     //BottomNavItem.home: AdminHomeScreen(),
