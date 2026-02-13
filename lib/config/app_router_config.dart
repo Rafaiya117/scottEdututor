@@ -3,6 +3,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:scoctt_edututo/config/seetings_route.dart';
 import 'package:scoctt_edututo/core/componets/bottom_navbar.dart';
+import 'package:scoctt_edututo/features/Teacher/class_management/class_management_details.dart';
+import 'package:scoctt_edututo/features/Teacher/class_management/class_management_view.dart';
+import 'package:scoctt_edututo/features/Teacher/class_management_add_student/add_student_view.dart';
 import 'package:scoctt_edututo/features/Teacher/home/home_view.dart';
 import 'package:scoctt_edututo/features/auth/change_password/change_password_view.dart';
 import 'package:scoctt_edututo/features/auth/forgot_password/forgot_password_view.dart';
@@ -11,11 +14,20 @@ import 'package:scoctt_edututo/features/auth/otp_controller/otp_view.dart';
 import 'package:scoctt_edututo/features/parents/child_prograss/child_progrss_view.dart';
 import 'package:scoctt_edututo/features/parents/lessons/lessons_view.dart';
 import 'package:scoctt_edututo/features/parents/parents_home/parents_view.dart';
+import 'package:scoctt_edututo/features/parents/parents_profile/edit_parents_profile_view.dart';
 import 'package:scoctt_edututo/features/parents/parents_profile/profile_view.dart';
 import 'package:scoctt_edututo/features/parents/prograss_details/prograss_details_view.dart';
 import 'package:scoctt_edututo/features/privacy/privacy_view.dart';
 import 'package:scoctt_edututo/features/settings/settings_view.dart';
 import 'package:scoctt_edututo/features/splash_screen.dart';
+import 'package:scoctt_edututo/features/student/my_courses/my_corses_view.dart';
+import 'package:scoctt_edututo/features/student/my_prograss/my_prograss_view.dart';
+import 'package:scoctt_edututo/features/student/quizes/quiz_view.dart';
+import 'package:scoctt_edututo/features/student/quizes/quize_ques.dart';
+import 'package:scoctt_edututo/features/student/quizes/report_summery_view.dart';
+import 'package:scoctt_edututo/features/student/student_home/student_home_view.dart';
+import 'package:scoctt_edututo/features/student/student_profile/edit_student_info.dart';
+import 'package:scoctt_edututo/features/student/student_profile/student_profile_view.dart';
 import 'package:scoctt_edututo/features/term_condition/term_condition_view.dart';
 import 'package:scoctt_edututo/features/user_role/user_role_model.dart';
 import 'package:scoctt_edututo/features/user_role/user_role_view.dart';
@@ -54,6 +66,36 @@ final routerProvider = Provider<GoRouter>((ref) {
         builder: (context, state) => ChangePasswordView(),
       ),
 
+      //!------------- student ---------------------!
+
+      GoRoute(
+        path: '/student_home_view',
+        builder: (context, state) => StudentHomeView(),
+      ),
+      GoRoute(
+        path: '/my_courses',
+        builder: (context, state) => CourseTableView(),
+      ),
+      GoRoute(
+        path: '/quizes',
+        builder: (context, state) => StudentQuizView(),
+      ),
+      GoRoute(
+        path: '/quiz_ques',
+        builder: (context, state) => QuizeQues(),
+      ),
+      GoRoute(
+        path: '/report_summery',
+        builder: (context, state) => ReportSummeryView(),
+      ),
+      GoRoute(
+        path: '/my_prograss',
+        builder: (context, state) => MyPrograssView(),
+      ),
+      GoRoute(
+        path: '/edit_student_info',
+        builder: (context, state) => EditStudentInfo(),
+      ),
       //!------------- Parents ---------------------!
 
       GoRoute(
@@ -80,6 +122,10 @@ final routerProvider = Provider<GoRouter>((ref) {
         path: '/parents_profile',
         builder: (context, state) => ParentsProfileView(),
       ),
+      GoRoute(
+        path: '/edit_parents_profile',
+        builder: (context, state) => EditParentsProfileView(),
+      ),
 
       //!------------- Teacher Settings ------------!
       GoRoute(
@@ -94,6 +140,18 @@ final routerProvider = Provider<GoRouter>((ref) {
         path: '/terms',
         builder: (context, state) => TermConditionView(),
       ),
+      GoRoute(
+        path: '/class_management',
+        builder: (context, state) => ClassManagementView(),
+      ),
+      GoRoute(
+        path: '/class_management_details',
+        builder: (context, state) => ClassManagementDetails(),
+      ),
+      GoRoute(
+        path: '/add_student',
+        builder: (context, state) => AddStudentView(),
+      ),
     ],
   );
 });
@@ -102,8 +160,8 @@ final routerProvider = Provider<GoRouter>((ref) {
 // Role-based screens mapping
 final Map<UserRoleType, Map<BottomNavItem, Widget>> roleScreens = {
   UserRoleType.student: {
-    //BottomNavItem.home: StudentHomeScreen(),
-    //BottomNavItem.profile: StudentProfileScreen(),
+    BottomNavItem.home: StudentHomeView(),
+    BottomNavItem.profile: StudentProfileView(),
     //BottomNavItem.settings: StudentSettingsScreen(),
   },
   UserRoleType.teacher: {

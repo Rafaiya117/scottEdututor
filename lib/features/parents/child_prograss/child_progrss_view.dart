@@ -102,6 +102,19 @@ class ChildProgrssView extends ConsumerWidget {
                       horizontal: 12.w,
                       vertical: 8.h,
                     ),
+                    trailing: TextButton(
+                      onPressed: (){
+                        context.push('/prograss_details');
+                      }, 
+                      child: Text(
+                        'View Details',
+                        style: GoogleFonts.poppins(
+                          fontSize: 12.sp,
+                          fontWeight: FontWeight.w500,
+                          color: const Color(0xFF0010E9),
+                        ),
+                      ),
+                    ),
                   ),
                 ),
               )

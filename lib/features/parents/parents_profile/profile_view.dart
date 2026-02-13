@@ -13,7 +13,6 @@ class ParentsProfileView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final isEditing = ref.watch(parentsProfileEditProvider);
     final controller = ref.read(parentsProfileControllerProvider);
 
     return BackgroundTemplate(
@@ -124,7 +123,8 @@ class ParentsProfileView extends ConsumerWidget {
                       ),
                       GestureDetector(
                         onTap: () {
-                          ref.read(parentsProfileEditProvider.notifier).state = !isEditing;
+                          //ref.read(parentsProfileEditProvider.notifier).state = !isEditing;
+                          context.push('/edit_parents_profile');
                         },
                         child: SvgPicture.asset(
                           'assets/icons/edit.svg',
@@ -139,22 +139,22 @@ class ParentsProfileView extends ConsumerWidget {
                   profileField(
                     label: 'Full Name',
                     controller: controller.nameCtrl,
-                    enabled: isEditing,
+                    //enabled: isEditing,
                   ),
                   profileField(
                     label: 'Relation',
                     controller: controller.relationCtrl,
-                    enabled: isEditing,
+                    //enabled: isEditing,
                   ),
                   profileField(
                     label: 'Email',
                     controller: controller.emailCtrl,
-                    enabled: isEditing,
+                    //enabled: isEditing,
                   ),
                   profileField(
                     label: 'Phone No:',
                     controller: controller.phoneCtrl,
-                    enabled: isEditing,
+                    //enabled: isEditing,
                   ),
                 ],
               ),

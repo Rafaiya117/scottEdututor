@@ -6,6 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:scoctt_edututo/core/componets/custom_setting_widget.dart';
 import 'package:scoctt_edututo/core/utils/background_template.dart';
 import 'package:scoctt_edututo/core/utils/constent.dart';
+import 'package:scoctt_edututo/features/user_role/user_role_provider.dart';
 import 'settings_provider.dart';
 
 
@@ -15,7 +16,10 @@ class SettingsView extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final controller = ref.read(settingsControllerProvider);
-    final items = controller.getItems(context);
+
+    final role = ref.watch(selectedRoleProvider);
+    if (role == null) return const Center(child: CircularProgressIndicator());
+    final items = controller.getItems(context, role.type);
 
     return BackgroundTemplate(
       appBar: PreferredSize(

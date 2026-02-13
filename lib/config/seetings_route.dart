@@ -7,6 +7,8 @@ import 'package:scoctt_edututo/features/Teacher/home/home_view.dart';
 import 'package:scoctt_edututo/features/parents/parents_home/parents_view.dart';
 import 'package:scoctt_edututo/features/parents/parents_profile/profile_view.dart';
 import 'package:scoctt_edututo/features/settings/settings_view.dart';
+import 'package:scoctt_edututo/features/student/student_home/student_home_view.dart';
+import 'package:scoctt_edututo/features/student/student_profile/student_profile_view.dart';
 import 'package:scoctt_edututo/features/user_role/user_role_model.dart';
 import 'package:scoctt_edututo/features/user_role/user_role_provider.dart';
 
@@ -32,6 +34,8 @@ class MainScaffold extends ConsumerWidget {
               return TeacherHomeView();
             case UserRoleType.parent:
               return ParentsView();
+            case UserRoleType.student:
+              return StudentHomeView();  
             default:
               return const SizedBox();
           }
@@ -40,6 +44,8 @@ class MainScaffold extends ConsumerWidget {
           switch (role.type) {
             case UserRoleType.parent:
               return ParentsProfileView();
+            case UserRoleType.student:
+              return StudentProfileView();
             default:
               return const SizedBox();
           }

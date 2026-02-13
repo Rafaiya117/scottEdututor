@@ -26,7 +26,7 @@ class CustomRadioTile<T> extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
           border: Border.all(
-            color: isSelected ? const Color(0xFFFFC27A) : const Color(0xFFE6E6E6),
+            color: isSelected ? const Color(0xFFE6E6E6) :const Color(0xFFFFC27A)  ,
             width: 1.2,
           ),
         ),

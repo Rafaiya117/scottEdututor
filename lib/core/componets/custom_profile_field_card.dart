@@ -5,7 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 Widget profileField({
   required String label,
   required TextEditingController controller,
-  required bool enabled,
+   bool? enabled,
 }) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
@@ -19,7 +19,6 @@ Widget profileField({
       ),
       TextField(
         controller: controller,
-        readOnly: !enabled, // ✅ FIX
         style: GoogleFonts.inter(
           fontSize: 14.sp,
           color: Colors.white,

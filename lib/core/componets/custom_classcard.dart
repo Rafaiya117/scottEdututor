@@ -1,16 +1,86 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:go_router/go_router.dart';
-import 'package:scoctt_edututo/features/Teacher/home/home_model.dart';
-import 'package:scoctt_edututo/features/Teacher/home/home_provider.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-class ClassCategoryCard extends ConsumerWidget {
+// class ClassCategoryCard extends ConsumerWidget {
+//   final double height;
+//   final double width;
+//   final ClassCategory category;
+//   final Color borderColor;
+//   final String routename;
+
+//   const ClassCategoryCard({
+//     super.key,
+//     required this.height,
+//     required this.width,
+//     required this.category,
+//     required this.borderColor,
+//     required this.routename
+//   });
+
+//   @override
+//   Widget build(BuildContext context, WidgetRef ref) {
+//     final selectedCategory = ref.watch(selectedClassCategoryProvider);
+//     final isSelected = selectedCategory?.id == category.id;
+
+//     return GestureDetector(
+//       onTap: () {
+//         ref.read(selectedClassCategoryProvider.notifier).state = category;
+//         context.push(routename);
+//       },
+//       child: AnimatedContainer(
+//         duration: const Duration(milliseconds: 180),
+//         height: height,
+//         width: width,
+//         padding: const EdgeInsets.all(12),
+//         decoration: BoxDecoration(
+//           color: isSelected ? borderColor.withOpacity(0.08) : Colors.white,
+//           borderRadius: BorderRadius.circular(14),
+//           border: Border.all(
+//             color: borderColor,
+//             width: 1.5,
+//           ),
+//           boxShadow: [
+//             BoxShadow(
+//               color: Colors.black.withOpacity(0.04),
+//               blurRadius: 6,
+//               offset: const Offset(0, 3),
+//             ),
+//           ],
+//         ),
+//         child: Column(
+//           mainAxisAlignment: MainAxisAlignment.center,
+//           children: [
+//             SvgPicture.asset(
+//               category.svgPath,
+//               height: 42,
+//               width: 42,
+//             ),
+//             const SizedBox(height: 10),
+//             Text(
+//               category.name,
+//               textAlign: TextAlign.center,
+//               style: const TextStyle(
+//                 fontSize: 14,
+//                 fontWeight: FontWeight.w600,
+//               ),
+//             ),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }
+
+class ClassCategoryCard extends StatelessWidget {
   final double height;
   final double width;
-  final ClassCategory category;
+  final dynamic category;
   final Color borderColor;
-  final String routename;
+  final Color cardColor; 
+  final bool isSelected;
+  final VoidCallback onTap;
 
   const ClassCategoryCard({
     super.key,
@@ -18,55 +88,61 @@ class ClassCategoryCard extends ConsumerWidget {
     required this.width,
     required this.category,
     required this.borderColor,
-    required this.routename
+    required this.cardColor,
+    required this.isSelected,
+    required this.onTap,
   });
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final selectedCategory = ref.watch(selectedClassCategoryProvider);
-    final isSelected = selectedCategory?.id == category.id;
-
+  Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        ref.read(selectedClassCategoryProvider.notifier).state = category;
-        context.push(routename);
-      },
+      onTap: onTap,
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 180),
         height: height,
         width: width,
         padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
-          color: isSelected ? borderColor.withOpacity(0.08) : Colors.white,
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [Color(0xFF333332),Color(0xFF81705C)],
+            // stops: [
+            //   0.42,
+            //   1.0,
+            // ],
+          ),
+          color: isSelected ? borderColor.withOpacity(0.12) : cardColor,
           borderRadius: BorderRadius.circular(14),
           border: Border.all(
             color: borderColor,
-            width: 1.5,
+            width: isSelected ? 2.0 : 1.5,
           ),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.04),
-              blurRadius: 6,
-              offset: const Offset(0, 3),
-            ),
-          ],
+          // boxShadow: [
+          //   BoxShadow(
+          //     color: Colors.black.withOpacity(0.04),
+          //     blurRadius: 6,
+          //     offset: const Offset(0, 3),
+          //   ),
+          // ],
         ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            SvgPicture.asset(
-              category.svgPath,
-              height: 42,
-              width: 42,
-            ),
-            const SizedBox(height: 10),
             Text(
               category.name,
               textAlign: TextAlign.center,
-              style: const TextStyle(
+              style:GoogleFonts.poppins(
+                color: Color(0xFFFFFFFF),
                 fontSize: 14,
                 fontWeight: FontWeight.w600,
               ),
+            ),
+            //const SizedBox(height: 10),
+            SvgPicture.asset(
+              category.svgPath,
+              height: 18.w,
+              width: 14.h,
             ),
           ],
         ),

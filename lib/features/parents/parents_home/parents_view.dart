@@ -23,7 +23,7 @@ class ParentsView extends ConsumerWidget{
           flexibleSpace: Row(
             children: [
               Padding(
-                padding:EdgeInsets.only(top: 45.h,left: 8.0.w),
+                padding:EdgeInsets.only(top: 45.h,left: 7.0.w),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
@@ -55,7 +55,7 @@ class ParentsView extends ConsumerWidget{
                         ),
                       ],
                     ),
-                    SizedBox(width: 90.w,),
+                    SizedBox(width: 80.w,),
                     GestureDetector(
                       onTap: () {
                         //context.push('/parents_profile');
@@ -147,31 +147,6 @@ class ParentsView extends ConsumerWidget{
                     ),
                   ),
                   SizedBox(height: 20.h,),
-                   Container(
-                    width:190.w,
-                    //height: 63.h,
-                    decoration: BoxDecoration(
-                      //color: Color(0xFFFFE7BE),
-                      border: Border.all(
-                        color: Color(0xFFD0AD6B),
-                        width: 3.w,
-                      ),
-                      borderRadius: BorderRadius.circular(16.r),
-                    ),
-                    child: TextButton(
-                      onPressed: (){
-                        context.push('/child_prograss');
-                      }, 
-                      child:Text(
-                        'Add Child',
-                        style: GoogleFonts.poppins(
-                          fontSize:20.sp,
-                          fontWeight: FontWeight.normal,
-                          color: Color(0xFF000000),
-                        ),
-                      ),
-                    ),
-                  ),
                 ],
               ),
             ),

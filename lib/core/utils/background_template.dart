@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_riverpod/legacy.dart';
 
@@ -39,6 +40,7 @@ class BackgroundTemplate extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
     final gradientTheme = ref.watch(gradientThemeProvider);
 
     return Scaffold(
