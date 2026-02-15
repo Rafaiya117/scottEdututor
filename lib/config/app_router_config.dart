@@ -13,6 +13,12 @@ import 'package:scoctt_edututo/features/Teacher/home/home_view.dart';
 import 'package:scoctt_edututo/features/Teacher/report_details/report_details_view.dart';
 import 'package:scoctt_edututo/features/Teacher/report_details/report_table_view.dart';
 import 'package:scoctt_edututo/features/admin/admin_profile/admin_profile.dart';
+import 'package:scoctt_edututo/features/admin/all_courses/all_courses_view.dart';
+import 'package:scoctt_edututo/features/admin/classes/class_view.dart';
+import 'package:scoctt_edututo/features/admin/quizes/quize_details.dart';
+import 'package:scoctt_edututo/features/admin/quizes/quizes_view.dart';
+import 'package:scoctt_edututo/features/admin/view_reports/view_report_details.dart';
+import 'package:scoctt_edututo/features/admin/view_reports/view_reports.dart';
 import 'package:scoctt_edututo/features/auth/change_password/change_password_view.dart';
 import 'package:scoctt_edututo/features/auth/forgot_password/forgot_password_view.dart';
 import 'package:scoctt_edututo/features/auth/login/login_view.dart';
@@ -180,6 +186,35 @@ final routerProvider = Provider<GoRouter>((ref) {
       GoRoute(
         path: '/attendance',
         builder: (context, state) => AttendanceView(),
+      ),
+      //!-------------Admin -------------!
+      GoRoute(
+        path: '/classes',
+        builder: (context, state) => ClassView(),
+      ),
+      GoRoute(
+        path: '/admin_report_view',
+        builder: (context, state) => ReportTableViews(),
+      ),
+      GoRoute(
+        path: '/admin/report_detailsview',
+        builder: (context, state) => ReportDetailView(),
+      ),
+      GoRoute(
+        path: '/admin/quize_view',
+        builder: (context, state) => QuizView(),
+      ),
+      GoRoute(
+        path: '/admin/quize_details',
+        builder: (context, state) => QuizDetails(),
+      ),
+      GoRoute(
+        path: '/admin/all_courses',
+        builder: (context, state) => AllCourses(),
+      ),
+      GoRoute(
+        path: '/admin/lesson_view',
+        builder: (context, state) => LessonView(lessonId: '',),
       ),
     ],
   );
