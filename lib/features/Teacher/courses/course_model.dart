@@ -1,10 +1,12 @@
 
-class CourseItem {
+class Courses {
   final String id;
   final String title;
+  final String content;
 
-  const CourseItem({
+  Courses({
     required this.id,
     required this.title,
+    required this.content,
   });
 }

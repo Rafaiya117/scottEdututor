@@ -3,10 +3,16 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:scoctt_edututo/config/seetings_route.dart';
 import 'package:scoctt_edututo/core/componets/bottom_navbar.dart';
+import 'package:scoctt_edututo/features/Teacher/attendance/attendance_view.dart';
 import 'package:scoctt_edututo/features/Teacher/class_management/class_management_details.dart';
 import 'package:scoctt_edututo/features/Teacher/class_management/class_management_view.dart';
 import 'package:scoctt_edututo/features/Teacher/class_management_add_student/add_student_view.dart';
+import 'package:scoctt_edututo/features/Teacher/courses/course_details_view.dart';
+import 'package:scoctt_edututo/features/Teacher/courses/course_view.dart';
 import 'package:scoctt_edututo/features/Teacher/home/home_view.dart';
+import 'package:scoctt_edututo/features/Teacher/report_details/report_details_view.dart';
+import 'package:scoctt_edututo/features/Teacher/report_details/report_table_view.dart';
+import 'package:scoctt_edututo/features/admin/admin_profile/admin_profile.dart';
 import 'package:scoctt_edututo/features/auth/change_password/change_password_view.dart';
 import 'package:scoctt_edututo/features/auth/forgot_password/forgot_password_view.dart';
 import 'package:scoctt_edututo/features/auth/login/login_view.dart';
@@ -152,6 +158,29 @@ final routerProvider = Provider<GoRouter>((ref) {
         path: '/add_student',
         builder: (context, state) => AddStudentView(),
       ),
+      GoRoute(
+        path: '/courses',
+        builder: (context, state) => CourseView(),
+      ),
+      GoRoute(
+        path: '/courses_details/:id',
+        builder: (context, state){
+          final courseId = state.pathParameters['id']!;
+          return CourseDetailsView(CourseId: courseId);
+        },
+      ),
+      GoRoute(
+        path: '/report',
+        builder: (context, state) => ReportTableView(),
+      ),
+      GoRoute(
+        path: '/report_details',
+        builder: (context, state) => ReportDetailsView(),
+      ),
+      GoRoute(
+        path: '/attendance',
+        builder: (context, state) => AttendanceView(),
+      ),
     ],
   );
 });
@@ -176,7 +205,7 @@ final Map<UserRoleType, Map<BottomNavItem, Widget>> roleScreens = {
   },
   UserRoleType.admin: {
     //BottomNavItem.home: AdminHomeScreen(),
-    //BottomNavItem.profile: AdminProfileScreen(),
+    BottomNavItem.profile: AdminProfileView(),
     //BottomNavItem.settings: AdminSettingsScreen(),
   },
 };

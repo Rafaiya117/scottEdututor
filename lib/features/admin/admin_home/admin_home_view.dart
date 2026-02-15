@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -7,22 +6,13 @@ import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:scoctt_edututo/core/componets/bottom_navbar.dart';
 import 'package:scoctt_edututo/core/componets/custom_categoryaction_card.dart';
-import 'package:scoctt_edututo/core/componets/custom_classcard.dart';
 import 'package:scoctt_edututo/core/utils/background_template.dart';
-import 'package:scoctt_edututo/features/Teacher/class_management/class_management_controller.dart';
-import 'package:scoctt_edututo/features/Teacher/class_management/class_management_model.dart';
-import 'package:scoctt_edututo/features/Teacher/class_management/class_management_provider.dart';
 import 'package:scoctt_edututo/features/user_role/user_role_provider.dart';
 
-class TeacherHomeView extends ConsumerWidget{
-  TeacherHomeView({super.key});
-
-  final ClassManagementController controller = ClassManagementController();
-  
+class AdminHomeView extends ConsumerWidget{
+  AdminHomeView({super.key});
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final List<ClassCategory2> categories = controller.getClassCategory();
-    final selectedCategory2 = ref.watch(selectedClassCategory2Provider);
     return BackgroundTemplate(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(60.h),
@@ -102,57 +92,94 @@ class TeacherHomeView extends ConsumerWidget{
             runSpacing: 20.h,
             children: [
               CategoryActionCard(
-                title: 'Create Quiz',
+                title: 'Classes     ',
                 iconPath: 'assets/icons/quiz.svg',
                 backgroundColor: const Color(0xFFCACACA),
-                onTap: () => context.push('/quizes'),
+                onTap: () => context.push('/'),
               ),
               CategoryActionCard(
                 title: 'View Reports',
                 iconPath: 'assets/icons/prograss.svg',
                 backgroundColor: const Color(0xFFE7FFEC),
-                onTap: () => context.push('/report'),
+                onTap: () => context.push('/'),
+              ),
+              CategoryActionCard(
+                title: 'Quiz',
+                iconPath: 'assets/icons/courses.svg',
+                backgroundColor: const Color(0xFFFFF7ED),
+                onTap: () => context.push('/'),
+              ),
+              CategoryActionCard(
+                title: 'Student',
+                iconPath: 'assets/icons/courses.svg',
+                backgroundColor: const Color(0xFFE5CCFF),
+                onTap: () => context.push('/'),
+              ),
+              CategoryActionCard(
+                title: 'Users',
+                iconPath: 'assets/icons/courses.svg',
+                backgroundColor: const Color(0xFFFFF7ED),
+                onTap: () => context.push('/'),
               ),
               CategoryActionCard(
                 title: 'Courses',
                 iconPath: 'assets/icons/courses.svg',
-                backgroundColor: const Color(0xFFFFF7ED),
-                onTap: () => context.push('/courses'),
-              ),
-              CategoryActionCard(
-                title: 'Attendance',
-                iconPath: 'assets/icons/courses.svg',
                 backgroundColor: const Color(0xFFE5CCFF),
-                onTap: () => context.push('/attendance'),
+                onTap: () => context.push('/'),
               ),
             ],
           ),
           SizedBox(height: 20.h,),
-          Flexible(
-            child: Wrap(
-              spacing: 16,
-              runSpacing: 16,
-              children: categories.map((cat) {
-                return ClassCategoryCard(
-                  height: 58.h, 
-                  width: double.infinity, 
-                  category: cat, 
-                  borderColor: Color(0xFFD4B579),
-                  cardColor: Colors.white, 
-                  isSelected: selectedCategory2?.id == cat.id,
-                  onTap: () {
-                    //ref.read(selectedClassCategoryProvider.notifier).state = cat;
-                    context.push('/class_management_details'); 
-                  },
-                );
-              }).toList(),
+          Container(
+            width: double.infinity,
+            padding: const EdgeInsets.all(24.0),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(24.0), 
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.05),
+                  blurRadius: 10,
+                  offset: const Offset(0, 4),
+                ),
+              ],
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  'Platform Statistics',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                  ),
+                ),
+                const SizedBox(height: 20),
+                _buildStatRow('Avg. Student Progress'),
+                const SizedBox(height: 12),
+                _buildStatRow('Skills Mastered (Total)'),
+                const SizedBox(height: 12),
+                _buildStatRow('Active This Week'),
+              ],
             ),
           ),
         ],
       ),
     );
   }
-}
 
+  Widget _buildStatRow(String label) {
+    return Text(
+      label,
+      style: const TextStyle(
+        fontSize: 16,
+        color: Colors.black87,
+        fontWeight: FontWeight.w400,
+      ),
+    );
+  }
+}
 
 

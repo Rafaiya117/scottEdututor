@@ -21,6 +21,12 @@ class RoleSelectionController {
         svgPath: 'assets/icons/parent_icon.svg',
         type: UserRoleType.parent,
       ),
+      UserRole(
+        id: 'admin',
+        name: 'Admin',
+        svgPath: 'assets/icons/parent_icon.svg',
+        type: UserRoleType.admin,
+      ),
     ];
   }
 }

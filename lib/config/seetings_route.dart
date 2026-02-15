@@ -4,6 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:scoctt_edututo/core/componets/bottom_navbar.dart';
 import 'package:scoctt_edututo/features/Teacher/home/home_view.dart';
+import 'package:scoctt_edututo/features/Teacher/teacher_profile_view/teacher_profile_view.dart';
+import 'package:scoctt_edututo/features/admin/admin_home/admin_home_view.dart';
+import 'package:scoctt_edututo/features/admin/admin_profile/admin_profile.dart';
 import 'package:scoctt_edututo/features/parents/parents_home/parents_view.dart';
 import 'package:scoctt_edututo/features/parents/parents_profile/profile_view.dart';
 import 'package:scoctt_edututo/features/settings/settings_view.dart';
@@ -35,10 +38,10 @@ class MainScaffold extends ConsumerWidget {
             case UserRoleType.parent:
               return ParentsView();
             case UserRoleType.student:
-              return StudentHomeView();  
-            default:
-              return const SizedBox();
-          }
+              return StudentHomeView();
+            case UserRoleType.admin:
+              return AdminHomeView();  
+            }
 
         case BottomNavItem.profile:
           switch (role.type) {
@@ -46,9 +49,11 @@ class MainScaffold extends ConsumerWidget {
               return ParentsProfileView();
             case UserRoleType.student:
               return StudentProfileView();
-            default:
-              return const SizedBox();
-          }
+            case UserRoleType.teacher:
+              return TeacherProfileView();
+            case UserRoleType.admin:
+              return AdminProfileView();  
+            }
 
         case BottomNavItem.settings:
           switch (role.type) {

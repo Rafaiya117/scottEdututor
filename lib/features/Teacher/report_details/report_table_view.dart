@@ -4,15 +4,17 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:scoctt_edututo/core/componets/custom_gold_button.dart';
-import 'package:scoctt_edututo/core/componets/custom_subject_card.dart';
+import 'package:scoctt_edututo/core/componets/custom_reusable_table.dart';
 import 'package:scoctt_edututo/core/utils/background_template.dart';
+import 'package:scoctt_edututo/features/Teacher/report_details/report_table_model.dart';
+import 'package:scoctt_edututo/features/Teacher/report_details/report_table_provider.dart';
 
-class CourseView extends ConsumerWidget{
-  CourseView({super.key});
+class ReportTableView extends ConsumerWidget{
+  ReportTableView({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final reports = ref.read(reportProvider).getStudentData();
     return BackgroundTemplate(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(30.h),
@@ -33,9 +35,9 @@ class CourseView extends ConsumerWidget{
                       },
                       icon: SvgPicture.asset('assets/icons/arrow_back.svg'),
                     ),
-                    SizedBox(width: 40.w,),
+                    SizedBox(width: 80.w,),
                     Text(
-                      'Course Management',
+                      'View Reports',
                       style: GoogleFonts.inter(
                         fontSize: 20.sp,
                         fontWeight: FontWeight.bold,
@@ -49,43 +51,18 @@ class CourseView extends ConsumerWidget{
           ),
         ),
       ),
-      padding:EdgeInsets.symmetric(horizontal: 16, vertical: 32.h),
+      padding:EdgeInsets.symmetric(horizontal: 16.w, vertical: 32.h),
       body: SingleChildScrollView(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Align(
-              alignment: Alignment.topRight,
-              child: GoldButton(
-                width: 200.w,
-                height: 37.h,
-                text: 'Create Course',
-                onPressed: () => print('Button Pressed!'),
-              ),
-            ),
-            SizedBox(height: 20.h),
-            SubjectCard(
-              title: 'Algebra II',
-              description:'Advanced algebra concepts including polynomials, exponentials, and logarithms',
-              unitCount: 2,
-              lessonCount: 4,
-              onTap: () => context.push('/courses_details/alg2'),
-            ),
-            const SizedBox(height: 16),
-            SubjectCard(
-              title: 'English Literature 9',
-              description:'Exploring shapes, sizes, and the properties of space.',
-              unitCount: 3,
-              lessonCount: 12,
-              onTap: () => print('Geometry clicked!'),
-            ),
-            const SizedBox(height: 16),
-            SubjectCard(
-              title: 'Geometry',
-              description:'Exploring shapes, sizes, and the properties of space.',
-              unitCount: 3,
-              lessonCount: 12,
-              onTap: () => print('Geometry clicked!'),
+            ReusableStudentTable<reportData>(
+              students: reports,
+              getName: (report) => report.name,
+              getClassName: (report) => report.className,
+              getProgress: (report) => report.progress,
+              onViewMore: (report){
+                context.push('/report_details');
+              },
             ),
           ],
         ),
