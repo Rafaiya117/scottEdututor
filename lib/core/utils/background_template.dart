@@ -24,11 +24,57 @@ final gradientThemeProvider = StateProvider<GradientTheme>((ref) => const Gradie
 
 // ------------------- Background Template -------------------
 
+// class BackgroundTemplate extends ConsumerWidget {
+//   final Widget? body;
+//   final PreferredSizeWidget? appBar;
+//   final EdgeInsetsGeometry? padding;
+//   final Widget? bottomNavigationBar; 
+
+//   const BackgroundTemplate({
+//     super.key,
+//     this.body,
+//     this.appBar,
+//     this.padding,
+//     this.bottomNavigationBar,
+//   });
+
+//   @override
+//   Widget build(BuildContext context, WidgetRef ref) {
+//     SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
+//     final gradientTheme = ref.watch(gradientThemeProvider);
+
+//     return Scaffold(
+//       extendBodyBehindAppBar: true,
+//       backgroundColor: Colors.transparent,
+//       appBar: appBar, // optional AppBar
+//       bottomNavigationBar: bottomNavigationBar,
+//       body: Container(
+//         width: double.infinity,
+//         height: double.infinity,
+//         decoration: BoxDecoration(
+//           gradient: LinearGradient(
+//             colors: gradientTheme.colors,
+//             begin: gradientTheme.begin,
+//             end: gradientTheme.end,
+//           ),
+//         ),
+//         child: SafeArea(
+//           child: Padding(
+//             padding: padding ?? const EdgeInsets.all(16),
+//             child: body ?? const SizedBox(),
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }
+
 class BackgroundTemplate extends ConsumerWidget {
   final Widget? body;
   final PreferredSizeWidget? appBar;
   final EdgeInsetsGeometry? padding;
-  final Widget? bottomNavigationBar; 
+  final Widget? bottomNavigationBar;
+  final Widget? drawer; // Added drawer parameter
 
   const BackgroundTemplate({
     super.key,
@@ -36,6 +82,7 @@ class BackgroundTemplate extends ConsumerWidget {
     this.appBar,
     this.padding,
     this.bottomNavigationBar,
+    this.drawer, // Initialize drawer
   });
 
   @override
@@ -46,8 +93,9 @@ class BackgroundTemplate extends ConsumerWidget {
     return Scaffold(
       extendBodyBehindAppBar: true,
       backgroundColor: Colors.transparent,
-      appBar: appBar, // optional AppBar
+      appBar: appBar,
       bottomNavigationBar: bottomNavigationBar,
+      drawer: drawer, // Pass drawer to Scaffold
       body: Container(
         width: double.infinity,
         height: double.infinity,

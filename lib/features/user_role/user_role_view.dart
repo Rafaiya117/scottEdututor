@@ -22,7 +22,7 @@ class RoleSelectionView extends ConsumerWidget {
         elevation: 0,
         automaticallyImplyLeading: false,
       ),
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 128),
+      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 50.h),
       body: SingleChildScrollView(
         child: Column(
           children: [

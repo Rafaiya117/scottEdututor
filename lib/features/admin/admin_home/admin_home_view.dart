@@ -7,13 +7,23 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:scoctt_edututo/core/componets/bottom_navbar.dart';
 import 'package:scoctt_edututo/core/componets/custom_categoryaction_card.dart';
 import 'package:scoctt_edututo/core/utils/background_template.dart';
+import 'package:scoctt_edututo/core/utils/side_bar/model.dart';
+import 'package:scoctt_edututo/core/utils/side_bar/widget/custom_side_bar.dart';
 import 'package:scoctt_edututo/features/user_role/user_role_provider.dart';
 
-class AdminHomeView extends ConsumerWidget{
+class AdminHomeView extends ConsumerWidget {
   AdminHomeView({super.key});
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final List<SidebarItem> menuList = [
+      SidebarItem(title: 'Dashboard', svgPath: 'assets/icons/dash.svg', route: '/dash'),
+      SidebarItem(title: 'Classes', svgPath: 'assets/icons/class.svg', route: '/classes'),
+      SidebarItem(title: 'Reports', svgPath: 'assets/icons/report.svg', route: '/reports'),
+    ];
+
     return BackgroundTemplate(
+      drawer: CustomSidebar(items: menuList),
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(60.h),
         child: AppBar(
@@ -23,17 +33,22 @@ class AdminHomeView extends ConsumerWidget{
           flexibleSpace: Row(
             children: [
               Padding(
-                padding:EdgeInsets.only(top: 45.h,left: 7.0.w),
+                padding: EdgeInsets.only(top: 45.h, left: 7.0.w),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    IconButton(
-                      onPressed: () {
-                        //context.pop();
+                    // FIX: Wrapped in Builder to provide a context below BackgroundTemplate
+                    Builder(
+                      builder: (innerContext) {
+                        return IconButton(
+                          onPressed: () {
+                            Scaffold.of(innerContext).openDrawer();
+                          },
+                          icon: SvgPicture.asset('assets/icons/menu_icon.svg'),
+                        );
                       },
-                      icon: SvgPicture.asset('assets/icons/menu_icon.svg'),
                     ),
-                    SizedBox(width: 20.w,),
+                    SizedBox(width: 20.w),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -55,10 +70,9 @@ class AdminHomeView extends ConsumerWidget{
                         ),
                       ],
                     ),
-                    SizedBox(width: 80.w,),
+                    SizedBox(width: 80.w),
                     GestureDetector(
                       onTap: () {
-                        //context.push('/parents_profile');
                         ref.read(bottomNavProvider.notifier).state = BottomNavItem.profile;
                         context.go('/main');
                       },
@@ -113,13 +127,13 @@ class AdminHomeView extends ConsumerWidget{
                 title: 'Student',
                 iconPath: 'assets/icons/courses.svg',
                 backgroundColor: const Color(0xFFE5CCFF),
-                onTap: () => context.push('/'),
+                onTap: () => context.push('/admin/student_view'),
               ),
               CategoryActionCard(
                 title: 'Users',
                 iconPath: 'assets/icons/courses.svg',
                 backgroundColor: const Color(0xFFFFF7ED),
-                onTap: () => context.push('/'),
+                onTap: () => context.push('/admin/user_view'),
               ),
               CategoryActionCard(
                 title: 'Courses',
@@ -129,13 +143,13 @@ class AdminHomeView extends ConsumerWidget{
               ),
             ],
           ),
-          SizedBox(height: 20.h,),
+          SizedBox(height: 20.h),
           Container(
             width: double.infinity,
             padding: const EdgeInsets.all(24.0),
             decoration: BoxDecoration(
               color: Colors.white,
-              borderRadius: BorderRadius.circular(24.0), 
+              borderRadius: BorderRadius.circular(24.0),
               boxShadow: [
                 BoxShadow(
                   color: Colors.black.withOpacity(0.05),
@@ -181,5 +195,3 @@ class AdminHomeView extends ConsumerWidget{
     );
   }
 }
-
-

@@ -17,6 +17,9 @@ import 'package:scoctt_edututo/features/admin/all_courses/all_courses_view.dart'
 import 'package:scoctt_edututo/features/admin/classes/class_view.dart';
 import 'package:scoctt_edututo/features/admin/quizes/quize_details.dart';
 import 'package:scoctt_edututo/features/admin/quizes/quizes_view.dart';
+import 'package:scoctt_edututo/features/admin/student/student_view.dart';
+import 'package:scoctt_edututo/features/admin/user/user_report.dart';
+import 'package:scoctt_edututo/features/admin/user/user_view.dart';
 import 'package:scoctt_edututo/features/admin/view_reports/view_report_details.dart';
 import 'package:scoctt_edututo/features/admin/view_reports/view_reports.dart';
 import 'package:scoctt_edututo/features/auth/change_password/change_password_view.dart';
@@ -215,6 +218,18 @@ final routerProvider = Provider<GoRouter>((ref) {
       GoRoute(
         path: '/admin/lesson_view',
         builder: (context, state) => LessonView(lessonId: '',),
+      ),
+      GoRoute(
+        path: '/admin/student_view',
+        builder: (context, state) => Student_View(),
+      ),
+      GoRoute(
+        path: '/admin/user_view',
+        builder: (context, state) => UserView(),
+      ),
+      GoRoute(
+        path: '/admin/user_view',
+        builder: (context, state) => UserReport(),
       ),
     ],
   );
