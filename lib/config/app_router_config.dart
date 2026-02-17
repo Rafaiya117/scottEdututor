@@ -35,6 +35,8 @@ import 'package:scoctt_edututo/features/parents/prograss_details/prograss_detail
 import 'package:scoctt_edututo/features/privacy/privacy_view.dart';
 import 'package:scoctt_edututo/features/settings/settings_view.dart';
 import 'package:scoctt_edututo/features/splash_screen.dart';
+import 'package:scoctt_edututo/features/student/my_courses/ai_tutor/ai_tutor.dart';
+import 'package:scoctt_edututo/features/student/my_courses/enroll_test.dart';
 import 'package:scoctt_edututo/features/student/my_courses/my_corses_view.dart';
 import 'package:scoctt_edututo/features/student/my_prograss/my_prograss_view.dart';
 import 'package:scoctt_edututo/features/student/quizes/quiz_view.dart';
@@ -111,8 +113,15 @@ final routerProvider = Provider<GoRouter>((ref) {
         path: '/edit_student_info',
         builder: (context, state) => EditStudentInfo(),
       ),
+      GoRoute(
+        path: '/enroll_test',
+        builder: (context, state) => EnrollTest(),
+      ),
+      GoRoute(
+        path: '/ai_tutor',
+        builder: (context, state) => TalkingAvatarPage(),
+      ),
       //!------------- Parents ---------------------!
-
       GoRoute(
         path: '/parents_home',
         builder: (context, state) => ParentsView(),

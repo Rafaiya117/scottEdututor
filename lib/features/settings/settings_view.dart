@@ -39,7 +39,7 @@ class SettingsView extends ConsumerWidget {
                     Center(
                       child: Text(
                         'Settings',
-                        style: GoogleFonts.inter(
+                        style: GoogleFonts.poppins(
                           fontSize: 20.sp,
                           fontWeight: FontWeight.bold,
                           color: Colors.white,
@@ -85,7 +85,7 @@ class SettingsView extends ConsumerWidget {
                 children: [
                   Text(
                     'Delete your account',
-                    style: GoogleFonts.inter(
+                    style: GoogleFonts.poppins(
                       fontSize: 13.6.sp,
                       fontWeight: FontWeight.w500,
                       color: Colors.red,
@@ -96,7 +96,7 @@ class SettingsView extends ConsumerWidget {
                     children: [
                       Text(
                         'Permanently delete your account and all data',
-                        style: GoogleFonts.inter(
+                        style: GoogleFonts.poppins(
                           fontSize: 10.2.sp,
                           fontWeight: FontWeight.normal,
                           color: Colors.red,

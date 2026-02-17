@@ -45,7 +45,7 @@ class EditStudentInfo extends ConsumerWidget {
                         SizedBox(width: 90.w),
                         Text(
                           'Profile',
-                          style: GoogleFonts.inter(
+                          style: GoogleFonts.poppins(
                             fontSize: 20.sp,
                             fontWeight: FontWeight.bold,
                             color: Colors.white,
@@ -92,7 +92,7 @@ class EditStudentInfo extends ConsumerWidget {
               SizedBox(height: 16.h),
               Text(
                 'Emma Johnson',
-                style: GoogleFonts.inter(
+                style: GoogleFonts.poppins(
                   fontSize: 24.sp,
                   fontWeight: FontWeight.bold,
                   color: Colors.white,
@@ -114,7 +114,7 @@ class EditStudentInfo extends ConsumerWidget {
                       children: [
                         Text(
                           'Personal Information',
-                          style: GoogleFonts.inter(
+                          style: GoogleFonts.poppins(
                             fontSize: 14.sp,
                             fontWeight: FontWeight.w600,
                             color: Colors.white,
@@ -122,6 +122,7 @@ class EditStudentInfo extends ConsumerWidget {
                         ),
                         GestureDetector(
                           onTap: () {
+                            context.pop();
                             //ref.read(parentsProfileEditProvider.notifier).state = !isEditing;
                           },
                           child: Text(

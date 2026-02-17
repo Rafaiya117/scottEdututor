@@ -36,7 +36,7 @@ class AttendanceView extends ConsumerWidget{
                     SizedBox(width: 90.w,),
                     Text(
                       'Attendance',
-                      style: GoogleFonts.inter(
+                      style: GoogleFonts.poppins(
                         fontSize: 20.sp,
                         fontWeight: FontWeight.bold,
                         color: Colors.white,

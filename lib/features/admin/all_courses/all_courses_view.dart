@@ -34,7 +34,7 @@ class AllCourses extends ConsumerWidget {
                     SizedBox(width: 80.w),
                     Text(
                       'All Courses',
-                      style: GoogleFonts.inter(
+                      style: GoogleFonts.poppins(
                         fontSize: 20.sp,
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
@@ -92,14 +92,14 @@ class AllCourses extends ConsumerWidget {
                   flex: 2,
                   child: Text(
                     'Course Name',
-                    style: GoogleFonts.inter(fontWeight: FontWeight.bold, fontSize: 16),
+                    style: GoogleFonts.poppins(fontWeight: FontWeight.bold, fontSize: 16),
                   ),
                 ),
                 Expanded(
                   flex: 2,
                   child: Text(
                     'Lesson',
-                    style: GoogleFonts.inter(fontWeight: FontWeight.bold, fontSize: 16),
+                    style: GoogleFonts.poppins(fontWeight: FontWeight.bold, fontSize: 16),
                   ),
                 ),
                 const Spacer(), 
@@ -127,14 +127,14 @@ class AllCourses extends ConsumerWidget {
             flex: 2,
             child: Text(
               course,
-              style: GoogleFonts.inter(color: const Color(0xFF5A6B78), fontSize: 14),
+              style: GoogleFonts.poppins(color: const Color(0xFF5A6B78), fontSize: 14),
             ),
           ),
           Expanded(
             flex: 2,
             child: Text(
               lesson,
-              style: GoogleFonts.inter(color: const Color(0xFF5A6B78), fontSize: 14),
+              style: GoogleFonts.poppins(color: const Color(0xFF5A6B78), fontSize: 14),
             ),
           ),
           TextButton(
@@ -148,7 +148,7 @@ class AllCourses extends ConsumerWidget {
             ),
             child: Text(
               'View More',
-              style: GoogleFonts.inter(
+              style: GoogleFonts.poppins(
                 color: const Color(0xFF5E5CE6), // Blue link color
                 fontSize: 12,
                 decoration: TextDecoration.underline,

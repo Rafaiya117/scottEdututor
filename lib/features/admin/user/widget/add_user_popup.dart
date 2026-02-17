@@ -31,7 +31,7 @@ void showAddUserPopup(BuildContext context) {
                         SizedBox(width: 10.w),
                         Text(
                           'Add New User',
-                          style: GoogleFonts.inter(
+                          style: GoogleFonts.poppins(
                             fontSize: 20.sp,
                             fontWeight: FontWeight.bold,
                           ),
@@ -41,7 +41,7 @@ void showAddUserPopup(BuildContext context) {
                     SizedBox(height: 8.h),
                     Text(
                       'Create a new student account and assign them to classes.',
-                      style: GoogleFonts.inter(fontSize: 13.sp, color: Colors.grey[600]),
+                      style: GoogleFonts.poppins(fontSize: 13.sp, color: Colors.grey[600]),
                     ),
                     SizedBox(height: 20.h),
 
@@ -110,7 +110,7 @@ Widget _buildLabel(String label) {
     padding: EdgeInsets.only(bottom: 6.h),
     child: Text(
       label,
-      style: GoogleFonts.inter(fontSize: 14.sp, fontWeight: FontWeight.w500),
+      style: GoogleFonts.poppins(fontSize: 14.sp, fontWeight: FontWeight.w500),
     ),
   );
 }
@@ -125,7 +125,7 @@ Widget _buildTextField(String hint) {
     child: TextField(
       decoration: InputDecoration(
         hintText: hint,
-        hintStyle: GoogleFonts.inter(fontSize: 13.sp, color: Colors.grey),
+        hintStyle: GoogleFonts.poppins(fontSize: 13.sp, color: Colors.grey),
         border: InputBorder.none,
         contentPadding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 12.h),
       ),
@@ -148,7 +148,7 @@ Widget _buildDropdown({
     child: DropdownButtonHideUnderline(
       child: DropdownButton<String>(
         value: value,
-        hint: Text(hint, style: GoogleFonts.inter(fontSize: 13.sp, color: Colors.grey)),
+        hint: Text(hint, style: GoogleFonts.poppins(fontSize: 13.sp, color: Colors.grey)),
         isExpanded: true,
         icon: const Icon(Icons.keyboard_arrow_down, color: Colors.grey),
         items: items.map((e) => DropdownMenuItem(value: e, child: Text(e))).toList(),
@@ -171,7 +171,7 @@ Widget _buildButton({required String text, required bool isOutlined, required Vo
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
         padding: EdgeInsets.symmetric(horizontal: 24.w),
       ),
-      child: Text(text, style: GoogleFonts.inter(fontWeight: FontWeight.bold)),
+      child: Text(text, style: GoogleFonts.poppins(fontWeight: FontWeight.bold)),
     ),
   );
 }

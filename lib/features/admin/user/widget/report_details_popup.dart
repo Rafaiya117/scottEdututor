@@ -26,7 +26,7 @@ void showReportDetailsPopup(BuildContext context, {
               // Header
               Text(
                 'Reports Summary',
-                style: GoogleFonts.inter(
+                style: GoogleFonts.poppins(
                   fontSize: 18.sp,
                   fontWeight: FontWeight.bold,
                   color: Colors.black,
@@ -63,7 +63,7 @@ Widget _buildReportItem(String label, String value, {bool showDivider = true}) {
     children: [
       Text(
         label,
-        style: GoogleFonts.inter(
+        style: GoogleFonts.poppins(
           fontSize: 13.sp,
           color: const Color(0xFF5A6B78), // Grey label
           fontWeight: FontWeight.w400,
@@ -72,7 +72,7 @@ Widget _buildReportItem(String label, String value, {bool showDivider = true}) {
       SizedBox(height: 4.h),
       Text(
         value,
-        style: GoogleFonts.inter(
+        style: GoogleFonts.poppins(
           fontSize: 15.sp,
           color: Colors.black,
           fontWeight: FontWeight.w500,
@@ -90,7 +90,7 @@ Widget _buildCourseChips(String label, List<String> courses) {
     children: [
       Text(
         label,
-        style: GoogleFonts.inter(
+        style: GoogleFonts.poppins(
           fontSize: 13.sp,
           color: const Color(0xFF5A6B78),
           fontWeight: FontWeight.w400,
@@ -107,7 +107,7 @@ Widget _buildCourseChips(String label, List<String> courses) {
           ),
           child: Text(
             course,
-            style: GoogleFonts.inter(
+            style: GoogleFonts.poppins(
               fontSize: 12.sp,
               color: const Color(0xFF2E7D32), // Darker green text
               fontWeight: FontWeight.w500,

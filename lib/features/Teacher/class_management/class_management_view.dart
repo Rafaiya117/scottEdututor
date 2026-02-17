@@ -42,7 +42,7 @@ class ClassManagementView extends ConsumerWidget {
                     SizedBox(width: 120.w,),
                     Text(
                       'Class Management',
-                      style: GoogleFonts.inter(
+                      style: GoogleFonts.poppins(
                         fontSize: 20.sp,
                         fontWeight: FontWeight.bold,
                         color: Colors.white,

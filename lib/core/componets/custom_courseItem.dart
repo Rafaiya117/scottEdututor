@@ -49,7 +49,7 @@
 //           children: [
 //             Text(
 //               courseItem.title,
-//               style: const TextStyle(
+//               style: const GoogleFonts.poppins(
 //                 color: Colors.white,
 //                 fontWeight: FontWeight.w600,
 //                 fontSize: 16,

@@ -36,7 +36,7 @@ class UserView extends ConsumerWidget {
                 SizedBox(width: 120.w),
                 Text(
                   'User',
-                  style: GoogleFonts.inter(
+                  style: GoogleFonts.poppins(
                     fontSize: 20.sp,
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
@@ -83,7 +83,7 @@ class UserView extends ConsumerWidget {
       child: TextField(
         decoration: InputDecoration(
           hintText: hint,
-          hintStyle: GoogleFonts.inter(color: Colors.grey, fontSize: 13.sp),
+          hintStyle: GoogleFonts.poppins(color: Colors.grey, fontSize: 13.sp),
           prefixIcon: const Icon(Icons.search, color: Colors.grey),
           border: InputBorder.none,
           contentPadding: EdgeInsets.symmetric(vertical: 10.h),
@@ -106,7 +106,7 @@ class UserView extends ConsumerWidget {
           SizedBox(width: 4.w),
           Text(
             text,
-            style: GoogleFonts.inter(color: Colors.grey, fontSize: 12.sp),
+            style: GoogleFonts.poppins(color: Colors.grey, fontSize: 12.sp),
           ),
         ],
       ),
@@ -191,7 +191,7 @@ class UserView extends ConsumerWidget {
             width: 80.w,
             child: Text(
               user.role,
-              style: GoogleFonts.inter(
+              style: GoogleFonts.poppins(
                 fontSize: 13.sp,
                 fontWeight: FontWeight.bold,
                 color: _getRoleColor(user.role),
@@ -246,14 +246,14 @@ class UserView extends ConsumerWidget {
     return Text(
       text,
       textAlign: textAlign,
-      style: GoogleFonts.inter(fontSize: 15.sp, fontWeight: FontWeight.bold, color: const Color(0xFF1A232E)),
+      style: GoogleFonts.poppins(fontSize: 15.sp, fontWeight: FontWeight.bold, color: const Color(0xFF1A232E)),
     );
   }
 
   Widget _rowText(String text) {
     return Text(
       text,
-      style: GoogleFonts.inter(fontSize: 13.sp, color: const Color(0xFF5A6B78)),
+      style: GoogleFonts.poppins(fontSize: 13.sp, color: const Color(0xFF5A6B78)),
     );
   }
 }

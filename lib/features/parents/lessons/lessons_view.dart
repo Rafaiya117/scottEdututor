@@ -92,7 +92,7 @@ class LessonView extends ConsumerWidget {
                           ),
                           child: Text(
                             lesson.title,
-                            style: const TextStyle(
+                            style:GoogleFonts.poppins(
                               fontSize: 14,
                               fontWeight: FontWeight.w600,
                               color: Colors.black87,
@@ -112,7 +112,7 @@ class LessonView extends ConsumerWidget {
                           ),
                           child: Text(
                             lesson.content,
-                            style: const TextStyle(color: Colors.grey),
+                            style:GoogleFonts.poppins(color: Colors.grey),
                           ),
                         ),
                       ],

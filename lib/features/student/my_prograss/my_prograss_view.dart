@@ -35,7 +35,7 @@ class MyPrograssView extends ConsumerWidget{
                     SizedBox(width: 120.w),
                     Text(
                       'My Prograss',
-                      style: GoogleFonts.inter(
+                      style: GoogleFonts.poppins(
                         fontSize: 20.sp,
                         fontWeight: FontWeight.bold,
                         color: Colors.white,

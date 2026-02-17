@@ -39,7 +39,7 @@ class CourseDetailsView extends ConsumerWidget{
                     SizedBox(width: 40.w,),
                     Text(
                       'Course Management',
-                      style: GoogleFonts.inter(
+                      style: GoogleFonts.poppins(
                         fontSize: 20.sp,
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
@@ -82,7 +82,7 @@ class CourseDetailsView extends ConsumerWidget{
                     ),
                     child: Text(
                       courses.title,
-                      style: const TextStyle(
+                      style:GoogleFonts.poppins(
                         fontSize: 14,
                         fontWeight: FontWeight.w600,
                         color: Colors.black87,
@@ -102,7 +102,7 @@ class CourseDetailsView extends ConsumerWidget{
                     ),
                     child: Text(
                       courses.content,
-                      style: const TextStyle(color: Colors.grey),
+                      style:GoogleFonts.poppins(color: Colors.grey),
                     ),
                   ),
                 ],

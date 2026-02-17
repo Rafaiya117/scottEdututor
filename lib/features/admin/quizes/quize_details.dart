@@ -7,7 +7,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:scoctt_edututo/core/utils/background_template.dart';
 
 class QuizDetails extends ConsumerWidget {
-  const QuizDetails({super.key});
+   QuizDetails({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -34,7 +34,7 @@ class QuizDetails extends ConsumerWidget {
                     SizedBox(width: 80.w),
                     Text(
                       'Quizzes Details',
-                      style: GoogleFonts.inter(
+                      style: GoogleFonts.poppins(
                         fontSize: 20.sp,
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
@@ -66,7 +66,7 @@ class QuizDetails extends ConsumerWidget {
 
   Widget _buildDetailsContainer() {
     return Container(
-      padding: const EdgeInsets.all(20),
+      padding:  EdgeInsets.all(20),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(16),
@@ -88,16 +88,16 @@ class QuizDetails extends ConsumerWidget {
 
   Widget _buildDetailRow(String label, String value) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      padding:  EdgeInsets.symmetric(vertical: 8.0),
       child: Row(
         children: [
           Expanded(
             flex: 2,
-            child: Text(label, style: const TextStyle(fontSize: 16, color: Colors.black)),
+            child: Text(label, style:GoogleFonts.poppins(fontSize: 16, color: Colors.black)),
           ),
           Expanded(
             flex: 3,
-            child: Text(value, style: const TextStyle(fontSize: 16, color: Colors.black)),
+            child: Text(value, style:GoogleFonts.poppins(fontSize: 16, color: Colors.black)),
           ),
         ],
       ),
@@ -106,7 +106,7 @@ class QuizDetails extends ConsumerWidget {
 
   Widget _buildQuestionContainer() {
     return Container(
-      padding: const EdgeInsets.all(20),
+      padding:  EdgeInsets.all(20),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(16),
@@ -114,27 +114,27 @@ class QuizDetails extends ConsumerWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text("Question 1", style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
-          const SizedBox(height: 12),
-          const Text("What is your name", style: TextStyle(fontSize: 20, color: Color(0xFF9E9E9E))),
-          const SizedBox(height: 16),
-          const Text("Answer Options", style: TextStyle(fontWeight: FontWeight.bold)),
-          const SizedBox(height: 12),
+          Text("Question 1", style: GoogleFonts.poppins(fontSize: 14, fontWeight: FontWeight.bold)),
+          SizedBox(height: 12),
+           Text("What is your name", style: GoogleFonts.poppins(fontSize: 20, color: Color(0xFF9E9E9E))),
+           SizedBox(height: 16),
+           Text("Answer Options", style: GoogleFonts.poppins(fontWeight: FontWeight.bold)),
+           SizedBox(height: 12),
           _buildOptionField("Option 1"),
           _buildOptionField("Option 2"),
           _buildOptionField("Option 3"),
           _buildOptionField("Option 4"),
-          const SizedBox(height: 16),
-          const Text("Points", style: TextStyle(fontWeight: FontWeight.bold)),
-          const SizedBox(height: 8),
+           SizedBox(height: 16),
+           Text("Points", style: GoogleFonts.poppins(fontWeight: FontWeight.bold)),
+           SizedBox(height: 8),
           Container(
             width: 120,
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+            padding:  EdgeInsets.symmetric(horizontal: 12, vertical: 8),
             decoration: BoxDecoration(
-              border: Border.all(color: const Color(0xFFD4AF6A).withOpacity(0.5)),
+              border: Border.all(color:  Color(0xFFD4AF6A).withOpacity(0.5)),
               borderRadius: BorderRadius.circular(8),
             ),
-            child: const Text("10", style: TextStyle(color: Color(0xFF9E9E9E))),
+            child:  Text("10", style: GoogleFonts.poppins(color: Color(0xFF9E9E9E))),
           ),
         ],
       ),
@@ -143,17 +143,17 @@ class QuizDetails extends ConsumerWidget {
 
   Widget _buildOptionField(String hint) {
     return Container(
-      margin: const EdgeInsets.only(bottom: 10),
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+      margin:  EdgeInsets.only(bottom: 10),
+      padding:  EdgeInsets.symmetric(horizontal: 12, vertical: 10),
       decoration: BoxDecoration(
-        border: Border.all(color: const Color(0xFFD4AF6A).withOpacity(0.5)),
+        border: Border.all(color:  Color(0xFFD4AF6A).withOpacity(0.5)),
         borderRadius: BorderRadius.circular(8),
       ),
       child: Row(
         children: [
           Icon(Icons.radio_button_unchecked, size: 20, color: Colors.grey[700]),
-          const SizedBox(width: 12),
-          Text(hint, style: TextStyle(color: Colors.grey[400])),
+           SizedBox(width: 12),
+          Text(hint, style: GoogleFonts.poppins(color: Colors.grey[400])),
         ],
       ),
     );

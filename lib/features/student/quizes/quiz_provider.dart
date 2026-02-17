@@ -7,4 +7,4 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 final selectedClassCategoryProvider = StateProvider<ClassCategory?>((ref) => null);
 
 final quizControllerProvider = Provider((ref) => QuiezController());
-final selectedRadioProvider = StateProvider<int?>((ref) => null);
+final selectedRadioProvider = StateProvider<Map<int, int?>>((ref) => {});

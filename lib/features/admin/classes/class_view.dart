@@ -36,7 +36,7 @@ class ClassView extends ConsumerWidget {
                     SizedBox(width: 90.w),
                     Text(
                       'Attendance',
-                      style: GoogleFonts.inter(
+                      style: GoogleFonts.poppins(
                         fontSize: 20.sp,
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
@@ -80,14 +80,16 @@ class ClassView extends ConsumerWidget {
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
           elevation: 0,
         ),
-        child: const Row(
+        child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text("Create Class",
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 18,
-                    fontWeight: FontWeight.w600)),
+              style: GoogleFonts.poppins(
+                color: Colors.white,
+                fontSize: 18,
+                fontWeight: FontWeight.w600
+              )
+            ),
             SizedBox(width: 12),
             Icon(Icons.add, color: Colors.white, size: 24),
           ],
@@ -112,11 +114,11 @@ class ClassView extends ConsumerWidget {
             children: [
               Text(
                 data.title,
-                style: const TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                    color: Color(0xFF1A232E)),
-              ),
+                style:GoogleFonts.poppins(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xFF1A232E)),
+                ),
               IconButton(
                 onPressed: () => _showClassPopup(context, ref, classData: data), // Opens for edit
                 icon: const Icon(Icons.edit_outlined,
@@ -129,8 +131,8 @@ class ClassView extends ConsumerWidget {
           SizedBox(height: 8.h),
           Text(
             data.description,
-            style: const TextStyle(
-                fontSize: 12, color: Color(0xFF5A6B78), height: 1.4),
+            style: GoogleFonts.poppins(
+              fontSize: 12, color: Color(0xFF5A6B78), height: 1.4),
           ),
           const SizedBox(height: 20),
           Row(
@@ -152,8 +154,9 @@ class ClassView extends ConsumerWidget {
       children: [
         Icon(icon, size: 20, color: const Color(0xFFC5A059)),
         const SizedBox(width: 6),
-        Text(label,
-            style: const TextStyle(color: Color(0xFF5A6B78), fontSize: 12)),
+        Text(
+          label,
+          style: GoogleFonts.poppins(color: Color(0xFF5A6B78), fontSize: 12)),
       ],
     );
   }
@@ -223,7 +226,7 @@ class ClassView extends ConsumerWidget {
       padding: const EdgeInsets.only(bottom: 8.0),
       child: Text(
         text,
-        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+        style:GoogleFonts.poppins(fontWeight: FontWeight.bold, fontSize: 16),
       ),
     );
   }
@@ -286,7 +289,7 @@ class ClassView extends ConsumerWidget {
           ),
           padding: const EdgeInsets.symmetric(horizontal: 24),
         ),
-        child: Text(label, style: const TextStyle(fontWeight: FontWeight.bold)),
+        child: Text(label, style: GoogleFonts.poppins(fontWeight: FontWeight.bold)),
       ),
     );
   }

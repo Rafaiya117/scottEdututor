@@ -38,7 +38,7 @@ class QuizView extends ConsumerWidget {
                     SizedBox(width: 80.w,),
                     Text(
                       'Quizzes',
-                      style: GoogleFonts.inter(
+                      style: GoogleFonts.poppins(
                         fontSize: 20.sp,
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
@@ -97,7 +97,7 @@ class QuizCardWidget extends StatelessWidget {
               children: [
                 Text(
                   quizData.quizName,
-                  style: GoogleFonts.inter(
+                  style: GoogleFonts.poppins(
                     fontSize: 18.sp,
                     fontWeight: FontWeight.bold,
                     color: const Color(0xFF1A232E),
@@ -133,7 +133,7 @@ class QuizCardWidget extends StatelessWidget {
         const SizedBox(width: 8),
         Text(
           label,
-          style: GoogleFonts.inter(color: const Color(0xFF5A6B78), fontSize: 14.sp),
+          style: GoogleFonts.poppins(color: const Color(0xFF5A6B78), fontSize: 14.sp),
         ),
       ],
     );

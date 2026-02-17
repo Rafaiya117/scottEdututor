@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class SubjectCard extends StatelessWidget {
   final String title;
@@ -42,7 +43,7 @@ class SubjectCard extends StatelessWidget {
                 children: [
                   Text(
                     title,
-                    style: const TextStyle(
+                    style: GoogleFonts.poppins(
                       fontSize: 22,
                       fontWeight: FontWeight.bold,
                       color: primaryTextColor,
@@ -51,7 +52,7 @@ class SubjectCard extends StatelessWidget {
                   const SizedBox(height: 12),
                   Text(
                     description,
-                    style: const TextStyle(
+                    style: GoogleFonts.poppins(
                       fontSize: 15,
                       color: secondaryTextColor,
                       height: 1.5,
@@ -83,7 +84,7 @@ class SubjectCard extends StatelessWidget {
         const SizedBox(width: 8),
         Text(
           label,
-          style: TextStyle(fontSize: 14, color: textColor),
+          style: GoogleFonts.poppins(fontSize: 14, color: textColor),
         ),
       ],
     );

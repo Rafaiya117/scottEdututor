@@ -16,8 +16,7 @@ class QuizeQues extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final controller = ref.read(quizControllerProvider);
     final quizData = controller.getQuizData();
-    final selected = ref.watch(selectedRadioProvider);
-
+    final selectedMap = ref.watch(selectedRadioProvider);
     return BackgroundTemplate(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(60.h),
@@ -39,7 +38,7 @@ class QuizeQues extends ConsumerWidget {
                     SizedBox(width: 120.w),
                     Text(
                       'Quiz',
-                      style: GoogleFonts.inter(
+                      style: GoogleFonts.poppins(
                         fontSize: 20.sp,
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
@@ -84,19 +83,22 @@ class QuizeQues extends ConsumerWidget {
             
                       Column(
                         children: options.map((option) {
+                          final questionId = item['id'];
+
                           return Padding(
                             padding: EdgeInsets.only(bottom: 8.h),
                             child: CustomRadioTile<int>(
                               value: option.value,
-                              groupValue: selected,
+                              groupValue: selectedMap[questionId],
                               label: option.label,
                               onChanged: (val) {
-                                ref.read(selectedRadioProvider.notifier).state = val;
+                                ref.read(selectedRadioProvider.notifier).state =
+                                {...selectedMap, questionId: val};
                               },
                             ),
                           );
                         }).toList(),
-                      ),            
+                      ),
                       SizedBox(height: 10.h),
                       Text(
                         'Points',
@@ -150,7 +152,7 @@ class QuizeQues extends ConsumerWidget {
                           borderRadius: BorderRadius.circular(8.r),
                         ),
                       ),
-                      child: Text('Cancel', style: TextStyle(color: Colors.black)),
+                      child: Text('Cancel', style: GoogleFonts.poppins(color: Colors.black)),
                     ),
                     SizedBox(width: 12.w),
                     ElevatedButton(
@@ -167,9 +169,9 @@ class QuizeQues extends ConsumerWidget {
                           borderRadius: BorderRadius.circular(8.r),
                         ),
                       ),
-                      child: const Text(
+                      child:Text(
                         'Submit',
-                        style: TextStyle(color: Colors.white),
+                        style: GoogleFonts.poppins(color: Colors.white),
                       ),
                     ),
                   ],

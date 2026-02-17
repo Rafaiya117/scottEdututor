@@ -38,7 +38,7 @@ class CoursesLessonView extends ConsumerWidget{
                     SizedBox(width: 120.w,),
                     Text(
                       'View All Lessons',
-                      style: GoogleFonts.inter(
+                      style: GoogleFonts.poppins(
                         fontSize: 20.sp,
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
@@ -88,7 +88,7 @@ class CoursesLessonView extends ConsumerWidget{
                           ),
                           child: Text(
                             studentLesson.title,
-                            style: const TextStyle(
+                            style: GoogleFonts.poppins(
                               fontSize: 14,
                               fontWeight: FontWeight.w600,
                               color: Colors.black87,
@@ -108,7 +108,7 @@ class CoursesLessonView extends ConsumerWidget{
                           ),
                           child: Text(
                             studentLesson.content,
-                            style: const TextStyle(color: Colors.grey),
+                            style:GoogleFonts.poppins(color: Colors.grey),
                           ),
                         ),
                       ],

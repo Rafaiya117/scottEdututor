@@ -36,7 +36,7 @@ class AddStudentView extends ConsumerWidget{
                     SizedBox(width: 50.w,),
                     Text(
                       'Class Management',
-                      style: GoogleFonts.inter(
+                      style: GoogleFonts.poppins(
                         fontSize: 20.sp,
                         fontWeight: FontWeight.bold,
                         color: Colors.white,

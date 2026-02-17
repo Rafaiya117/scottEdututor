@@ -97,7 +97,7 @@ class LoginView extends ConsumerWidget {
                   },
                   child: Text(
                     'Forgot Password',
-                    style: GoogleFonts.inter(
+                    style: GoogleFonts.poppins(
                       fontWeight: FontWeight.bold,
                       fontSize: 10.sp,
                       color: Colors.brown,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class FileUploadBox extends ConsumerWidget {
   final double height;
@@ -37,7 +38,7 @@ class FileUploadBox extends ConsumerWidget {
               Text(
                 text,
                 textAlign: TextAlign.center,
-                style: TextStyle(
+                style: GoogleFonts.poppins(
                   color: Colors.grey.shade600,
                   fontSize: 13,
                 ),

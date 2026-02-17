@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class AttendanceRow extends StatelessWidget {
   final String name;
@@ -39,7 +40,7 @@ class AttendanceRow extends StatelessWidget {
             flex: 4,
             child: Text(
               name,
-              style: TextStyle(
+              style: GoogleFonts.poppins(
                 fontSize: 13,
                 fontWeight: isHeader ? FontWeight.w600 : FontWeight.w500,
                 color: isHeader ? textColor : const Color(0xFF2C3E50),
@@ -51,7 +52,7 @@ class AttendanceRow extends StatelessWidget {
             child: Text(
               phone,
               textAlign: TextAlign.start, 
-              style: TextStyle(
+              style: GoogleFonts.poppins(
                 fontSize: 12,
                 color: textColor,
               ),
@@ -63,7 +64,7 @@ class AttendanceRow extends StatelessWidget {
               ? Text(
                 status,
                 textAlign: TextAlign.end,
-                  style: TextStyle(
+                  style: GoogleFonts.poppins(
                       fontSize: 12, 
                       fontWeight: FontWeight.w600, 
                       color: textColor,
@@ -88,7 +89,7 @@ class AttendanceRow extends StatelessWidget {
                           const SizedBox(width: 6),
                           Text(
                             status,
-                            style: TextStyle(
+                            style: GoogleFonts.poppins(
                               color: statusColor,
                               fontWeight: FontWeight.bold,
                               fontSize: 13,

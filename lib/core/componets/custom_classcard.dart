@@ -61,7 +61,7 @@ import 'package:google_fonts/google_fonts.dart';
 //             Text(
 //               category.name,
 //               textAlign: TextAlign.center,
-//               style: const TextStyle(
+//               style: const GoogleFonts.poppins(
 //                 fontSize: 14,
 //                 fontWeight: FontWeight.w600,
 //               ),

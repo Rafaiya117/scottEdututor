@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:scoctt_edututo/features/auth/otp_controller/otp_provider.dart';
 
 class OTPTextField extends ConsumerStatefulWidget {
@@ -86,7 +87,7 @@ class _OTPTextFieldState extends ConsumerState<OTPTextField> {
                 ),
               ),
               textAlign: TextAlign.center,
-              style: TextStyle(
+              style: GoogleFonts.poppins(
                 fontSize: 14.sp,
                 height: 1,
                 color: Colors.white, // <-- Text color white

@@ -42,7 +42,7 @@ class StatCard extends StatelessWidget {
             SizedBox(width: 12.w),
             Text(
               title,
-              style: GoogleFonts.inter(
+              style: GoogleFonts.poppins(
                 color: Colors.white,
                 fontSize: 14.sp,
                 fontWeight: FontWeight.w500,

@@ -24,7 +24,7 @@ void showViewUserDetailsPopup(BuildContext context, {
               // Header
               Text(
                 'View user Details',
-                style: GoogleFonts.inter(
+                style: GoogleFonts.poppins(
                   fontSize: 18.sp,
                   fontWeight: FontWeight.bold,
                   color: Colors.black,
@@ -57,7 +57,7 @@ Widget _buildDetailItem(String label, String value, {bool showDivider = true}) {
     children: [
       Text(
         label,
-        style: GoogleFonts.inter(
+        style: GoogleFonts.poppins(
           fontSize: 13.sp,
           color: const Color(0xFF9098A1), // Soft grey color from image
           fontWeight: FontWeight.w500,
@@ -66,7 +66,7 @@ Widget _buildDetailItem(String label, String value, {bool showDivider = true}) {
       SizedBox(height: 6.h),
       Text(
         value,
-        style: GoogleFonts.inter(
+        style: GoogleFonts.poppins(
           fontSize: 15.sp,
           color: Colors.black,
           fontWeight: FontWeight.w500,

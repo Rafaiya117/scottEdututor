@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_riverpod/legacy.dart';
 import 'package:scoctt_edututo/features/student/my_courses/my_coureses_model.dart';
 
 class MyCoursesController {
@@ -61,5 +62,27 @@ class MyCoursesController {
                   Introduction to Linear Equations''',
       ),
     );
+  }
+}
+
+//!--------- Enroll Test Controller -------!
+class QuizNotifier extends StateNotifier<List<Question>> {
+  QuizNotifier() : super([
+    Question(title: "Question 1", options: ["Option 1", "Option 2", "Option 3", "Option 4"], selectedOptionIndex: 2),
+    Question(title: "Question 1", options: ["Option 1", "Option 2", "Option 3", "Option 4"], selectedOptionIndex: 2),
+  ]);
+
+  void updateSelection(int questionIndex, int? optionIndex) {
+    state = [
+      for (int i = 0; i < state.length; i++)
+        if (i == questionIndex) state[i].copyWith(selectedOptionIndex: optionIndex) else state[i],
+    ];
+  }
+
+  void updatePoints(int questionIndex, int points) {
+    state = [
+      for (int i = 0; i < state.length; i++)
+        if (i == questionIndex) state[i].copyWith(points: points) else state[i],
+    ];
   }
 }

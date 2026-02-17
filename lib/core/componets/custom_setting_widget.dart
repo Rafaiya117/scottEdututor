@@ -33,7 +33,7 @@ class SettingsTile extends ConsumerWidget {
                 children: [
                   Text(
                     item.title,
-                    style:GoogleFonts.inter(
+                    style:GoogleFonts.poppins(
                       color: Colors.white,
                       fontSize: 13.6,
                       fontWeight: FontWeight.w600,
@@ -42,7 +42,7 @@ class SettingsTile extends ConsumerWidget {
                   const SizedBox(height: 4),
                   Text(
                     item.subtitle,
-                    style: GoogleFonts.inter(
+                    style: GoogleFonts.poppins(
                       // ignore: deprecated_member_use
                       color: Colors.white,
                       fontSize: 12,

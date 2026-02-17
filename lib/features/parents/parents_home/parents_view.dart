@@ -6,6 +6,9 @@ import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:scoctt_edututo/core/componets/bottom_navbar.dart';
 import 'package:scoctt_edututo/core/utils/background_template.dart';
+import 'package:scoctt_edututo/features/parents/parents_home/parents_provider.dart';
+import 'package:scoctt_edututo/features/parents/parents_home/widget/add_child_popup.dart';
+import 'package:scoctt_edututo/features/parents/parents_home/widget/child_item_widget.dart';
 import 'package:scoctt_edututo/features/user_role/user_role_provider.dart';
 
 class ParentsView extends ConsumerWidget{
@@ -13,6 +16,7 @@ class ParentsView extends ConsumerWidget{
 
   @override
   Widget build(BuildContext context, WidgetRef ref){
+    final addedChildren = ref.watch(addedChildrenProvider);
     return BackgroundTemplate(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(60.h),
@@ -39,7 +43,7 @@ class ParentsView extends ConsumerWidget{
                       children: [
                         Text(
                           'Welcome David',
-                          style: GoogleFonts.inter(
+                          style: GoogleFonts.poppins(
                             fontSize: 20.sp,
                             fontWeight: FontWeight.bold,
                             color: Colors.white,
@@ -47,7 +51,7 @@ class ParentsView extends ConsumerWidget{
                         ),
                         Text(
                           'Monitor your child\'s Prograss',
-                          style: GoogleFonts.inter(
+                          style: GoogleFonts.poppins(
                             fontSize: 12.sp,
                             fontWeight: FontWeight.bold,
                             color: Colors.white,
@@ -88,65 +92,75 @@ class ParentsView extends ConsumerWidget{
       body: Column(
         children: [
           Container(
+            padding: EdgeInsets.symmetric(horizontal: 16.w),
             width: double.infinity,
-            //height: 217.h,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(13.0),
               color: Colors.white,
             ),
             child: Padding(
-              padding:EdgeInsets.symmetric(horizontal: 12.w,vertical:24.h),
+              padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 24.h),
               child: Column(
                 children: [
                   Text(
-                    'View Your Child Prograss',
-                    style:GoogleFonts.poppins(
-                      fontSize: 20.sp,
-                      fontWeight: FontWeight.normal,
-                      color: Color(0xFF000000),
-                      //letterSpacing: 1
-                    ),
+                    'View Your Child Progress',
+                    style: GoogleFonts.poppins(fontSize: 20.sp, color: Colors.black),
                   ),
-                  SizedBox(height: 20.h,),
+                  SizedBox(height: 20.h),
+
+                  // 1. Static Linked Child
+                  buildChildCard(
+                    context,
+                    name: "Maria",
+                    email: "Satyyyy@gmail.com",
+                    isLinked: true,
+                  ),
+                  SizedBox(height: 20.h),
+
+                  // 2. Add Child Button
                   Container(
-                    width:190.w,
-                    //height: 63.h,
+                    width: double.infinity,
                     decoration: BoxDecoration(
-                      color: Color(0xFFFFE7BE),
-                      border: Border.all(
-                        color: Color(0xFFD0AD6B),
-                        width: 3.w,
-                      ),
-                      borderRadius: BorderRadius.circular(16.r),
+                      color: const Color(0xFFF5F5F5),
+                      border: Border.all(color: const Color(0xFFD0AD6B), width: 3.w),
+                      borderRadius: BorderRadius.circular(25.r),
                     ),
                     child: TextButton(
-                      onPressed: (){
-                        context.push('/child_prograss');
-                      }, 
-                      child:Column(
+                      // Pass ref to the dialog so it can update the provider
+                      onPressed: () => showAddChildDialog(context, ref),
+                      child: Row(
                         children: [
-                          Text(
-                            'Maria',
-                            style: GoogleFonts.poppins(
-                              fontSize:20.sp,
-                              fontWeight: FontWeight.normal,
-                              color: Color(0xFF000000),
-                            ),
+                          CircleAvatar(
+                            radius: 25.r,
+                            backgroundColor: const Color(0xFFB4D333),
+                            child: Icon(Icons.person_add_alt_1_outlined, color: Colors.black, size: 28.sp),
                           ),
-                          //SizedBox(height: 5.h,),
-                          Text(
-                            'satyyy@gmail.com',
-                            style: GoogleFonts.poppins(
-                              fontSize:12.sp,
-                              fontWeight: FontWeight.normal,
-                              color: Color(0xFF000000),
-                            ),
-                          ),
+                          SizedBox(width: 15.w),
+                          Text('Add Child', style: GoogleFonts.poppins(fontSize: 20.sp, color: Colors.black)),
                         ],
                       ),
                     ),
                   ),
-                  SizedBox(height: 20.h,),
+                  
+                  // 3. Newly Added Children (Reactive List)
+                  ...addedChildren.map((child) {
+                    int index = addedChildren.indexOf(child);
+                    return Padding(
+                      padding: EdgeInsets.only(top: 20.h),
+                      child: buildChildCard(
+                        context,
+                        name: child['name'],
+                        email: child['email'],
+                        isLinked: child['isLinked'],
+                        onLink: () {
+                          // Update the specific child in the list
+                          final newList = List<Map<String, dynamic>>.from(addedChildren);
+                          newList[index]['isLinked'] = true;
+                          ref.read(addedChildrenProvider.notifier).state = newList;
+                        },
+                      ),
+                    );
+                  }).toList(),
                 ],
               ),
             ),

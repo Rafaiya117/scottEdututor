@@ -41,7 +41,7 @@ class ChangePasswordView extends ConsumerWidget{
                     Center(
                       child: Text(
                         'Change Password',
-                        style: GoogleFonts.inter(
+                        style: GoogleFonts.poppins(
                           fontSize: 20.sp,
                           fontWeight: FontWeight.bold,
                           color: Colors.white,

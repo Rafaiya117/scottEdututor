@@ -22,7 +22,7 @@ void showViewStudentDetailsPopup(BuildContext context) {
                 // 1. Header
                 Text(
                   'View Student Details',
-                  style: GoogleFonts.inter(
+                  style: GoogleFonts.poppins(
                     fontSize: 20.sp,
                     fontWeight: FontWeight.bold,
                     color: Colors.black,
@@ -65,7 +65,7 @@ Widget _buildDetailItem(String label, String value, {bool showDivider = true}) {
     children: [
       Text(
         label,
-        style: GoogleFonts.inter(
+        style: GoogleFonts.poppins(
           fontSize: 14.sp,
           color: const Color(0xFF8A94A6), // Muted grey label
         ),
@@ -73,7 +73,7 @@ Widget _buildDetailItem(String label, String value, {bool showDivider = true}) {
       SizedBox(height: 4.h),
       Text(
         value,
-        style: GoogleFonts.inter(
+        style: GoogleFonts.poppins(
           fontSize: 16.sp,
           fontWeight: FontWeight.w500,
           color: Colors.black,
@@ -91,7 +91,7 @@ Widget _buildDetailItem(String label, String value, {bool showDivider = true}) {
 Widget _buildSectionLabel(String label) {
   return Text(
     label,
-    style: GoogleFonts.inter(
+    style: GoogleFonts.poppins(
       fontSize: 14.sp,
       color: const Color(0xFF8A94A6),
     ),
@@ -105,7 +105,7 @@ Widget _buildCourseProgress(String courseName, double progress) {
         flex: 2,
         child: Text(
           courseName,
-          style: GoogleFonts.inter(fontSize: 15.sp, fontWeight: FontWeight.w500),
+          style: GoogleFonts.poppins(fontSize: 15.sp, fontWeight: FontWeight.w500),
         ),
       ),
       Expanded(
@@ -114,7 +114,7 @@ Widget _buildCourseProgress(String courseName, double progress) {
           children: [
             Text(
               '${(progress * 100).toInt()}%',
-              style: GoogleFonts.inter(fontSize: 15.sp, fontWeight: FontWeight.w500),
+              style: GoogleFonts.poppins(fontSize: 15.sp, fontWeight: FontWeight.w500),
             ),
             SizedBox(width: 12.w),
             Expanded(

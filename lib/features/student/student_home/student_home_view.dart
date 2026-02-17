@@ -43,7 +43,7 @@ class StudentHomeView extends ConsumerWidget{
                       children: [
                         Text(
                           'Welcome David',
-                          style: GoogleFonts.inter(
+                          style: GoogleFonts.poppins(
                             fontSize: 20.sp,
                             fontWeight: FontWeight.bold,
                             color: Colors.white,
@@ -51,7 +51,7 @@ class StudentHomeView extends ConsumerWidget{
                         ),
                         Text(
                           'Monitor your child\'s Prograss',
-                          style: GoogleFonts.inter(
+                          style: GoogleFonts.poppins(
                             fontSize: 12.sp,
                             fontWeight: FontWeight.bold,
                             color: Colors.white,
@@ -111,7 +111,7 @@ class StudentHomeView extends ConsumerWidget{
                 title: 'AI Tutor',
                 iconPath: 'assets/icons/ai_tutor.svg',
                 backgroundColor: const Color(0xFFE5CCFF),
-                onTap: () => context.push('/assignments'),
+                onTap: () => context.push('/ai_tutor'),
               ),
               CategoryActionCard(
                 title: 'My Prograss',

@@ -7,6 +7,7 @@ import 'package:scoctt_edututo/features/student/quizes/quiz_provider.dart';
 import 'package:scoctt_edututo/features/student/quizes/quizes_model.dart';
 
 class QuestionBlock extends StatelessWidget {
+  final int questionId; // Added this
   final String questionLabel;
   final String points;
   final List<RadioOption<int>> options;
@@ -14,6 +15,7 @@ class QuestionBlock extends StatelessWidget {
   final WidgetRef ref;
 
   const QuestionBlock({
+    required this.questionId, // Added this
     required this.questionLabel,
     required this.points,
     required this.options,
@@ -31,7 +33,6 @@ class QuestionBlock extends StatelessWidget {
         Text('Answer Options', style: GoogleFonts.figtree(fontWeight: FontWeight.w500)),
         SizedBox(height: 10.h),
         
-        // Options List
         ...options.map((option) => Padding(
           padding: EdgeInsets.only(bottom: 8.h),
           child: CustomRadioTile<int>(
@@ -39,7 +40,12 @@ class QuestionBlock extends StatelessWidget {
             groupValue: selected,
             label: option.label,
             onChanged: (val) {
-              ref.read(selectedRadioProvider.notifier).state = val;
+              // Fix: Update the Map state for this specific ID
+              final currentMap = ref.read(selectedRadioProvider);
+              ref.read(selectedRadioProvider.notifier).state = {
+                ...currentMap,
+                questionId: val,
+              };
             },
           ),
         )),
@@ -51,10 +57,13 @@ class QuestionBlock extends StatelessWidget {
           initialValue: points,
           decoration: InputDecoration(
             contentPadding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
-            border: OutlineInputBorder(
+            enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8.r),
-              // ignore: deprecated_member_use
-              borderSide: BorderSide(color: Color(0xFFD4B579)),
+              borderSide: const BorderSide(color: Color(0xFFD4B579)),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(8.r),
+              borderSide: const BorderSide(color: Color(0xFFD4B579), width: 2),
             ),
           ),
         ),
@@ -62,22 +71,4 @@ class QuestionBlock extends StatelessWidget {
       ],
     );
   }
-}
-
-Widget buildActionButtons() {
-  return Row(
-    mainAxisAlignment: MainAxisAlignment.end,
-    children: [
-      OutlinedButton(
-        onPressed: () {},
-        child: const Text('Cancel', style: TextStyle(color: Colors.black)),
-      ),
-      SizedBox(width: 12.w),
-      ElevatedButton(
-        onPressed: () {},
-        style: ElevatedButton.styleFrom(backgroundColor: const Color(0xFF4A4441)),
-        child: const Text('Submit', style: TextStyle(color: Colors.white)),
-      ),
-    ],
-  );
 }

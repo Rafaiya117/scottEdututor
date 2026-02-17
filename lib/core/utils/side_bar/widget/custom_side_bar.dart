@@ -40,7 +40,7 @@ class CustomSidebar extends StatelessWidget {
                         SizedBox(width: 8.w),
                         Text(
                           'OHR YISROEL',
-                          style: GoogleFonts.inter(
+                          style: GoogleFonts.poppins(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
                             fontSize: 18.sp,

@@ -38,7 +38,7 @@ class Student_View extends ConsumerWidget {
                     SizedBox(width: 100.w),
                     Text(
                       'Students',
-                      style: GoogleFonts.inter(
+                      style: GoogleFonts.poppins(
                         fontSize: 20.sp,
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
@@ -90,7 +90,7 @@ class Student_View extends ConsumerWidget {
                             child: TextField(
                               decoration: InputDecoration(
                                 hintText: 'Search by name and Id',
-                                hintStyle: GoogleFonts.inter(
+                                hintStyle: GoogleFonts.poppins(
                                   color: Colors.grey,
                                   fontSize: 14.sp,
                                 ),
@@ -129,7 +129,7 @@ class Student_View extends ConsumerWidget {
                                     'All Classes',
                                     overflow: TextOverflow.ellipsis,
                                     maxLines: 1,
-                                    style: GoogleFonts.inter(
+                                    style: GoogleFonts.poppins(
                                       color: Colors.grey,
                                       fontSize: 12.sp,
                                     ),
@@ -247,7 +247,7 @@ class Student_View extends ConsumerWidget {
       text,
       overflow: TextOverflow.ellipsis,
       maxLines: 1,
-      style: GoogleFonts.inter(
+      style: GoogleFonts.poppins(
         fontSize: 15.sp,
         fontWeight: FontWeight.bold,
         color: const Color(0xFF1A232E),
@@ -260,7 +260,7 @@ class Student_View extends ConsumerWidget {
       text,
       overflow: TextOverflow.ellipsis,
       maxLines: 1,
-      style: GoogleFonts.inter(
+      style: GoogleFonts.poppins(
         fontSize: 13.sp,
         color: const Color(0xFF5A6B78),
       ),

@@ -31,7 +31,7 @@ void showEditUserPopup(BuildContext context, {Map<String, String>? initialData})
                   children: [
                     Text(
                       'Edit User',
-                      style: GoogleFonts.inter(
+                      style: GoogleFonts.poppins(
                         fontSize: 20.sp,
                         fontWeight: FontWeight.bold,
                         color: Colors.black,
@@ -132,7 +132,7 @@ Widget _buildLabel(String label) {
     padding: EdgeInsets.only(bottom: 8.h),
     child: Text(
       label,
-      style: GoogleFonts.inter(
+      style: GoogleFonts.poppins(
         fontSize: 14.sp,
         fontWeight: FontWeight.w500,
         color: Colors.black,
@@ -151,10 +151,10 @@ Widget _buildTextField({required String hint, String? initialValue, required Fun
     child: TextFormField(
       initialValue: initialValue,
       onChanged: onChanged,
-      style: GoogleFonts.inter(fontSize: 14.sp),
+      style: GoogleFonts.poppins(fontSize: 14.sp),
       decoration: InputDecoration(
         hintText: hint,
-        hintStyle: GoogleFonts.inter(color: Colors.grey, fontSize: 13.sp),
+        hintStyle: GoogleFonts.poppins(color: Colors.grey, fontSize: 13.sp),
         border: InputBorder.none,
         contentPadding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
       ),
@@ -177,7 +177,7 @@ Widget _buildDropdown({
     child: DropdownButtonHideUnderline(
       child: DropdownButton<String>(
         value: value,
-        hint: Text(hint, style: GoogleFonts.inter(color: Colors.grey, fontSize: 13.sp)),
+        hint: Text(hint, style: GoogleFonts.poppins(color: Colors.grey, fontSize: 13.sp)),
         isExpanded: true,
         icon: const Icon(Icons.keyboard_arrow_down, color: Colors.grey),
         items: items.map((e) => DropdownMenuItem(value: e, child: Text(e))).toList(),
@@ -210,7 +210,7 @@ Widget _buildActionButton({
       ),
       child: Text(
         text,
-        style: GoogleFonts.inter(fontSize: 13.sp, fontWeight: FontWeight.bold),
+        style: GoogleFonts.poppins(fontSize: 13.sp, fontWeight: FontWeight.bold),
       ),
     ),
   );

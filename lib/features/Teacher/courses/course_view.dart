@@ -36,7 +36,7 @@ class CourseView extends ConsumerWidget{
                     SizedBox(width: 40.w,),
                     Text(
                       'Course Management',
-                      style: GoogleFonts.inter(
+                      style: GoogleFonts.poppins(
                         fontSize: 20.sp,
                         fontWeight: FontWeight.bold,
                         color: Colors.white,

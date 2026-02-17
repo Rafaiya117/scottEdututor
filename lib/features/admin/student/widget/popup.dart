@@ -27,14 +27,14 @@ void showAddStudentPopup(BuildContext context, WidgetRef ref) {
                       SizedBox(width: 12.w),
                       Text(
                         'Add New Student',
-                        style: GoogleFonts.inter(fontSize: 20.sp, fontWeight: FontWeight.bold),
+                        style: GoogleFonts.poppins(fontSize: 20.sp, fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
                   SizedBox(height: 12.h),
                   Text(
                     'Create a new student account and assign them to classes.',
-                    style: GoogleFonts.inter(fontSize: 14.sp, color: Colors.black54),
+                    style: GoogleFonts.poppins(fontSize: 14.sp, color: Colors.black54),
                   ),
                   SizedBox(height: 24.h),
                   _buildLabel('Full Name'),
@@ -65,7 +65,7 @@ void showAddStudentPopup(BuildContext context, WidgetRef ref) {
                           backgroundColor: const Color(0xFF2E2E2E),
                           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
                         ),
-                        child: const Text('Add Student', style: TextStyle(color: Colors.white)),
+                        child:Text('Add Student', style: GoogleFonts.poppins(color: Colors.white)),
                       ),
                     ],
                   ),
@@ -106,7 +106,7 @@ void showEditStudentPopup(BuildContext context, WidgetRef ref) {
                       SizedBox(width: 12.w),
                       Text(
                         'Edit Student',
-                        style: GoogleFonts.inter(
+                        style: GoogleFonts.poppins(
                           fontSize: 20.sp,
                           fontWeight: FontWeight.bold,
                           color: Colors.black,
@@ -119,7 +119,7 @@ void showEditStudentPopup(BuildContext context, WidgetRef ref) {
                   // 2. Subtitle
                   Text(
                     'Update student information and class assignments.',
-                    style: GoogleFonts.inter(
+                    style: GoogleFonts.poppins(
                       fontSize: 14.sp,
                       color: Colors.black.withOpacity(0.7),
                     ),
@@ -166,7 +166,7 @@ void showEditStudentPopup(BuildContext context, WidgetRef ref) {
                             'Delete Account',
                             textAlign: TextAlign.center,
                             overflow: TextOverflow.ellipsis,
-                            style: GoogleFonts.inter(
+                            style: GoogleFonts.poppins(
                               color: Colors.white,
                               fontSize: 14.sp,
                               fontWeight: FontWeight.bold,
@@ -191,7 +191,7 @@ void showEditStudentPopup(BuildContext context, WidgetRef ref) {
                             'Cancel',
                             textAlign: TextAlign.center,
                             overflow: TextOverflow.ellipsis,
-                            style: GoogleFonts.inter(
+                            style: GoogleFonts.poppins(
                               color: Colors.grey[600],
                               fontWeight: FontWeight.bold,
                             ),
@@ -217,7 +217,7 @@ void showEditStudentPopup(BuildContext context, WidgetRef ref) {
                             'Save',
                             textAlign: TextAlign.center,
                             overflow: TextOverflow.ellipsis,
-                            style: GoogleFonts.inter(
+                            style: GoogleFonts.poppins(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
                             ),
@@ -255,7 +255,7 @@ Widget _buildDropdownField(WidgetRef ref, String hint) {
         isExpanded: true,
         value: selectedClass,
         decoration: const InputDecoration(border: InputBorder.none),
-        hint: Text(hint, style: GoogleFonts.inter(fontSize: 14.sp, color: Colors.grey)),
+        hint: Text(hint, style: GoogleFonts.poppins(fontSize: 14.sp, color: Colors.grey)),
         icon: const Icon(Icons.keyboard_arrow_down, color: Colors.grey),
         dropdownColor: const Color(0xFFF0F0F0),
         items: classes.map((String value) {
@@ -276,7 +276,7 @@ Widget _buildDropdownField(WidgetRef ref, String hint) {
                       : null,
                 ),
                 SizedBox(width: 12.w),
-                Text(value, style: GoogleFonts.inter(fontSize: 14.sp, color: Colors.black)),
+                Text(value, style: GoogleFonts.poppins(fontSize: 14.sp, color: Colors.black)),
               ],
             ),
           );
@@ -290,7 +290,7 @@ Widget _buildDropdownField(WidgetRef ref, String hint) {
 // Re-using existing label and textfield helpers...
 Widget _buildLabel(String label) => Padding(
   padding: EdgeInsets.only(bottom: 8.h),
-  child: Text(label, style: GoogleFonts.inter(fontSize: 15.sp, fontWeight: FontWeight.w600)),
+  child: Text(label, style: GoogleFonts.poppins(fontSize: 15.sp, fontWeight: FontWeight.w600)),
 );
 
 Widget _buildTextField(String hint) => Container(

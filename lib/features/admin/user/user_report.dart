@@ -28,7 +28,7 @@ class UserReport extends ConsumerWidget {
                 SizedBox(width: 120.w),
                 Text(
                   'Reports',
-                  style: GoogleFonts.inter(
+                  style: GoogleFonts.poppins(
                     fontSize: 20.sp,
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
@@ -77,14 +77,14 @@ class UserReport extends ConsumerWidget {
           SizedBox(height: 6.h),
           Text(
             'Algebra I - Period 1',
-            style: GoogleFonts.inter(fontSize: 15.sp, fontWeight: FontWeight.w500, color: Colors.black),
+            style: GoogleFonts.poppins(fontSize: 15.sp, fontWeight: FontWeight.w500, color: Colors.black),
           ),
           _reportDivider(),
           _reportLabel('Score'),
           SizedBox(height: 6.h),
           Text(
             '85',
-            style: GoogleFonts.inter(fontSize: 15.sp, fontWeight: FontWeight.w500, color: Colors.black),
+            style: GoogleFonts.poppins(fontSize: 15.sp, fontWeight: FontWeight.w500, color: Colors.black),
           ),
           _reportDivider(),
         ],
@@ -95,7 +95,7 @@ class UserReport extends ConsumerWidget {
   Widget _reportLabel(String text) {
     return Text(
       text,
-      style: GoogleFonts.inter(
+      style: GoogleFonts.poppins(
         fontSize: 13.sp,
         color: const Color(0xFF9098A1),
         fontWeight: FontWeight.w500,
@@ -122,7 +122,7 @@ class UserReport extends ConsumerWidget {
             flex: 2,
             child: Text(
               title,
-              style: GoogleFonts.inter(fontSize: 15.sp, fontWeight: FontWeight.w500, color: Colors.black),
+              style: GoogleFonts.poppins(fontSize: 15.sp, fontWeight: FontWeight.w500, color: Colors.black),
             ),
           ),
           Expanded(
@@ -131,7 +131,7 @@ class UserReport extends ConsumerWidget {
               children: [
                 Text(
                   percentage,
-                  style: GoogleFonts.inter(fontSize: 15.sp, fontWeight: FontWeight.w500, color: Colors.black),
+                  style: GoogleFonts.poppins(fontSize: 15.sp, fontWeight: FontWeight.w500, color: Colors.black),
                 ),
                 SizedBox(width: 12.w),
                 Expanded(

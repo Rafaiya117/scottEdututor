@@ -12,14 +12,14 @@ Widget profileField({
     children: [
       Text(
         label,
-        style: GoogleFonts.inter(
+        style: GoogleFonts.poppins(
           fontSize: 12.sp,
           color: Colors.white70,
         ),
       ),
       TextField(
         controller: controller,
-        style: GoogleFonts.inter(
+        style: GoogleFonts.poppins(
           fontSize: 14.sp,
           color: Colors.white,
         ),

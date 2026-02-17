@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:scoctt_edututo/features/user_role/user_role_provider.dart';
 
 
@@ -44,10 +45,10 @@ class ReusableBottomNav extends ConsumerWidget {
                 BlendMode.srcIn,
               ),
             ),
-            const SizedBox(height: 4),
+            SizedBox(height: 4),
             Text(
               name,
-              style: TextStyle(
+              style: GoogleFonts.poppins(
                 fontSize: 10,
                 color: selected ? Colors.grey : Colors.white,
                 decoration: TextDecoration.none,

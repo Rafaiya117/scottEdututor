@@ -40,7 +40,7 @@ class PrivacyView extends ConsumerWidget {
                     Center(
                       child: Text(
                         'Privacy & Policy',
-                        style: GoogleFonts.inter(
+                        style: GoogleFonts.poppins(
                           fontSize: 20.sp,
                           fontWeight: FontWeight.bold,
                           color: Colors.white,
@@ -72,7 +72,7 @@ class PrivacyView extends ConsumerWidget {
                   children: [
                     Text(
                       privacyController.termsText,
-                      style: GoogleFonts.inter(
+                      style: GoogleFonts.poppins(
                         fontSize: 14.sp,
                         color: Colors.white,
                         height: 1.5,

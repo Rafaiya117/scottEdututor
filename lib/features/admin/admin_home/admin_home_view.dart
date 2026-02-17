@@ -54,7 +54,7 @@ class AdminHomeView extends ConsumerWidget {
                       children: [
                         Text(
                           'Welcome David',
-                          style: GoogleFonts.inter(
+                          style: GoogleFonts.poppins(
                             fontSize: 20.sp,
                             fontWeight: FontWeight.bold,
                             color: Colors.white,
@@ -62,7 +62,7 @@ class AdminHomeView extends ConsumerWidget {
                         ),
                         Text(
                           'Monitor your child\'s Prograss',
-                          style: GoogleFonts.inter(
+                          style: GoogleFonts.poppins(
                             fontSize: 12.sp,
                             fontWeight: FontWeight.bold,
                             color: Colors.white,
@@ -162,9 +162,9 @@ class AdminHomeView extends ConsumerWidget {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
+                 Text(
                   'Platform Statistics',
-                  style: TextStyle(
+                  style: GoogleFonts.poppins(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                     color: Colors.black,
@@ -187,7 +187,7 @@ class AdminHomeView extends ConsumerWidget {
   Widget _buildStatRow(String label) {
     return Text(
       label,
-      style: const TextStyle(
+      style:GoogleFonts.poppins(
         fontSize: 16,
         color: Colors.black87,
         fontWeight: FontWeight.w400,

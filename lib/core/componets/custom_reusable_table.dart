@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 
 class ReusableStudentTable<T> extends StatelessWidget {
@@ -55,7 +56,7 @@ class ReusableStudentTable<T> extends StatelessWidget {
       decoration: BoxDecoration(color: color),
       children: ['Student Name', 'Class', 'Progress', ''].map((text) => Padding(
         padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 12),
-        child: Text(text, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 13)),
+        child: Text(text, style: GoogleFonts.poppins(fontWeight: FontWeight.bold, fontSize: 13)),
       )).toList(),
     );
   }
@@ -73,11 +74,11 @@ class ReusableStudentTable<T> extends StatelessWidget {
 
   Widget _cell(String text) => Padding(
     padding: const EdgeInsets.all(12),
-    child: Text(text, style: const TextStyle(color: Colors.black54, fontSize: 13)),
+    child: Text(text, style: GoogleFonts.poppins(color: Colors.black54, fontSize: 13)),
   );
 
   Widget _actionCell(T item) => TextButton(
     onPressed: () => onViewMore(item),
-    child: const Text('View More', style: TextStyle(color: Colors.blue, fontSize: 12)),
+    child:Text('View More', style: GoogleFonts.poppins(color: Colors.blue, fontSize: 12)),
   );
 }

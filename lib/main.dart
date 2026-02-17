@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:scoctt_edututo/config/app_router_config.dart';
 import 'package:scoctt_edututo/config/connectivity_state.dart';
 
@@ -45,7 +46,7 @@ class MyApp extends ConsumerWidget {
                           child: Center(
                             child: Text(
                               'No Internet Connection',
-                              style: TextStyle(color: Colors.white),
+                              style: GoogleFonts.poppins(color: Colors.white),
                             ),
                           ),
                         ),

@@ -45,7 +45,7 @@ class AdminProfileView extends ConsumerWidget {
                         SizedBox(width: 90.w),
                         Text(
                           'Profile',
-                          style: GoogleFonts.inter(
+                          style: GoogleFonts.poppins(
                             fontSize: 20.sp,
                             fontWeight: FontWeight.bold,
                             color: Colors.white,
@@ -92,7 +92,7 @@ class AdminProfileView extends ConsumerWidget {
               SizedBox(height: 16.h),
               Text(
                 'Emma Johnson',
-                style: GoogleFonts.inter(
+                style: GoogleFonts.poppins(
                   fontSize: 24.sp,
                   fontWeight: FontWeight.bold,
                   color: Colors.white,
@@ -114,7 +114,7 @@ class AdminProfileView extends ConsumerWidget {
                       children: [
                         Text(
                           'Personal Information',
-                          style: GoogleFonts.inter(
+                          style: GoogleFonts.poppins(
                             fontSize: 14.sp,
                             fontWeight: FontWeight.w600,
                             color: Colors.white,

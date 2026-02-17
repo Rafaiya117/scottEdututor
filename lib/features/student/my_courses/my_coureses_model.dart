@@ -28,3 +28,28 @@ class CourseModel {
     required this.content,
   });
 }
+
+//!--------- Enroll Test Model -------!
+class Question {
+  final String title;
+  final List<String> options;
+  final int? selectedOptionIndex;
+  final int points;
+
+  Question({
+    required this.title,
+    required this.options,
+    this.selectedOptionIndex,
+    this.points = 10,
+  });
+
+  // Helper to update the selection
+  Question copyWith({int? selectedOptionIndex, int? points}) {
+    return Question(
+      title: title,
+      options: options,
+      selectedOptionIndex: selectedOptionIndex ?? this.selectedOptionIndex,
+      points: points ?? this.points,
+    );
+  }
+}

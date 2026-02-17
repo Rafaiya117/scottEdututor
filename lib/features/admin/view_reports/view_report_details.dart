@@ -36,7 +36,7 @@ class ReportDetailView extends ConsumerWidget{
                     SizedBox(width: 80.w,),
                     Text(
                       'View Reports',
-                      style: GoogleFonts.inter(
+                      style: GoogleFonts.poppins(
                         fontSize: 20.sp,
                         fontWeight: FontWeight.bold,
                         color: Colors.white,

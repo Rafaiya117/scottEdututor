@@ -35,7 +35,7 @@
 //           (title) => Expanded(
 //             child: Text(
 //               title,
-//               style: const TextStyle(
+//               style: const GoogleFonts.poppins(
 //                 fontWeight: FontWeight.w600,
 //                 fontSize: 14,
 //               ),
@@ -63,7 +63,7 @@
 //                   onTap: () => onViewMoreTap?.call(row.id),
 //                   child: const Text(
 //                     'View more',
-//                     style: TextStyle(
+//                     style: GoogleFonts.poppins(
 //                       color: Colors.blue,
 //                       fontWeight: FontWeight.w500,
 //                       ),

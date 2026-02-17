@@ -41,8 +41,8 @@ class CourseTableView extends ConsumerWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'My COurses',
-                          style: GoogleFonts.inter(
+                          'My Courses',
+                          style: GoogleFonts.poppins(
                             fontSize: 20.sp,
                             fontWeight: FontWeight.bold,
                             color: Colors.white,
@@ -90,9 +90,25 @@ class CourseTableView extends ConsumerWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start, 
         children: [
-          Flexible(flex: 3, child: Text('Course Name', style: GoogleFonts.figtree(color: Colors.white, fontWeight: FontWeight.bold))),
-          SizedBox(width: 40.w,),
-          Flexible(flex: 2, child: Text('Lesson', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold))),
+          Flexible(flex: 3, child: Text(
+            'Course Name', 
+            style: GoogleFonts.poppins(
+              color: Colors.white, 
+              fontWeight: FontWeight.bold,
+              fontSize: 12.sp
+              ),
+            ),
+          ),
+          SizedBox(width: 70.w,),
+          Flexible(flex: 2, child: Text(
+            'Lesson', 
+            style: GoogleFonts.poppins(
+              fontSize: 12.sp,
+              color: Colors.white, 
+              fontWeight: FontWeight.bold
+              ),
+            ),
+          ),
           const SizedBox(width: 80),
         ],
       ),
@@ -134,15 +150,28 @@ class _CourseRow extends StatelessWidget {
               style: GoogleFonts.figtree(color: Colors.grey, fontSize: 13),
             ),
           ),
-          SizedBox( 
+          SizedBox(
             width: 80,
-            child: Text(
-              isEnroll ? 'Enroll Now' : 'Learning',
-              textAlign: TextAlign.end,
-              style: GoogleFonts.figtree(
-                color: isEnroll ? const Color(0xFF7CB342) : const Color(0xFF6B8AFF),
-                fontWeight: FontWeight.bold,
-                fontSize: 12,
+            child: GestureDetector(
+              onTap: () {
+                if (isEnroll) {
+                  context.push('/enroll_test');
+                } else {
+                  context.push('/learning_route');
+                }
+              },
+              child: Text(
+                isEnroll ? 'Enroll Now' : 'Learning',
+                textAlign: TextAlign.end,
+                style: GoogleFonts.figtree(
+                  color: isEnroll
+                      ? const Color(0xFF2B8302)
+                      : const Color(0xFF0010E9),
+                  fontWeight: FontWeight.bold,
+                  fontSize: 12,
+                  decoration: TextDecoration
+                      .underline, // Optional: makes it look clickable
+                ),
               ),
             ),
           ),

@@ -37,7 +37,7 @@ class LessonView extends ConsumerWidget {
                     SizedBox(width: 80.w),
                     Text(
                       'Lessons',
-                      style: GoogleFonts.inter(
+                      style: GoogleFonts.poppins(
                         fontSize: 20.sp,
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
@@ -83,7 +83,7 @@ class LessonView extends ConsumerWidget {
             ),
             child: Text(
               syllabus.courseName,
-              style: GoogleFonts.inter(
+              style: GoogleFonts.poppins(
                 fontSize: 18.sp,
                 fontWeight: FontWeight.bold,
                 color: const Color(0xFF1A232E),
@@ -110,7 +110,7 @@ class LessonView extends ConsumerWidget {
         children: [
           Text(
             unit.unitTitle,
-            style: GoogleFonts.inter(
+            style: GoogleFonts.poppins(
               fontSize: 15.sp,
               fontWeight: FontWeight.bold,
               color: const Color(0xFF1A232E),
@@ -121,7 +121,7 @@ class LessonView extends ConsumerWidget {
             padding: EdgeInsets.only(left: 40.w, bottom: 8.h),
             child: Text(
               lesson,
-              style: GoogleFonts.inter(
+              style: GoogleFonts.poppins(
                 fontSize: 14.sp,
                 color: const Color(0xFF5A6B78).withOpacity(0.7),
               ),

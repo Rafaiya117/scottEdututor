@@ -50,7 +50,7 @@ Widget buildInfoRow(String title, String value) {
         children: [
           Text(
             label,
-            style: const TextStyle(
+            style:GoogleFonts.poppins(
               fontSize: 14.0,
               fontWeight: FontWeight.bold,
               color: Color(0xFF424242), 
@@ -59,7 +59,7 @@ Widget buildInfoRow(String title, String value) {
           const SizedBox(height: 4.0),
           Text(
             value,
-            style: const TextStyle(
+            style: GoogleFonts.poppins(
               fontSize: 16.0,
               color: Colors.grey, 
               fontWeight: FontWeight.w500,

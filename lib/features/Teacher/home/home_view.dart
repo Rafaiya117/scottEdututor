@@ -49,7 +49,7 @@ class TeacherHomeView extends ConsumerWidget{
                       children: [
                         Text(
                           'Welcome David',
-                          style: GoogleFonts.inter(
+                          style: GoogleFonts.poppins(
                             fontSize: 20.sp,
                             fontWeight: FontWeight.bold,
                             color: Colors.white,
@@ -57,7 +57,7 @@ class TeacherHomeView extends ConsumerWidget{
                         ),
                         Text(
                           'Monitor your child\'s Prograss',
-                          style: GoogleFonts.inter(
+                          style: GoogleFonts.poppins(
                             fontSize: 12.sp,
                             fontWeight: FontWeight.bold,
                             color: Colors.white,
