@@ -94,42 +94,42 @@ class TeacherHomeView extends ConsumerWidget{
           ),
         ),
       ),
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 64),
-      body: Column(
-        children: [
-          Wrap(
-            spacing: 20.w,
-            runSpacing: 20.h,
-            children: [
-              CategoryActionCard(
-                title: 'Create Quiz',
-                iconPath: 'assets/icons/quiz.svg',
-                backgroundColor: const Color(0xFFCACACA),
-                onTap: () => context.push('/quizes'),
-              ),
-              CategoryActionCard(
-                title: 'View Reports',
-                iconPath: 'assets/icons/prograss.svg',
-                backgroundColor: const Color(0xFFE7FFEC),
-                onTap: () => context.push('/report'),
-              ),
-              CategoryActionCard(
-                title: 'Courses',
-                iconPath: 'assets/icons/courses.svg',
-                backgroundColor: const Color(0xFFFFF7ED),
-                onTap: () => context.push('/courses'),
-              ),
-              CategoryActionCard(
-                title: 'Attendance',
-                iconPath: 'assets/icons/courses.svg',
-                backgroundColor: const Color(0xFFE5CCFF),
-                onTap: () => context.push('/attendance'),
-              ),
-            ],
-          ),
-          SizedBox(height: 20.h,),
-          Flexible(
-            child: Wrap(
+      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 32.h),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Wrap(
+              spacing: 20.w,
+              runSpacing: 20.h,
+              children: [
+                CategoryActionCard(
+                  title: 'Create Quiz',
+                  iconPath: 'assets/icons/teacher_create_quiz.svg',
+                  backgroundColor: const Color(0xFFCACACA),
+                  onTap: () => context.push('/teacher/quiz_view'),
+                ),
+                CategoryActionCard(
+                  title: 'View Reports',
+                  iconPath: 'assets/icons/prograss.svg',
+                  backgroundColor: const Color(0xFFE7FFEC),
+                  onTap: () => context.push('/report'),
+                ),
+                CategoryActionCard(
+                  title: 'Courses',
+                  iconPath: 'assets/icons/courses.svg',
+                  backgroundColor: const Color(0xFFFFF7ED),
+                  onTap: () => context.push('/courses'),
+                ),
+                CategoryActionCard(
+                  title: 'Attendance',
+                  iconPath: 'assets/icons/courses.svg',
+                  backgroundColor: const Color(0xFFE5CCFF),
+                  onTap: () => context.push('/attendance'),
+                ),
+              ],
+            ),
+            SizedBox(height: 20.h,),
+             Wrap(
               spacing: 16,
               runSpacing: 16,
               children: categories.map((cat) {
@@ -147,8 +147,8 @@ class TeacherHomeView extends ConsumerWidget{
                 );
               }).toList(),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

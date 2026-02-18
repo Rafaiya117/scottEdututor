@@ -122,7 +122,7 @@ class TeacherProfileView extends ConsumerWidget {
                         ),
                         GestureDetector(
                           onTap: () {
-                            context.push('/');
+                            context.push('/teacher_edit_profile');
                           },
                           child: SvgPicture.asset(
                             'assets/icons/edit.svg',

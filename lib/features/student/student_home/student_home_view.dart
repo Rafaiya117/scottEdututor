@@ -7,6 +7,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:scoctt_edututo/core/componets/bottom_navbar.dart';
 import 'package:scoctt_edututo/core/componets/custom_categoryaction_card.dart';
 import 'package:scoctt_edututo/core/utils/background_template.dart';
+import 'package:scoctt_edututo/core/utils/side_bar/model.dart';
+import 'package:scoctt_edututo/core/utils/side_bar/widget/custom_side_bar.dart';
 import 'package:scoctt_edututo/features/student/student_home/student_home_controller.dart';
 import 'package:scoctt_edututo/features/user_role/user_role_provider.dart';
 
@@ -17,7 +19,16 @@ class StudentHomeView extends ConsumerWidget{
  final StudentHomeController controller = StudentHomeController();
 @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final List<SidebarItem> menuList = [
+      SidebarItem(title: 'Dashboard', svgPath: 'assets/icons/dash.svg', route: '/student_home_view'),
+      SidebarItem(title: 'My Courses', svgPath: 'assets/icons/class.svg', route: '/my_courses'),
+      SidebarItem(title: 'Quizzes', svgPath: 'assets/icons/report.svg', route: '/quizes'),
+      SidebarItem(title: 'AI Tutor', svgPath: 'assets/icons/report.svg', route: '/ai_tutor'),
+      SidebarItem(title: 'My Prograss', svgPath: 'assets/icons/report.svg', route: '/report_summery'),
+      SidebarItem(title: 'Attendance', svgPath: 'assets/icons/report.svg', route: '/attendance'),
+    ];
     return BackgroundTemplate(
+      drawer: CustomSidebar(items: menuList),
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(60.h),
         child: AppBar(
@@ -31,11 +42,15 @@ class StudentHomeView extends ConsumerWidget{
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    IconButton(
-                      onPressed: () {
-                        //context.pop();
+                    Builder(
+                      builder: (innerContext) {
+                        return IconButton(
+                          onPressed: () {
+                            Scaffold.of(innerContext).openDrawer();
+                          },
+                          icon: SvgPicture.asset('assets/icons/menu_icon.svg'),
+                        );
                       },
-                      icon: SvgPicture.asset('assets/icons/menu_icon.svg'),
                     ),
                     SizedBox(width: 20.w,),
                     Column(

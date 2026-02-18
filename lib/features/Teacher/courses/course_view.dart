@@ -7,6 +7,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:scoctt_edututo/core/componets/custom_gold_button.dart';
 import 'package:scoctt_edututo/core/componets/custom_subject_card.dart';
 import 'package:scoctt_edututo/core/utils/background_template.dart';
+import 'package:scoctt_edututo/features/Teacher/courses/widget_create_course/create_course_popup.dart';
 
 class CourseView extends ConsumerWidget{
   CourseView({super.key});
@@ -60,7 +61,7 @@ class CourseView extends ConsumerWidget{
                 width: 200.w,
                 height: 37.h,
                 text: 'Create Course',
-                onPressed: () => print('Button Pressed!'),
+                onPressed: () => showCreateCoursePopup(context),
               ),
             ),
             SizedBox(height: 20.h),

@@ -6,12 +6,16 @@ import 'package:scoctt_edututo/core/componets/bottom_navbar.dart';
 import 'package:scoctt_edututo/features/Teacher/attendance/attendance_view.dart';
 import 'package:scoctt_edututo/features/Teacher/class_management/class_management_details.dart';
 import 'package:scoctt_edututo/features/Teacher/class_management/class_management_view.dart';
-import 'package:scoctt_edututo/features/Teacher/class_management_add_student/add_student_view.dart';
+import 'package:scoctt_edututo/features/Teacher/class_management_view_more/class_management_view_more_view.dart';
 import 'package:scoctt_edututo/features/Teacher/courses/course_details_view.dart';
 import 'package:scoctt_edututo/features/Teacher/courses/course_view.dart';
+import 'package:scoctt_edututo/features/Teacher/create_quiz/create_quiz_details_view.dart';
+import 'package:scoctt_edututo/features/Teacher/create_quiz/create_quiz_view.dart';
 import 'package:scoctt_edututo/features/Teacher/home/home_view.dart';
+import 'package:scoctt_edututo/features/Teacher/quiz/quiz_view.dart';
 import 'package:scoctt_edututo/features/Teacher/report_details/report_details_view.dart';
 import 'package:scoctt_edututo/features/Teacher/report_details/report_table_view.dart';
+import 'package:scoctt_edututo/features/Teacher/teacher_profile_view/teacher_edit_profile.dart';
 import 'package:scoctt_edututo/features/admin/admin_profile/admin_profile.dart';
 import 'package:scoctt_edututo/features/admin/all_courses/all_courses_view.dart';
 import 'package:scoctt_edututo/features/admin/classes/class_view.dart';
@@ -35,7 +39,8 @@ import 'package:scoctt_edututo/features/parents/prograss_details/prograss_detail
 import 'package:scoctt_edututo/features/privacy/privacy_view.dart';
 import 'package:scoctt_edututo/features/settings/settings_view.dart';
 import 'package:scoctt_edututo/features/splash_screen.dart';
-import 'package:scoctt_edututo/features/student/my_courses/ai_tutor/ai_tutor.dart';
+import 'package:scoctt_edututo/features/student/attendance/attendance_sheet.dart';
+import 'package:scoctt_edututo/features/student/ai_tutor/ai_tutor.dart';
 import 'package:scoctt_edututo/features/student/my_courses/enroll_test.dart';
 import 'package:scoctt_edututo/features/student/my_courses/my_corses_view.dart';
 import 'package:scoctt_edututo/features/student/my_prograss/my_prograss_view.dart';
@@ -121,6 +126,10 @@ final routerProvider = Provider<GoRouter>((ref) {
         path: '/ai_tutor',
         builder: (context, state) => TalkingAvatarPage(),
       ),
+      GoRoute(
+        path: '/attendance',
+        builder: (context, state) => AttendanceTable(),
+      ),
       //!------------- Parents ---------------------!
       GoRoute(
         path: '/parents_home',
@@ -173,8 +182,8 @@ final routerProvider = Provider<GoRouter>((ref) {
         builder: (context, state) => ClassManagementDetails(),
       ),
       GoRoute(
-        path: '/add_student',
-        builder: (context, state) => AddStudentView(),
+        path: '/class_management_view_more',
+        builder: (context, state) => ClassManagementViewMoreView(classId: '',),
       ),
       GoRoute(
         path: '/courses',
@@ -198,6 +207,25 @@ final routerProvider = Provider<GoRouter>((ref) {
       GoRoute(
         path: '/attendance',
         builder: (context, state) => AttendanceView(),
+      ),
+      GoRoute(
+        path: '/teacher_edit_profile',
+        builder: (context, state) => TeacEditherProfileView(),
+      ),
+      GoRoute(
+        path: '/teacher/quiz_view',
+        builder: (context, state) => QuizViews(),
+      ),
+      GoRoute(
+        path: '/teacher/create_quiz',
+        builder: (context, state) => CreateQuizView(),
+      ),
+      GoRoute(
+        path: '/teacher/quiz_details',
+        builder: (context, state) {
+          final index = state.extra as int;
+          return QuizDetailView(quizIndex: index);
+        },
       ),
       //!-------------Admin -------------!
       GoRoute(
