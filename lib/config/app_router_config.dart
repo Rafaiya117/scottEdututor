@@ -278,7 +278,7 @@ final Map<UserRoleType, Map<BottomNavItem, Widget>> roleScreens = {
   UserRoleType.student: {
     BottomNavItem.home: StudentHomeView(),
     BottomNavItem.profile: StudentProfileView(),
-    //BottomNavItem.settings: StudentSettingsScreen(),
+    BottomNavItem.settings: SettingsView(),
   },
   UserRoleType.teacher: {
     BottomNavItem.home: TeacherHomeView(),

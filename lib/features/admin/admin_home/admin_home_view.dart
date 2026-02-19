@@ -17,9 +17,13 @@ class AdminHomeView extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final List<SidebarItem> menuList = [
-      SidebarItem(title: 'Dashboard', svgPath: 'assets/icons/dash.svg', route: '/dash'),
-      SidebarItem(title: 'Classes', svgPath: 'assets/icons/class.svg', route: '/classes'),
-      SidebarItem(title: 'Reports', svgPath: 'assets/icons/report.svg', route: '/reports'),
+      SidebarItem(title: 'Dashboard', svgPath: 'assets/icons/dash_board.svg', route: '/dash'),
+      SidebarItem(title: 'Classes', svgPath: 'assets/icons/classes.svg', route: '/classes'),
+      SidebarItem(title: 'Courses', svgPath: 'assets/icons/courses_icon.svg', route: '/reports'),
+      SidebarItem(title: 'Quiz', svgPath: 'assets/icons/quiz_icon.svg', route: '/reports'),
+      SidebarItem(title: 'Students', svgPath: 'assets/icons/student.svg', route: '/reports'),
+      SidebarItem(title: 'Users', svgPath: 'assets/icons/user_icon.svg', route: '/reports'),
+      SidebarItem(title: 'Reports', svgPath: 'assets/icons/report_icon.svg', route: '/reports'),
     ];
 
     return BackgroundTemplate(

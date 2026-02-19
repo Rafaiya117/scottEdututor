@@ -143,7 +143,9 @@ class EnrollTest extends ConsumerWidget {
  Widget _customButton(BuildContext context, String text, {required bool isOutlined}) {
     return isOutlined 
       ? OutlinedButton(
-          onPressed: () {},
+          onPressed: () {
+            context.pop();
+          },
           style: OutlinedButton.styleFrom(
             padding: const EdgeInsets.symmetric(vertical: 18),
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),

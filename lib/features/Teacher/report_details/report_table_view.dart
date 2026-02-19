@@ -31,7 +31,7 @@ class ReportTableView extends ConsumerWidget{
                   children: [
                     IconButton(
                       onPressed: () {
-                        //context.pop();
+                        context.pop();
                       },
                       icon: SvgPicture.asset('assets/icons/arrow_back.svg'),
                     ),

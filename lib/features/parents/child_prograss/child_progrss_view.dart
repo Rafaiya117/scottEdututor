@@ -36,28 +36,17 @@ class ChildProgrssView extends ConsumerWidget {
                   children: [
                     IconButton(
                       onPressed: () {
-                        //context.pop();
+                        context.pop();
                       },
-                      icon: SvgPicture.asset('assets/icons/menu_icon.svg'),
+                      icon: SvgPicture.asset('assets/icons/arrow_back.svg'),
                     ),
-                    SizedBox(width: 280.w),
-                    GestureDetector(
-                      onTap: () {
-                        //context.push('/profile');
-                      },
-                      child: Container(
-                        width: 40.w,
-                        height: 40.h,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          border: Border.all(color: Colors.white, width: 1),
-                        ),
-                        child: ClipOval(
-                          child: Image.asset(
-                            'assets/images/profile_image3.png',
-                            fit: BoxFit.cover,
-                          ),
-                        ),
+                    SizedBox(width:120.w),
+                    Text(
+                      'Maria',
+                      style: GoogleFonts.poppins(
+                        fontSize: 20.sp,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
                       ),
                     ),
                   ],

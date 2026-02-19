@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:linear_progress_bar/linear_progress_bar.dart';
 import 'package:scoctt_edututo/core/componets/report_input_fields.dart';
@@ -29,7 +30,7 @@ class ReportDetailView extends ConsumerWidget{
                   children: [
                     IconButton(
                       onPressed: () {
-                        //context.pop();
+                        context.pop();
                       },
                       icon: SvgPicture.asset('assets/icons/arrow_back.svg'),
                     ),

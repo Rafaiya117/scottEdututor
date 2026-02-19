@@ -61,6 +61,8 @@ class MainScaffold extends ConsumerWidget {
               return const SettingsView();
             case UserRoleType.parent:
               return const SettingsView();
+            case UserRoleType.student:
+              return const SettingsView();
             default:
               return const SizedBox();
           }
