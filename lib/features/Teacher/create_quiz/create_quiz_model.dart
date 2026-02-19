@@ -1,18 +1,18 @@
 //!-----------1----------!
 class QuizModel {
   final String quizName;
-  final String totalPoints;
-  final String totalQuestions;
-  final String className;
   final String courseName;
-  final List<QuestionModel> questions; 
+  final String className;
+  final String totalQuestions;
+  final String totalPoints;
+  final List<QuestionModel> questions; // Added this
 
   QuizModel({
     required this.quizName,
-    required this.totalPoints,
-    required this.totalQuestions,
-    required this.className,
     required this.courseName,
+    required this.className,
+    required this.totalQuestions,
+    required this.totalPoints,
     this.questions = const [],
   });
 }

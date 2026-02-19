@@ -13,20 +13,24 @@ import 'package:scoctt_edututo/features/Teacher/create_quiz/create_quiz_model.da
 
 class QuizState {
   final List<PlatformFile> uploadedFiles;
-  final List<QuizModel> quizzes; 
+  final List<QuizModel> quizzes;
+  final List<QuestionModel> tempQuestions; 
 
   QuizState({
     this.uploadedFiles = const [],
     this.quizzes = const [],
+    this.tempQuestions = const [],
   });
 
   QuizState copyWith({
     List<PlatformFile>? uploadedFiles,
     List<QuizModel>? quizzes,
+    List<QuestionModel>? tempQuestions,
   }) {
     return QuizState(
       uploadedFiles: uploadedFiles ?? this.uploadedFiles,
       quizzes: quizzes ?? this.quizzes,
+      tempQuestions: tempQuestions ?? this.tempQuestions,
     );
   }
 }

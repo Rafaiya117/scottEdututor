@@ -190,35 +190,84 @@ Widget buildFileListSection(List<PlatformFile> files, QuizController controller)
   //   );
   // }
 
-  Widget buildInputField({
+//   Widget buildInputField({
+//   required String hint,
+//   bool isDropdown = false,
+//   IconData? suffixIcon,
+//   TextEditingController? controller,
+// }) {
+//   return TextField(
+//     controller: controller,
+//     style: const TextStyle(color: Colors.white),
+//     decoration: InputDecoration(
+//       hintText: hint,
+//       hintStyle: GoogleFonts.poppins(color: Colors.grey, fontSize: 13.sp),
+//       suffixIcon: Icon(
+//         isDropdown ? Icons.keyboard_arrow_down : suffixIcon,
+//         color: Colors.grey,
+//       ),
+//       enabledBorder: OutlineInputBorder(
+//         borderRadius: BorderRadius.circular(8.r),
+//         borderSide: const BorderSide(color: Colors.grey, width: 1),
+//       ),
+//       focusedBorder: OutlineInputBorder(
+//         borderRadius: BorderRadius.circular(8.r),
+//         borderSide: const BorderSide(color: Colors.white, width: 1),
+//       ),
+//       contentPadding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
+//     ),
+//   );
+// }
+
+Widget buildInputField({
   required String hint,
   bool isDropdown = false,
   IconData? suffixIcon,
   TextEditingController? controller,
+  List<String>? dropdownItems, // New: List of items for the popup
+  ValueChanged<String>? onItemSelected, // New: Callback for selection
 }) {
-  return TextField(
-    controller: controller,
-    style: const TextStyle(color: Colors.white),
-    decoration: InputDecoration(
-      hintText: hint,
-      hintStyle: GoogleFonts.poppins(color: Colors.grey, fontSize: 13.sp),
-      suffixIcon: Icon(
-        isDropdown ? Icons.keyboard_arrow_down : suffixIcon,
-        color: Colors.grey,
+  return PopupMenuButton<String>(
+    // Only enable if isDropdown is true and items are provided
+    enabled: isDropdown && dropdownItems != null,
+    onSelected: onItemSelected,
+    offset: const Offset(0, 50), // Adjust this to show right below the field
+    constraints: const BoxConstraints(minWidth: double.infinity), // Tries to match width
+    color: const Color(0xFF4A463F),
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.r)),
+    itemBuilder: (context) => dropdownItems!
+        .map((item) => PopupMenuItem(
+              value: item,
+              child: Text(item, style: GoogleFonts.poppins(color: Colors.white, fontSize: 13.sp)),
+            ))
+        .toList(),
+    // The "child" is your existing TextField style
+    child: AbsorbPointer(
+      absorbing: isDropdown, // Prevents keyboard from popping up on dropdown fields
+      child: TextField(
+        controller: controller,
+        style: const TextStyle(color: Colors.white),
+        decoration: InputDecoration(
+          hintText: hint,
+          hintStyle: GoogleFonts.poppins(color: Colors.grey, fontSize: 13.sp),
+          suffixIcon: Icon(
+            isDropdown ? Icons.keyboard_arrow_down : suffixIcon,
+            color: Colors.grey,
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(8.r),
+            borderSide: const BorderSide(color: Colors.grey, width: 1),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(8.r),
+            borderSide: const BorderSide(color: Colors.white, width: 1),
+          ),
+          contentPadding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
+        ),
       ),
-      enabledBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(8.r),
-        borderSide: const BorderSide(color: Colors.grey, width: 1),
-      ),
-      focusedBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(8.r),
-        borderSide: const BorderSide(color: Colors.white, width: 1),
-      ),
-      contentPadding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
     ),
   );
 }
-
   class DashedBorderPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {

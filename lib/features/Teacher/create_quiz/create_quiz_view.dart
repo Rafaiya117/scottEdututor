@@ -56,7 +56,7 @@ class CreateQuizView extends ConsumerWidget{
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           SingleChildScrollView(
-              padding: EdgeInsets.all(20.w),
+              //padding: EdgeInsets.all(20.w),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -72,9 +72,25 @@ class CreateQuizView extends ConsumerWidget{
                   buildFieldLabel('Quiz Name'),
                   buildInputField(hint: 'e.g., Linear Equations Quiz',controller:controller.nameController),
                   buildFieldLabel('Course'),
-                  buildInputField(hint: 'Select course..', isDropdown: true),
+                  buildInputField(
+                    hint: "Select Course",
+                    isDropdown: true,
+                    controller: controller.courseController,
+                    dropdownItems: ['Math', 'Science', 'History'],
+                    onItemSelected: (value) {
+                      controller.courseController.text = value;
+                    },
+                  ),
                   buildFieldLabel('Class'),
-                  buildInputField(hint: 'All classes..', isDropdown: true),
+                  buildInputField(
+                    hint: "Select Class",
+                    isDropdown: true,
+                    controller: controller.classController,
+                    dropdownItems: ['Class A', 'Class B', 'Class C'],
+                    onItemSelected: (value) {
+                      controller.classController.text = value;
+                    },
+                  ),
                   buildFieldLabel('Select date and time'),
                   buildInputField(
                     hint: 'Select your date and time',
@@ -109,21 +125,23 @@ class CreateQuizView extends ConsumerWidget{
                     quizState.uploadedFiles,
                     controller,
                   ),
-                  SizedBox(height: 20.h,),
-                  GoldButton(
-                    text: "Save Quiz",
+                  SizedBox(height: 20.h),
+                  // Inside CreateQuizView
+                 GoldButton(
+                  text: "Save Quiz",
                     onPressed: () {
                       final newQuiz = QuizModel(
-                      quizName: controller.nameController.text,
-                      totalPoints: "100", 
-                      totalQuestions: controller.questionsController.text,
-                      className: "Class 1", 
-                      courseName: "Mathematics", 
-                    );
-                    ref.read(quizProvider.notifier).addQuiz(newQuiz);
-                    context.pop();
+                        quizName: controller.nameController.text,
+                        totalPoints: "100",
+                        totalQuestions: controller.questionsController.text,
+                        className: "Class 1",
+                        courseName: "Mathematics",
+                        questions: ref.read(quizProvider).tempQuestions,
+                      );
+                      ref.read(quizProvider.notifier).addQuiz(newQuiz);
+                      context.pop();
                     },
-                  )
+                  ),
                 ],
               ),
             ),            
@@ -133,5 +151,3 @@ class CreateQuizView extends ConsumerWidget{
     );
   }
 }
-
-
