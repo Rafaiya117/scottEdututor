@@ -41,10 +41,10 @@ class RoleCard extends ConsumerWidget {
               colors: [Colors.white, Colors.white],
               stops: [0.42, 1.0],
             )
-            : const LinearGradient(
+            : LinearGradient(
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
-              colors: [Color(0xFF1F1F1F), Color(0xFF8D6C2F)],
+              colors: [Color(0xFF1F1F1F), Color(0xFF8D6C2F).withValues(alpha: 0.58)],
             ),
           borderRadius: BorderRadius.circular(8),
         ),

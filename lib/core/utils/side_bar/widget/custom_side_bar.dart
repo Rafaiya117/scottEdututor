@@ -23,32 +23,38 @@ class CustomSidebar extends StatelessWidget {
                   begin: Alignment.centerRight,
                   end: Alignment.centerLeft,
                   colors: [
-                    const Color(0xFFB39F7D).withOpacity(0.9),
-                    const Color(0xFF5D533E).withOpacity(0.8),
+                    // ignore: deprecated_member_use
+                    const Color(0xFF8B6E37).withOpacity(0.58),
+                    // ignore: deprecated_member_use
+                    const Color(0xFF000000),
+                    //.withOpacity(0.8)
                   ],
                 ),
               ),
               child: Column(
                 children: [
                   SizedBox(height: 60.h),
-                  // Header Logo
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 20.w),
-                    child: Row(
-                      children: [
-                        const Icon(Icons.local_fire_department, color: Color(0xFFD4B579)),
-                        SizedBox(width: 8.w),
-                        Text(
-                          'OHR YISROEL',
-                          style: GoogleFonts.poppins(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18.sp,
-                          ),
-                        ),
-                      ],
-                    ),
+                  Image.asset(
+                    'assets/images/logo_two.png'
                   ),
+                  // Header Logo
+                  // Padding(
+                  //   padding: EdgeInsets.symmetric(horizontal: 20.w),
+                  //   child: Row(
+                  //     children: [
+                  //       const Icon(Icons.local_fire_department, color: Color(0xFFD4B579)),
+                  //       SizedBox(width: 8.w),
+                  //       Text(
+                  //         'OHR YISROEL',
+                  //         style: GoogleFonts.poppins(
+                  //           color: Colors.white,
+                  //           fontWeight: FontWeight.bold,
+                  //           fontSize: 18.sp,
+                  //         ),
+                  //       ),
+                  //     ],
+                  //   ),
+                  // ),
                   SizedBox(height: 30.h),
                   // Menu Items
                   Expanded(

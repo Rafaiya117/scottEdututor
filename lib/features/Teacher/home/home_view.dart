@@ -9,6 +9,8 @@ import 'package:scoctt_edututo/core/componets/bottom_navbar.dart';
 import 'package:scoctt_edututo/core/componets/custom_categoryaction_card.dart';
 import 'package:scoctt_edututo/core/componets/custom_classcard.dart';
 import 'package:scoctt_edututo/core/utils/background_template.dart';
+import 'package:scoctt_edututo/core/utils/side_bar/model.dart';
+import 'package:scoctt_edututo/core/utils/side_bar/widget/custom_side_bar.dart';
 import 'package:scoctt_edututo/features/Teacher/class_management/class_management_controller.dart';
 import 'package:scoctt_edututo/features/Teacher/class_management/class_management_model.dart';
 import 'package:scoctt_edututo/features/Teacher/class_management/class_management_provider.dart';
@@ -21,9 +23,18 @@ class TeacherHomeView extends ConsumerWidget{
   
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+     final List<SidebarItem> menuList = [
+      SidebarItem(title: 'Dashboard', svgPath: 'assets/icons/dash_board.svg', route: '/student_home_view'),
+      SidebarItem(title: 'My Classes', svgPath: 'assets/icons/courses_icon.svg', route: '/my_courses'),
+      SidebarItem(title: 'Courses', svgPath: 'assets/icons/courses_icon.svg', route: '/quizes'),
+      SidebarItem(title: 'Quizzes', svgPath: 'assets/icons/quiz_icon.svg', route: '/ai_tutor'),
+      SidebarItem(title: 'Reports', svgPath: 'assets/icons/report_icon.svg', route: '/report_summery'),
+      SidebarItem(title: 'Attendance', svgPath: 'assets/icons/attendance.svg', route: '/attendance'),
+    ];
     final List<ClassCategory2> categories = controller.getClassCategory();
     final selectedCategory2 = ref.watch(selectedClassCategory2Provider);
     return BackgroundTemplate(
+      drawer: CustomSidebar(items: menuList),
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(60.h),
         child: AppBar(
@@ -37,11 +48,15 @@ class TeacherHomeView extends ConsumerWidget{
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    IconButton(
-                      onPressed: () {
-                        //context.pop();
+                    Builder(
+                      builder: (innerContext) {
+                        return IconButton(
+                          onPressed: () {
+                            Scaffold.of(innerContext).openDrawer();
+                          },
+                          icon: SvgPicture.asset('assets/icons/menu_icon.svg'),
+                        );
                       },
-                      icon: SvgPicture.asset('assets/icons/menu_icon.svg'),
                     ),
                     SizedBox(width: 20.w,),
                     Column(
@@ -124,7 +139,7 @@ class TeacherHomeView extends ConsumerWidget{
                   title: 'Attendance',
                   iconPath: 'assets/icons/courses.svg',
                   backgroundColor: const Color(0xFFE5CCFF),
-                  onTap: () => context.push('/attendance'),
+                  onTap: () => context.push('/teacher/attendance'),
                 ),
               ],
             ),

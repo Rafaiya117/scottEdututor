@@ -106,12 +106,14 @@ class ClassCategoryCard extends StatelessWidget {
           gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
-            colors: [Color(0xFF333332),Color(0xFF81705C)],
+            // ignore: deprecated_member_use
+            colors: [Color(0xFF000000),Color(0xFFD4B579).withOpacity(0.58)],
             // stops: [
             //   0.42,
             //   1.0,
             // ],
           ),
+          // ignore: deprecated_member_use
           color: isSelected ? borderColor.withOpacity(0.12) : cardColor,
           borderRadius: BorderRadius.circular(14),
           border: Border.all(

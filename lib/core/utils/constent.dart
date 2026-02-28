@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
 class AppGradient {
-  static const appgradientColor = LinearGradient(
+  static final appgradientColor = LinearGradient(
     begin: Alignment.topCenter,
     end: Alignment.bottomCenter,
     colors: [
-      Color(0xFF81705C),
-      Color(0xFF333332),
+      const Color(0xFFD4B579).withValues(alpha: 0.58),
+      const Color(0xFF252525),
     ],
     // stops: [
     //   0.42, 

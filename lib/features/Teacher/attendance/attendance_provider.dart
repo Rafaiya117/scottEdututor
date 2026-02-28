@@ -5,6 +5,5 @@ import 'package:scoctt_edututo/features/Teacher/attendance/attendance_controller
 
 final attendanceControllerProvider = Provider((ref) => AttendanceController());
 final attendanceListProvider = StateProvider<List<AttandanceModel>>((ref) {
-  final controller = ref.watch(attendanceControllerProvider);
-  return controller.getInitialData();
+  return ref.watch(attendanceControllerProvider).getInitialData();
 });

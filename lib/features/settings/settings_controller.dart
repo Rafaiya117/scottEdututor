@@ -62,7 +62,7 @@ class SettingsController {
       ),
       SettingsItemModel(
         svgIconPath: 'assets/icons/logout_prefix.svg',
-        title: 'Logout',
+        title: 'Logout                                ',
         subtitle: '',
         onTap: () {
           // Navigate to login and clear navigation stack

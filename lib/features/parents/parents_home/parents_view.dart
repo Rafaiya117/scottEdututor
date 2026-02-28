@@ -6,6 +6,8 @@ import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:scoctt_edututo/core/componets/bottom_navbar.dart';
 import 'package:scoctt_edututo/core/utils/background_template.dart';
+import 'package:scoctt_edututo/core/utils/side_bar/model.dart';
+import 'package:scoctt_edututo/core/utils/side_bar/widget/custom_side_bar.dart';
 import 'package:scoctt_edututo/features/parents/parents_home/parents_provider.dart';
 import 'package:scoctt_edututo/features/parents/parents_home/widget/add_child_popup.dart';
 import 'package:scoctt_edututo/features/parents/parents_home/widget/child_item_widget.dart';
@@ -17,7 +19,13 @@ class ParentsView extends ConsumerWidget{
   @override
   Widget build(BuildContext context, WidgetRef ref){
     final addedChildren = ref.watch(addedChildrenProvider);
+    final List<SidebarItem> menuList = [
+      SidebarItem(title: 'Dashboard', svgPath: 'assets/icons/dash_board.svg', route: '/student_home_view'),
+      SidebarItem(title: 'My Child', svgPath: 'assets/icons/my_child.svg', route: '/my_courses'),
+      SidebarItem(title: 'Prograss', svgPath: 'assets/icons/prograss_icon.svg', route: '/quizes'),
+    ];
     return BackgroundTemplate(
+      drawer: CustomSidebar(items: menuList),
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(60.h),
         child: AppBar(
@@ -31,11 +39,15 @@ class ParentsView extends ConsumerWidget{
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    IconButton(
-                      onPressed: () {
-                        //context.pop();
+                    Builder(
+                      builder: (innerContext) {
+                        return IconButton(
+                          onPressed: () {
+                            Scaffold.of(innerContext).openDrawer();
+                          },
+                          icon: SvgPicture.asset('assets/icons/menu_icon.svg'),
+                        );
                       },
-                      icon: SvgPicture.asset('assets/icons/menu_icon.svg'),
                     ),
                     SizedBox(width: 20.w,),
                     Column(

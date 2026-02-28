@@ -20,12 +20,12 @@ class StudentHomeView extends ConsumerWidget{
 @override
   Widget build(BuildContext context, WidgetRef ref) {
     final List<SidebarItem> menuList = [
-      SidebarItem(title: 'Dashboard', svgPath: 'assets/icons/dash.svg', route: '/student_home_view'),
-      SidebarItem(title: 'My Courses', svgPath: 'assets/icons/class.svg', route: '/my_courses'),
-      SidebarItem(title: 'Quizzes', svgPath: 'assets/icons/report.svg', route: '/quizes'),
-      SidebarItem(title: 'AI Tutor', svgPath: 'assets/icons/report.svg', route: '/ai_tutor'),
-      SidebarItem(title: 'My Prograss', svgPath: 'assets/icons/report.svg', route: '/report_summery'),
-      SidebarItem(title: 'Attendance', svgPath: 'assets/icons/report.svg', route: '/attendance'),
+      SidebarItem(title: 'Dashboard', svgPath: 'assets/icons/dash_board.svg', route: '/student_home_view'),
+      SidebarItem(title: 'My Courses', svgPath: 'assets/icons/courses_icon.svg', route: '/my_courses'),
+      SidebarItem(title: 'Quizzes', svgPath: 'assets/icons/quiz_icon.svg', route: '/quizes'),
+      SidebarItem(title: 'AI Tutor', svgPath: 'assets/icons/ai_icon.svg', route: '/ai_tutor'),
+      SidebarItem(title: 'My Prograss', svgPath: 'assets/icons/report_icon.svg', route: '/report_summery'),
+      SidebarItem(title: 'Attendance', svgPath: 'assets/icons/attendance.svg', route: '/attendance'),
     ];
     return BackgroundTemplate(
       drawer: CustomSidebar(items: menuList),

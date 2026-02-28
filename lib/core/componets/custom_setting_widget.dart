@@ -16,6 +16,7 @@ class SettingsTile extends ConsumerWidget {
       child: Padding(
         padding:EdgeInsets.symmetric(vertical: 15.h,horizontal: 16.w),
         child: Row(
+          //mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             SvgPicture.asset(
               item.svgIconPath,
@@ -26,7 +27,7 @@ class SettingsTile extends ConsumerWidget {
                 BlendMode.srcIn,
               ),
             ),
-            const SizedBox(width: 14),
+            SizedBox(width: 14),
             Flexible(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

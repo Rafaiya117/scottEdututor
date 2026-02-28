@@ -205,8 +205,8 @@ final routerProvider = Provider<GoRouter>((ref) {
         builder: (context, state) => ReportDetailsView(),
       ),
       GoRoute(
-        path: '/attendance',
-        builder: (context, state) => AttendanceView(),
+        path: '/teacher/attendance',
+        builder: (context, state) => TeacherAttendanceView(),
       ),
       GoRoute(
         path: '/teacher_edit_profile',
