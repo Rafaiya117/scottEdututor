@@ -11,6 +11,7 @@ import 'package:scoctt_edututo/features/Teacher/courses/course_details_view.dart
 import 'package:scoctt_edututo/features/Teacher/courses/course_view.dart';
 import 'package:scoctt_edututo/features/Teacher/create_quiz/create_quiz_details_view.dart';
 import 'package:scoctt_edututo/features/Teacher/create_quiz/create_quiz_view.dart';
+import 'package:scoctt_edututo/features/Teacher/enroll_quiz_test/enroll_quiz_test_view.dart';
 import 'package:scoctt_edututo/features/Teacher/home/home_view.dart';
 import 'package:scoctt_edututo/features/Teacher/quiz/quiz_view.dart';
 import 'package:scoctt_edututo/features/Teacher/report_details/report_details_view.dart';
@@ -226,6 +227,10 @@ final routerProvider = Provider<GoRouter>((ref) {
           final index = state.extra as int;
           return QuizDetailView(quizIndex: index);
         },
+      ),
+      GoRoute(
+        path: '/teacher/add_enroll_quiz_test',
+        builder: (context, state) => EnrolQuizView(),
       ),
       //!-------------Admin -------------!
       GoRoute(

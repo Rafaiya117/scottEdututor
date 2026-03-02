@@ -27,6 +27,7 @@ class TeacherHomeView extends ConsumerWidget{
       SidebarItem(title: 'Dashboard', svgPath: 'assets/icons/dash_board.svg', route: '/student_home_view'),
       SidebarItem(title: 'My Classes', svgPath: 'assets/icons/courses_icon.svg', route: '/my_courses'),
       SidebarItem(title: 'Courses', svgPath: 'assets/icons/courses_icon.svg', route: '/quizes'),
+      SidebarItem(title: 'Enroll Quiz Test', svgPath: 'assets/icons/enroll_test_icon.svg', route: '/teacher/add_enroll_quiz_test'),
       SidebarItem(title: 'Quizzes', svgPath: 'assets/icons/quiz_icon.svg', route: '/ai_tutor'),
       SidebarItem(title: 'Reports', svgPath: 'assets/icons/report_icon.svg', route: '/report_summery'),
       SidebarItem(title: 'Attendance', svgPath: 'assets/icons/attendance.svg', route: '/attendance'),
