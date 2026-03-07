@@ -15,6 +15,7 @@ class ChangePasswordView extends ConsumerWidget{
   @override
   Widget build(BuildContext context, WidgetRef ref){
     final changePasswordController = ref.read(changePasswordControllerProvider);
+    final resetToken = GoRouterState.of(context).extra as String;
     return BackgroundTemplate(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(60.h),
@@ -97,14 +98,20 @@ class ChangePasswordView extends ConsumerWidget{
               hintextclr: Colors.grey,
             ),
             SizedBox(height: 30.h),
-            CustomButton(
-              buttontext: 'Save Password',
-              buttonColor: const Color(0xFFD0AD6B),
-              buttonTextColor: Colors.white,
-              buttonHeight: 44.h,
-              buttonWidth: double.infinity,
-              ontap: () {
-                context.push('/');
+            Consumer(
+              builder: (context, ref, _) {
+                final isLoading = ref.watch(resetPasswordLoadingProvider);
+                return CustomButton(
+                  buttontext: isLoading ? 'Saving...' : 'Save Password',
+                  buttonColor: const Color(0xFFD0AD6B),
+                  buttonTextColor: Colors.white,
+                  buttonHeight: 44.h,
+                  buttonWidth: double.infinity,
+                  ontap: () {
+                    if (isLoading) return;
+                    ref.read(changePasswordControllerProvider).resetPassword(context, ref, resetToken);
+                  },
+                );
               },
             ),
           ],

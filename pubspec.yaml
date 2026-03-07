@@ -83,6 +83,7 @@ flutter:
    - assets/icons/
    - assets/json/talking.json
    - assets/json/listening_dots.json
+   - .env
 
   # To add assets to your application, add an assets section, like this:
   # assets:

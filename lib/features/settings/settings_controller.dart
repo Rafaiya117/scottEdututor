@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:scoctt_edututo/features/auth/auth_services/auth_provider/auth_provider.dart';
 import 'package:scoctt_edututo/features/settings/settings_model.dart';
 import 'package:scoctt_edututo/features/user_role/user_role_model.dart';
 
 class SettingsController {
-  List<SettingsItemModel> getItems(BuildContext context, UserRoleType roleType) {
+  List<SettingsItemModel> getItems(BuildContext context, UserRoleType roleType,WidgetRef ref) {
     return [
       SettingsItemModel(
         svgIconPath: 'assets/icons/key.svg',
@@ -14,13 +16,13 @@ class SettingsController {
           // Switch case for Change Password routing
           switch (roleType) {
             case UserRoleType.teacher:
-              context.push('/teacher_change_password');
+              context.push('/change_password');
               break;
             case UserRoleType.parent:
               context.push('/change_password'); 
               break;
             case UserRoleType.student:
-              context.push('/student_change_password');
+              context.push('/change_password');
               break;
             default:
               context.push('/change_password');
@@ -38,10 +40,10 @@ class SettingsController {
               context.push('/edit_parents_profile');
               break;
             case UserRoleType.teacher:
-              context.push('/edit_teacher_profile');
+              context.push('/teacher_edit_profile');
               break;
             case UserRoleType.student:
-              context.push('/edit_student_profile');
+              context.push('/edit_student_info');
               break;
             default:
               context.push('/profile_details');
@@ -64,8 +66,8 @@ class SettingsController {
         svgIconPath: 'assets/icons/logout_prefix.svg',
         title: 'Logout                                ',
         subtitle: '',
-        onTap: () {
-          // Navigate to login and clear navigation stack
+        onTap: () async {
+          await ref.read(authServiceProvider).logout();
           context.go('/login');
         },
       ),

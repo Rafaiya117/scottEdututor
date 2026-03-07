@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:scoctt_edututo/features/auth/otp_controller/otp_provider.dart';
+import 'package:scoctt_edututo/features/auth/otp/otp_provider.dart';
 
 class OTPTextField extends ConsumerStatefulWidget {
   final int length;
@@ -10,7 +10,7 @@ class OTPTextField extends ConsumerStatefulWidget {
 
   const OTPTextField({
     super.key,
-    this.length = 4,
+    this.length = 6,
     required this.onCompleted,
   });
 
@@ -55,48 +55,51 @@ class _OTPTextFieldState extends ConsumerState<OTPTextField> {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: List.generate(widget.length, (index) {
-        return Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10.0),
-          child: SizedBox(
-            width: 67,
-            height: 48,
-            child: TextFormField(
-              controller: controllers[index],
-              focusNode: focusNodes[index],
-              keyboardType: TextInputType.number,
-              maxLength: 1,
-              decoration: InputDecoration(
-                counterText: "",
-                filled: true,
-                fillColor: Colors.transparent,
-                contentPadding: EdgeInsets.zero,
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12.0),
-                  borderSide: const BorderSide(color: Color(0xFFD8D8D8)),
+    return FittedBox( 
+      fit: BoxFit.scaleDown,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: List.generate(widget.length, (index) {
+          return Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10.0),
+            child: SizedBox(
+              width: 67,
+              height: 48,
+              child: TextFormField(
+                controller: controllers[index],
+                focusNode: focusNodes[index],
+                keyboardType: TextInputType.number,
+                maxLength: 1,
+                decoration: InputDecoration(
+                  counterText: "",
+                  filled: true,
+                  fillColor: Colors.transparent,
+                  contentPadding: EdgeInsets.zero,
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12.0),
+                    borderSide: const BorderSide(color: Color(0xFFD8D8D8)),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12.0),
+                    borderSide: const BorderSide(color: Color(0xFFD8D8D8)),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12.0),
+                    borderSide: const BorderSide(color: Color(0xFFD8D8D8)),
+                  ),
                 ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12.0),
-                  borderSide: const BorderSide(color: Color(0xFFD8D8D8)),
+                textAlign: TextAlign.center,
+                style: GoogleFonts.poppins(
+                  fontSize: 14.sp,
+                  height: 1,
+                  color: Colors.white,
                 ),
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12.0),
-                  borderSide: const BorderSide(color: Color(0xFFD8D8D8)),
-                ),
+                onChanged: (value) => _onChanged(value, index),
               ),
-              textAlign: TextAlign.center,
-              style: GoogleFonts.poppins(
-                fontSize: 14.sp,
-                height: 1,
-                color: Colors.white, // <-- Text color white
-              ),
-              onChanged: (value) => _onChanged(value, index),
             ),
-          ),
-        );
-      }),
+          );
+        }),
+      ),
     );
   }
 }

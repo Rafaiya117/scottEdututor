@@ -59,14 +59,21 @@ class ForgotPasswordView extends ConsumerWidget {
               controller: forgotpasswordcontroller.emailController,
             ),
             SizedBox(height: 20.h),
-            CustomButton(
-              buttontext: 'Get OTP',
-              buttonColor: const Color(0xFFD0AD6B),
-              buttonTextColor: Colors.white,
-              buttonHeight: 44.h,
-              buttonWidth: double.infinity,
-              ontap: () {
-                context.push('/otp');
+            Consumer(
+              builder: (context, ref, _) {
+                final isLoading = ref.watch(forgotPasswordLoadingProvider);
+
+                return CustomButton(
+                  buttontext: isLoading ? 'Please wait...' : 'Get OTP',
+                  buttonColor: const Color(0xFFD0AD6B),
+                  buttonTextColor: Colors.white,
+                  buttonHeight: 44.h,
+                  buttonWidth: double.infinity,
+                  ontap: () {
+                    if (isLoading) return; 
+                    ref.read(forgotPasswordControllerProvider).sendOtp(context, ref);
+                  },
+                );
               },
             ),
           ],

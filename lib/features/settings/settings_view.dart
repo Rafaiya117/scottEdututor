@@ -6,7 +6,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:scoctt_edututo/core/componets/custom_setting_widget.dart';
 import 'package:scoctt_edututo/core/utils/background_template.dart';
 import 'package:scoctt_edututo/core/utils/constent.dart';
-import 'package:scoctt_edututo/features/user_role/user_role_provider.dart';
+import 'package:scoctt_edututo/features/auth/auth_services/auth_provider/auth_provider.dart';
+import 'package:scoctt_edututo/features/user_role/user_role_model.dart';
 import 'settings_provider.dart';
 
 
@@ -16,10 +17,7 @@ class SettingsView extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final controller = ref.read(settingsControllerProvider);
-
-    final role = ref.watch(selectedRoleProvider);
-    if (role == null) return const Center(child: CircularProgressIndicator());
-    final items = controller.getItems(context, role.type);
+    final authAsync = ref.watch(authProvider);
 
     return BackgroundTemplate(
       appBar: PreferredSize(
@@ -55,65 +53,97 @@ class SettingsView extends ConsumerWidget {
           ),
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 16.0),
-        child: Column(
-          children: [
-            Container(
-              width: double.infinity,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12.0),
-                gradient: AppGradient.appgradientColor,
-              ),
-              child: Column(
-                children: items.map((item) {
-                  return SettingsTile(item: item);
-                }).toList(),
-              ),
-            ),
-            SizedBox(height: 20.h),
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.w),
-              width: double.infinity,
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.red),
-                borderRadius: BorderRadius.circular(12.0),
-                color: Colors.white,
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Delete your account',
-                    style: GoogleFonts.poppins(
-                      fontSize: 13.6.sp,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.red,
-                    ),
+      body: authAsync.when(
+        data: (auth) {
+          if (auth == null) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+          final items = controller.getItems(context,userRoleTypeFromString(auth.userRole),ref,);
+          return Padding(
+            padding: const EdgeInsets.symmetric(vertical: 16.0),
+            child: Column(
+              children: [
+                Container(
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12.0),
+                    gradient: AppGradient.appgradientColor,
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  child: Column(
+                    children: items.map((item) {
+                      return SettingsTile(item: item);
+                    }).toList(),
+                  ),
+                ),
+                SizedBox(height: 20.h),
+                Container(
+                  padding: EdgeInsets.symmetric(
+                      horizontal: 16.w, vertical: 16.w),
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.red),
+                    borderRadius: BorderRadius.circular(12.0),
+                    color: Colors.white,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Permanently delete your account and all data',
+                        'Delete your account',
                         style: GoogleFonts.poppins(
-                          fontSize: 10.2.sp,
-                          fontWeight: FontWeight.normal,
+                          fontSize: 13.6.sp,
+                          fontWeight: FontWeight.w500,
                           color: Colors.red,
                         ),
                       ),
-                      IconButton(
-                        onPressed: () {},
-                        icon: SvgPicture.asset('assets/icons/delete.svg'),
+                      Row(
+                        mainAxisAlignment:
+                            MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'Permanently delete your account and all data',
+                            style: GoogleFonts.poppins(
+                              fontSize: 10.2.sp,
+                              fontWeight: FontWeight.normal,
+                              color: Colors.red,
+                            ),
+                          ),
+                          IconButton(
+                            onPressed: () {},
+                            icon: SvgPicture.asset(
+                                'assets/icons/delete.svg'),
+                          ),
+                        ],
                       ),
                     ],
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
-          ],
+          );
+        },
+        loading: () => const Center(
+          child: CircularProgressIndicator(),
         ),
+        error: (_, __) => const SizedBox(),
       ),
     );
+  }
+
+  UserRoleType userRoleTypeFromString(String role) {
+  switch (role.toLowerCase()) {
+    case 'teacher':
+      return UserRoleType.teacher;
+    case 'student':
+      return UserRoleType.student;
+    case 'parent':
+      return UserRoleType.parent;
+    case 'admin':
+      return UserRoleType.admin;
+    default:
+      throw Exception('Unknown role: $role');
+    }
   }
 }

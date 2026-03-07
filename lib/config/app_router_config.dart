@@ -30,7 +30,7 @@ import 'package:scoctt_edututo/features/admin/view_reports/view_reports.dart';
 import 'package:scoctt_edututo/features/auth/change_password/change_password_view.dart';
 import 'package:scoctt_edututo/features/auth/forgot_password/forgot_password_view.dart';
 import 'package:scoctt_edututo/features/auth/login/login_view.dart';
-import 'package:scoctt_edututo/features/auth/otp_controller/otp_view.dart';
+import 'package:scoctt_edututo/features/auth/otp/otp_view.dart';
 import 'package:scoctt_edututo/features/parents/child_prograss/child_progrss_view.dart';
 import 'package:scoctt_edututo/features/parents/lessons/lessons_view.dart';
 import 'package:scoctt_edututo/features/parents/parents_home/parents_view.dart';

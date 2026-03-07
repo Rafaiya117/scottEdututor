@@ -15,3 +15,5 @@ final changePasswordControllerProvider = Provider<ChangePasswordController>((ref
 
   return controller;
 });
+
+final resetPasswordLoadingProvider = StateProvider<bool>((ref) => false);

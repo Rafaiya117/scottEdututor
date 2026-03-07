@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:scoctt_edututo/core/componets/cusmon_snackbar.dart';
 import 'package:scoctt_edututo/core/componets/custom_button.dart';
 import 'package:scoctt_edututo/core/componets/custom_otp_field.dart';
 import 'package:scoctt_edututo/core/utils/background_template.dart';
-import 'package:scoctt_edututo/features/auth/otp_controller/otp_provider.dart';
+import 'package:scoctt_edututo/core/utils/snackbar_helper.dart';
+import 'package:scoctt_edututo/features/auth/otp/otp_provider.dart';
 
 class OtpView extends ConsumerWidget {
   OtpView({super.key});
@@ -13,7 +16,7 @@ class OtpView extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final otpController = ref.read(otpControllerProvider);
-
+    final email = GoRouterState.of(context).extra as String;
     return BackgroundTemplate(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -51,25 +54,35 @@ class OtpView extends ConsumerWidget {
             ),
             SizedBox(height: 20.h),
             OTPTextField(
-              length: 4,
+              length: 6,
               onCompleted: (otp) {
                 print("OTP Entered: $otp");
               },
             ),
             SizedBox(height: 20.h),
-            CustomButton(
-              buttontext: 'Get OTP',
-              buttonColor: const Color(0xFFD0AD6B),
-              buttonTextColor: Colors.white,
-              buttonHeight: 44.h,
-              buttonWidth: double.infinity,
-              ontap: () {
-                if (otpController.isComplete(ref, 4)) {
-                  final otp = otpController.getOtp(ref);
-                  debugPrint("Submitting OTP: $otp");
-                } else {
-                  debugPrint("OTP not complete yet");
-                }
+            Consumer(
+              builder: (context, ref, _) {
+                final isLoading = ref.watch(otpLoadingProvider);
+
+                return CustomButton(
+                  buttontext: isLoading ? 'Verifying...' : 'Verify OTP',
+                  buttonColor: const Color(0xFFD0AD6B),
+                  buttonTextColor: Colors.white,
+                  buttonHeight: 44.h,
+                  buttonWidth: double.infinity,
+                  ontap: () {
+                    if (isLoading) return; 
+                    if (otpController.isComplete(ref, 6)) {
+                      ref.read(otpControllerProvider).verifyOtp(context,ref, email, );
+                    } else {
+                      showCustomSnackBar(
+                        context,
+                        "Please enter complete OTP",
+                        CustomSnackType.error,
+                      );
+                    }
+                  },
+                );
               },
             ),
           ],

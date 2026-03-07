@@ -3,8 +3,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:scoctt_edututo/features/auth/auth_services/auth_provider/auth_provider.dart';
 import 'package:scoctt_edututo/features/user_role/user_role_model.dart';
-import 'package:scoctt_edututo/features/user_role/user_role_provider.dart';
+//import 'package:scoctt_edututo/features/user_role/user_role_provider.dart';
 
 class RoleCard extends ConsumerWidget {
   final double height;
@@ -20,12 +21,12 @@ class RoleCard extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final selectedRole = ref.watch(selectedRoleProvider);
-    final isSelected = selectedRole?.id == role.id;
+    final selectedRole = ref.watch(authProvider);
+    final isSelected = selectedRole.value!.userId == role.id;
 
     return GestureDetector(
       onTap: () {
-        ref.read(selectedRoleProvider.notifier).state = role;
+        //ref.read(authProvider.notifier).state = role;
         context.push('/login'); 
       },
       child: AnimatedContainer(

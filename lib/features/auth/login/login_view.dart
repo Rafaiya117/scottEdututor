@@ -7,7 +7,7 @@ import 'package:scoctt_edututo/core/componets/custom_auth_inputfield.dart';
 import 'package:scoctt_edututo/core/componets/custom_button.dart';
 import 'package:scoctt_edututo/core/utils/background_template.dart';
 import 'package:scoctt_edututo/features/auth/login/login_provider.dart';
-import 'package:scoctt_edututo/features/user_role/user_role_provider.dart';
+// import 'package:scoctt_edututo/features/user_role/user_role_provider.dart';
 
 class LoginView extends ConsumerWidget {
   LoginView({super.key});
@@ -116,12 +116,13 @@ class LoginView extends ConsumerWidget {
               buttonHeight: 44.h,
               buttonWidth: double.infinity,
               ontap: () {
-                final role = ref.read(selectedRoleProvider);
-                if (role == null) {
-                  debugPrint('Role not selected yet');
-                  return;
-                }
-                context.push('/main');
+                ref.read(loginControllerProvider).login(context, ref);
+                // final role = ref.read(selectedRoleProvider);
+                // if (role == null) {
+                //   debugPrint('Role not selected yet');
+                //   return;
+                // }
+                // context.push('/main');
               },
             ),
           ],

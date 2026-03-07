@@ -4,15 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:scoctt_edututo/core/componets/bottom_navbar.dart';
 import 'package:scoctt_edututo/features/Teacher/home/home_view.dart';
-import 'package:scoctt_edututo/features/Teacher/teacher_profile_view/teacher_profile_view.dart';
 import 'package:scoctt_edututo/features/admin/admin_home/admin_home_view.dart';
-import 'package:scoctt_edututo/features/admin/admin_profile/admin_profile.dart';
+import 'package:scoctt_edututo/features/auth/auth_services/auth_provider/auth_provider.dart';
 import 'package:scoctt_edututo/features/parents/parents_home/parents_view.dart';
-import 'package:scoctt_edututo/features/parents/parents_profile/profile_view.dart';
 import 'package:scoctt_edututo/features/settings/settings_view.dart';
 import 'package:scoctt_edututo/features/student/student_home/student_home_view.dart';
-import 'package:scoctt_edututo/features/student/student_profile/student_profile_view.dart';
-import 'package:scoctt_edututo/features/user_role/user_role_model.dart';
 import 'package:scoctt_edututo/features/user_role/user_role_provider.dart';
 
 class MainScaffold extends ConsumerWidget {
@@ -21,64 +17,57 @@ class MainScaffold extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final selectedItem = ref.watch(bottomNavProvider);
-    final role = ref.watch(selectedRoleProvider);
+    final authAsync = ref.watch(authProvider);
 
-    if (role == null) {
-      return const Scaffold(
-        body: Center(child: CircularProgressIndicator()),
-      );
-    }
+    return authAsync.when(
+      data: (auth) {
+        if (auth == null) {
+          return const Scaffold(
+            body: Center(child: CircularProgressIndicator()),
+          );
+        }
+        Widget currentScreen() {
+          switch (selectedItem) {
+            case BottomNavItem.home:
+              switch (auth.userRole) {
+                case 'teacher':
+                  return TeacherHomeView();
+                case 'parent':
+                  return ParentsView();
+                case 'student':
+                  return StudentHomeView();
+                case 'admin':
+                  return AdminHomeView();
+                default:
+                  return const SizedBox();
+              }
 
-    Widget currentScreen() {
-      switch (selectedItem) {
-        case BottomNavItem.home:
-          switch (role.type) {
-            case UserRoleType.teacher:
-              return TeacherHomeView();
-            case UserRoleType.parent:
-              return ParentsView();
-            case UserRoleType.student:
-              return StudentHomeView();
-            case UserRoleType.admin:
-              return AdminHomeView();  
-            }
-
-        case BottomNavItem.profile:
-          switch (role.type) {
-            case UserRoleType.parent:
-              return ParentsProfileView();
-            case UserRoleType.student:
-              return StudentProfileView();
-            case UserRoleType.teacher:
-              return TeacherProfileView();
-            case UserRoleType.admin:
-              return AdminProfileView();  
-            }
-
-        case BottomNavItem.settings:
-          switch (role.type) {
-            case UserRoleType.teacher:
+            case BottomNavItem.profile:
               return const SettingsView();
-            case UserRoleType.parent:
+
+            case BottomNavItem.settings:
               return const SettingsView();
-            case UserRoleType.student:
-              return const SettingsView();
-            default:
-              return const SizedBox();
           }
         }
-      }
 
-    return Stack(
-      children: [
-        currentScreen(), 
-        Positioned(
-          left: 0,
-          right: 0,
-          bottom: 0,
-          child: ReusableBottomNav(selectedItem: selectedItem),
-        ),
-      ],
+        return Stack(
+          children: [
+            currentScreen(),
+            Positioned(
+              left: 0,
+              right: 0,
+              bottom: 0,
+              child: ReusableBottomNav(
+                selectedItem: selectedItem,
+              ),
+            ),
+          ],
+        );
+      },
+      loading: () => const Scaffold(
+        body: Center(child: CircularProgressIndicator()),
+      ),
+      error: (_, __) => const SizedBox(),
     );
   }
 }
