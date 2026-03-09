@@ -14,6 +14,9 @@ class TeacEditherProfileView extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final controller = ref.watch(TeacherProfileControllerProvider);
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      controller.fetchProfile(ref);
+    });
 
     return BackgroundTemplate(
       appBar: PreferredSize(
@@ -69,24 +72,35 @@ class TeacEditherProfileView extends ConsumerWidget {
           child: Column(
             children: [
               Center(
-                child: Stack(
-                  children: [
-                    CircleAvatar(
-                      radius: 40.r,
-                      backgroundImage: const AssetImage(
-                        'assets/images/profile_image4.png',
+                child: GestureDetector(
+                  onTap: () async {
+                    final controller = ref.read(
+                      TeacherProfileControllerProvider,
+                    );
+                    await controller.pickProfileImage();
+                  },
+                  child: Stack(
+                    children: [
+                      CircleAvatar(
+                        radius: 40.r,
+                        backgroundImage:
+                          ref.read(TeacherProfileControllerProvider).profileImageFile != null
+                          ? FileImage(ref.read(TeacherProfileControllerProvider).profileImageFile!,)
+                          as ImageProvider: const AssetImage(
+                          'assets/images/profile_image4.png',
+                        ),
                       ),
-                    ),
-                    Positioned(
-                      bottom: 5,
-                      right: 2,
-                      child: SvgPicture.asset(
-                        'assets/icons/camera.svg',
-                        width: 18.w,
-                        height: 18.h,
+                      Positioned(
+                        bottom: 5,
+                        right: 2,
+                        child: SvgPicture.asset(
+                          'assets/icons/camera.svg',
+                          width: 18.w,
+                          height: 18.h,
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
               SizedBox(height: 16.h),
@@ -121,13 +135,16 @@ class TeacEditherProfileView extends ConsumerWidget {
                           ),
                         ),
                         GestureDetector(
-                          onTap: () {},
+                          onTap: () async {
+                            final controller = ref.read(TeacherProfileControllerProvider);
+                            await controller.updateProfile(ref, context);
+                          },
                           child: Text(
                             'Save',
                             style: GoogleFonts.arima(
                               fontSize: 14.sp,
                               fontWeight: FontWeight.bold,
-                              color: Color(0xFFD4AF37),
+                              color: const Color(0xFFD4AF37),
                             ),
                           ),
                         ),

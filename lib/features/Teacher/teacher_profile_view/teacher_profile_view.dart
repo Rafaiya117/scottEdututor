@@ -14,6 +14,9 @@ class TeacherProfileView extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final controller = ref.watch(TeacherProfileControllerProvider);
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      controller.fetchProfile(ref);
+    });
 
     return BackgroundTemplate(
       appBar: PreferredSize(
@@ -139,7 +142,10 @@ class TeacherProfileView extends ConsumerWidget {
                       label: 'Full Name',
                       controller: controller.nameCtrl,
                     ),
-                    profileField(label: 'Id', controller: controller.id),
+                    profileField(
+                      label: 'Id', 
+                      controller: controller.id
+                    ),
                     profileField(
                       label: 'Email',
                       controller: controller.emailCtrl,

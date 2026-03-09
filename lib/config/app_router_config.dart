@@ -17,6 +17,7 @@ import 'package:scoctt_edututo/features/Teacher/quiz/quiz_view.dart';
 import 'package:scoctt_edututo/features/Teacher/report_details/report_details_view.dart';
 import 'package:scoctt_edututo/features/Teacher/report_details/report_table_view.dart';
 import 'package:scoctt_edututo/features/Teacher/teacher_profile_view/teacher_edit_profile.dart';
+import 'package:scoctt_edututo/features/Teacher/teacher_profile_view/teacher_profile_view.dart';
 import 'package:scoctt_edututo/features/admin/admin_profile/admin_profile.dart';
 import 'package:scoctt_edututo/features/admin/all_courses/all_courses_view.dart';
 import 'package:scoctt_edututo/features/admin/classes/class_view.dart';
@@ -279,25 +280,45 @@ final routerProvider = Provider<GoRouter>((ref) {
 
 
 // Role-based screens mapping
-final Map<UserRoleType, Map<BottomNavItem, Widget>> roleScreens = {
-  UserRoleType.student: {
+final Map<String, Map<BottomNavItem, Widget>> roleScreens = {
+  'student': {
     BottomNavItem.home: StudentHomeView(),
     BottomNavItem.profile: StudentProfileView(),
     BottomNavItem.settings: SettingsView(),
   },
-  UserRoleType.teacher: {
+  'teacher': {
     BottomNavItem.home: TeacherHomeView(),
-    //BottomNavItem.profile: TeacherProfileScreen(),
+    BottomNavItem.profile: TeacherProfileView(),
     BottomNavItem.settings: SettingsView(),
   },
-  UserRoleType.parent: {
+  'parent': {
     BottomNavItem.home: ParentsView(),
     BottomNavItem.profile: ParentsProfileView(),
     BottomNavItem.settings: SettingsView(),
   },
-  UserRoleType.admin: {
-    //BottomNavItem.home: AdminHomeScreen(),
+  'admin': {
     BottomNavItem.profile: AdminProfileView(),
-    //BottomNavItem.settings: AdminSettingsScreen(),
   },
 };
+// final Map<UserRoleType, Map<BottomNavItem, Widget>> roleScreens = {
+//   UserRoleType.student: {
+//     BottomNavItem.home: StudentHomeView(),
+//     BottomNavItem.profile: StudentProfileView(),
+//     BottomNavItem.settings: SettingsView(),
+//   },
+//   UserRoleType.teacher: {
+//     BottomNavItem.home: TeacherHomeView(),
+//     BottomNavItem.profile: TeacherProfileView(),
+//     BottomNavItem.settings: SettingsView(),
+//   },
+//   UserRoleType.parent: {
+//     BottomNavItem.home: ParentsView(),
+//     BottomNavItem.profile: ParentsProfileView(),
+//     BottomNavItem.settings: SettingsView(),
+//   },
+//   UserRoleType.admin: {
+//     //BottomNavItem.home: AdminHomeScreen(),
+//     BottomNavItem.profile: AdminProfileView(),
+//     //BottomNavItem.settings: AdminSettingsScreen(),
+//   },
+// };
