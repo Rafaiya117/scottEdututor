@@ -76,8 +76,9 @@ void showCreateCoursePopup(BuildContext context) {
                             type: FileType.custom,
                             allowedExtensions: ['pdf', 'doc'],
                           );
-                          if (result != null)
+                          if (result != null) {
                             setState(() => uploadedFiles.addAll(result.files));
+                          }
                         },
                       ),
                     ],
@@ -119,7 +120,7 @@ void showCreateCoursePopup(BuildContext context) {
 }
 
 // The box shown after a file is uploaded
-Widget _buildFilePreview(String fileName, {bool isPdf = false}) {
+Widget _buildFilePreview(String fileName) {
   return Container(
     width: 100.w,
     height: 80.h,
@@ -144,7 +145,7 @@ Widget _buildAddFileButton({required VoidCallback onTap}) {
     onTap: onTap,
     child: CustomPaint(
       painter: DashedBorderPainter(), // Apply dashed effect
-      child: Container(
+      child: SizedBox(
         width: 100.w,
         height: 80.h,
         child: Column(

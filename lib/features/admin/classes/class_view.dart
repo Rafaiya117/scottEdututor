@@ -8,7 +8,7 @@ import 'package:scoctt_edututo/features/admin/classes/class_model.dart';
 import 'package:scoctt_edututo/features/admin/classes/class_provider.dart';
 
 class ClassView extends ConsumerWidget {
-  ClassView({super.key});
+  const ClassView({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -60,7 +60,7 @@ class ClassView extends ConsumerWidget {
                       padding: EdgeInsets.only(bottom: 10.h),
                       child: _buildClassCard(context, ref, item), // Passing context/ref for edit
                     ))
-                .toList(),
+                ,
           ],
         ),
       ),

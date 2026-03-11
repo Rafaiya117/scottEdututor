@@ -10,7 +10,7 @@ import 'package:scoctt_edututo/features/admin/view_reports/view_report_model.dar
 import 'package:scoctt_edututo/features/admin/view_reports/view_report_provider.dart';
 
 class ReportTableViews extends ConsumerWidget{
-  ReportTableViews({super.key});
+  const ReportTableViews({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

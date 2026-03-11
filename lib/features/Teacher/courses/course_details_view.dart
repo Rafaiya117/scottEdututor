@@ -10,7 +10,7 @@ import 'package:scoctt_edututo/features/Teacher/courses/course_provider.dart';
 
 class CourseDetailsView extends ConsumerWidget{
   final String CourseId;
-  CourseDetailsView({super.key, required this.CourseId});
+  const CourseDetailsView({super.key, required this.CourseId});
 
    @override
   Widget build(BuildContext context, WidgetRef ref) {

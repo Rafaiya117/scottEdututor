@@ -11,9 +11,10 @@ import 'package:scoctt_edututo/features/Teacher/quiz/quiz_provider.dart';
 import 'package:scoctt_edututo/features/Teacher/quiz/widget/custom_widget.dart';
 
 class CreateQuizView extends ConsumerWidget{
-  CreateQuizView({super.key});
+  const CreateQuizView({super.key});
 
- Widget build(BuildContext context, WidgetRef ref) {
+ @override
+  Widget build(BuildContext context, WidgetRef ref) {
    final quizState = ref.watch(quizProvider);
    final controller = ref.read(quizProvider.notifier);
     return BackgroundTemplate(

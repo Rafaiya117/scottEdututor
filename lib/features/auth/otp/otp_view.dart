@@ -11,7 +11,7 @@ import 'package:scoctt_edututo/core/utils/snackbar_helper.dart';
 import 'package:scoctt_edututo/features/auth/otp/otp_provider.dart';
 
 class OtpView extends ConsumerWidget {
-  OtpView({super.key});
+  const OtpView({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

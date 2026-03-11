@@ -12,7 +12,7 @@ import 'package:scoctt_edututo/core/utils/side_bar/widget/custom_side_bar.dart';
 import 'package:scoctt_edututo/features/user_role/user_role_provider.dart';
 
 class AdminHomeView extends ConsumerWidget {
-  AdminHomeView({super.key});
+  const AdminHomeView({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

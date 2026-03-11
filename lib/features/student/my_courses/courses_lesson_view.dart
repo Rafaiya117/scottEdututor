@@ -10,7 +10,7 @@ import 'package:scoctt_edututo/features/student/my_courses/my_courses_provider.d
 
 class CoursesLessonView extends ConsumerWidget{
   final String lessonId;
-  CoursesLessonView({super.key, required this.lessonId});
+  const CoursesLessonView({super.key, required this.lessonId});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

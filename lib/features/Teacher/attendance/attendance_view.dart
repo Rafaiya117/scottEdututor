@@ -11,7 +11,7 @@ import 'package:scoctt_edututo/features/Teacher/attendance/attandance_model.dart
 import 'package:scoctt_edututo/features/Teacher/attendance/attendance_provider.dart';
 
 class TeacherAttendanceView extends ConsumerStatefulWidget { 
-  TeacherAttendanceView({super.key});
+  const TeacherAttendanceView({super.key});
 
   @override
   ConsumerState<TeacherAttendanceView> createState() => _TeacherAttendanceViewState();

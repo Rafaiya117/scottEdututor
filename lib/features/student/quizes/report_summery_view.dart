@@ -8,7 +8,7 @@ import 'package:scoctt_edututo/core/componets/report_input_fields.dart';
 import 'package:scoctt_edututo/core/utils/background_template.dart';
 
 class ReportSummeryView extends ConsumerWidget{
-  ReportSummeryView({super.key});
+  const ReportSummeryView({super.key});
 
   @override
 

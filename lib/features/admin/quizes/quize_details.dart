@@ -7,7 +7,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:scoctt_edututo/core/utils/background_template.dart';
 
 class QuizDetails extends ConsumerWidget {
-   QuizDetails({super.key});
+   const QuizDetails({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

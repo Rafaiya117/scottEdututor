@@ -20,40 +20,33 @@ class LoginController {
 
   Future<void> login(BuildContext context, WidgetRef ref) async {
     try {
-      final auth = await ref.read(authServiceProvider).login(
-        email: emailController.text.trim(),
-        password: passwordController.text.trim(),
-      );
-      final rememberMe = ref.read(rememberMeProvider);
-      if (rememberMe) {
-        await TokenStorage.saveAuth(auth);
-      }
-      showCustomSnackBar(
-        context,
-        "Login successful",
-        CustomSnackType.success,
-      );
+      final auth = await ref
+          .read(authServiceProvider)
+          .login(
+            email: emailController.text.trim(),
+            password: passwordController.text.trim(),
+          );
+
+      // Save token always
+      await TokenStorage.saveAuth(auth);
+
+      showCustomSnackBar(context, "Login successful", CustomSnackType.success);
 
       if (context.mounted) {
         context.push('/main');
       }
     } on DioException catch (e) {
+      // Existing error handling
       String message = "Login failed";
-
       if (e.response != null && e.response?.data != null) {
         final data = e.response!.data;
-
         if (data is Map && data.containsKey('message')) {
           message = data['message'];
         } else if (data is Map && data.containsKey('detail')) {
           message = data['detail'];
         }
       }
-      showCustomSnackBar(
-        context,
-        message,
-        CustomSnackType.error,
-      );
+      showCustomSnackBar(context, message, CustomSnackType.error);
     }
   }
 }

@@ -10,7 +10,7 @@ import 'package:scoctt_edututo/features/parents/parents_profile/parent_profile_p
 
 class EditParentsProfileView extends ConsumerWidget{
 
-  EditParentsProfileView({super.key});
+  const EditParentsProfileView({super.key});
   
  @override
   Widget build(BuildContext context, WidgetRef ref) {

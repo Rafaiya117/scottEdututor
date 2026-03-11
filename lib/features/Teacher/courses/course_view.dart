@@ -10,7 +10,7 @@ import 'package:scoctt_edututo/core/utils/background_template.dart';
 import 'package:scoctt_edututo/features/Teacher/courses/widget_create_course/create_course_popup.dart';
 
 class CourseView extends ConsumerWidget{
-  CourseView({super.key});
+  const CourseView({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

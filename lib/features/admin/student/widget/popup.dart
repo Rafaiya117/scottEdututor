@@ -253,7 +253,7 @@ Widget _buildDropdownField(WidgetRef ref, String hint) {
     child: DropdownButtonHideUnderline(
       child: DropdownButtonFormField<String>(
         isExpanded: true,
-        value: selectedClass,
+        initialValue: selectedClass,
         decoration: const InputDecoration(border: InputBorder.none),
         hint: Text(hint, style: GoogleFonts.poppins(fontSize: 14.sp, color: Colors.grey)),
         icon: const Icon(Icons.keyboard_arrow_down, color: Colors.grey),

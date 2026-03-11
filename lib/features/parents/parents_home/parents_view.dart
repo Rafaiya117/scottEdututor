@@ -14,7 +14,7 @@ import 'package:scoctt_edututo/features/parents/parents_home/widget/child_item_w
 import 'package:scoctt_edututo/features/user_role/user_role_provider.dart';
 
 class ParentsView extends ConsumerWidget{
-  ParentsView({super.key});
+  const ParentsView({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref){
@@ -172,7 +172,7 @@ class ParentsView extends ConsumerWidget{
                         },
                       ),
                     );
-                  }).toList(),
+                  }),
                 ],
               ),
             ),

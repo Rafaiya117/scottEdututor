@@ -9,7 +9,7 @@ import 'package:scoctt_edututo/features/student/my_courses/my_courses_provider.d
 import 'package:scoctt_edututo/features/student/my_courses/widget/report_summery_popup.dart';
 
 class EnrollTest extends ConsumerWidget {
-  EnrollTest({super.key});
+  const EnrollTest({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

@@ -62,7 +62,7 @@ class QuizDetailView extends ConsumerWidget {
                   if (quiz.questions.isNotEmpty)
                     ...quiz.questions.asMap().entries.map((entry) {
                       return _buildQuestionCard(entry.key + 1, entry.value);
-                    }).toList()
+                    })
                   else ...[
                     _buildQuestionCard(
                       1,
@@ -235,7 +235,7 @@ class QuizDetailView extends ConsumerWidget {
         Text("Answer Options", style: GoogleFonts.poppins(fontSize: 13.sp, fontWeight: FontWeight.w500)),
         ...question.options.asMap().entries.map((opt) => 
            _buildOptionItem(opt.value.isEmpty ? "Option ${opt.key + 1}" : opt.value, opt.key == question.correctOptionIndex)
-        ).toList(),
+        ),
         SizedBox(height: 12.h),
         Row(
           children: [

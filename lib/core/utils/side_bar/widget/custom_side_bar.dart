@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:scoctt_edututo/core/utils/side_bar/model.dart';
 import 'package:scoctt_edututo/core/utils/side_bar/widget/custom_item_card.dart';
 

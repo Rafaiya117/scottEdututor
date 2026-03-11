@@ -9,7 +9,7 @@ import 'package:scoctt_edututo/core/utils/background_template.dart';
 import 'package:scoctt_edututo/features/parents/parents_profile/parent_profile_provider.dart';
 
 class ParentsProfileView extends ConsumerWidget {
-  ParentsProfileView({super.key});
+  const ParentsProfileView({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

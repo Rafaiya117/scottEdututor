@@ -53,7 +53,6 @@ import 'package:scoctt_edututo/features/student/student_home/student_home_view.d
 import 'package:scoctt_edututo/features/student/student_profile/edit_student_info.dart';
 import 'package:scoctt_edututo/features/student/student_profile/student_profile_view.dart';
 import 'package:scoctt_edututo/features/term_condition/term_condition_view.dart';
-import 'package:scoctt_edututo/features/user_role/user_role_model.dart';
 import 'package:scoctt_edututo/features/user_role/user_role_view.dart';
 
 final routerProvider = Provider<GoRouter>((ref) {
@@ -176,16 +175,26 @@ final routerProvider = Provider<GoRouter>((ref) {
         builder: (context, state) => TermConditionView(),
       ),
       GoRoute(
-        path: '/class_management',
+        path: '/teacher/class_management',
         builder: (context, state) => ClassManagementView(),
       ),
       GoRoute(
-        path: '/class_management_details',
-        builder: (context, state) => ClassManagementDetails(),
+        path: '/class_management_details/:id',
+        builder: (context, state) {
+          final id = state.pathParameters['id']!;
+          return ClassManagementDetails(classId: id);
+        },
       ),
+      // GoRoute(
+      //   path: '/class_management_view_more',
+      //   builder: (context, state) => ClassManagementViewMoreView(classId: '',),
+      // ),
       GoRoute(
-        path: '/class_management_view_more',
-        builder: (context, state) => ClassManagementViewMoreView(classId: '',),
+        path: '/class_management_view_more/:classId', 
+        builder: (context, state) {
+          final classId = state.pathParameters['classId'] ?? '';
+          return ClassManagementViewMoreView(classId: classId);
+        },
       ),
       GoRoute(
         path: '/courses',

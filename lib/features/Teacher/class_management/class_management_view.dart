@@ -2,22 +2,29 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:scoctt_edututo/core/componets/custom_classcard.dart';
 import 'package:scoctt_edututo/core/utils/background_template.dart';
 import 'package:scoctt_edututo/features/Teacher/class_management/class_management_controller.dart';
-import 'package:scoctt_edututo/features/Teacher/class_management/class_management_model.dart';
 import 'package:scoctt_edututo/features/Teacher/class_management/class_management_provider.dart';
 
 class ClassManagementView extends ConsumerWidget {
   ClassManagementView({super.key});
-  
   final ClassManagementController controller = ClassManagementController();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final List<ClassCategory2> categories = controller.getClassCategory();
-    final selectedCategory2 = ref.watch(selectedClassCategory2Provider);
+  final controller = ref.watch(classManagementProvider);
+  // Only call fetch once using ValueNotifier
+  if (!controller.isLoaded.value) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      controller.fetchClasses(ref);
+    });
+  }
+
+  final categories = controller.getClassCategory();
+  final selectedCategory2 = ref.watch(selectedClassCategory2Provider);
 
     return BackgroundTemplate(
       appBar: PreferredSize(
@@ -29,17 +36,15 @@ class ClassManagementView extends ConsumerWidget {
           flexibleSpace: Row(
             children: [
               Padding(
-                padding:EdgeInsets.only(top: 45.h,left: 7.0.w),
+                padding: EdgeInsets.only(top: 45.h, left: 7.0.w),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     IconButton(
-                      onPressed: () {
-                        //context.pop();
-                      },
-                      icon: SvgPicture.asset('assets/icons/menu_icon.svg'),
+                      onPressed: () {},
+                      icon: SvgPicture.asset('assets/icons/arrow_back.svg'),
                     ),
-                    SizedBox(width: 120.w,),
+                    SizedBox(width: 20.w),
                     Text(
                       'Class Management',
                       style: GoogleFonts.poppins(
@@ -48,13 +53,9 @@ class ClassManagementView extends ConsumerWidget {
                         color: Colors.white,
                       ),
                     ),
-                    SizedBox(width: 110.w,),
+                    SizedBox(width: 80.w),
                     GestureDetector(
-                      onTap: () {
-                        //context.push('/parents_profile');
-                        // ref.read(bottomNavProvider.notifier).state = BottomNavItem.profile;
-                        // context.go('/main');
-                      },
+                      onTap: () {},
                       child: Container(
                         width: 40.w,
                         height: 40.h,
@@ -85,15 +86,14 @@ class ClassManagementView extends ConsumerWidget {
             runSpacing: 16,
             children: categories.map((cat) {
               return ClassCategoryCard(
-                height: 58.h, 
-                width: double.infinity, 
-                category: cat, 
+                height: 58.h,
+                width: double.infinity,
+                category: cat,
                 borderColor: Color(0xFFD4B579),
-                cardColor: Colors.white, 
+                cardColor: Colors.white,
                 isSelected: selectedCategory2?.id == cat.id,
                 onTap: () {
-                  //ref.read(selectedClassCategoryProvider.notifier).state = cat;
-                  //context.push('/quiz_ques'); 
+                  context.push('/class_management_details/${cat.id}');
                 },
               );
             }).toList(),

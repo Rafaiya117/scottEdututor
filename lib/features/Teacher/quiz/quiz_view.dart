@@ -10,7 +10,7 @@ import 'package:scoctt_edututo/features/Teacher/quiz/quiz_provider.dart';
 import 'package:scoctt_edututo/features/Teacher/quiz/widget/quiz_card.dart';
 
 class QuizViews extends ConsumerWidget {
-  QuizViews({super.key});
+  const QuizViews({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

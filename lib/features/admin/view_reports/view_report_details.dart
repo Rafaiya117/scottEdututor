@@ -9,7 +9,7 @@ import 'package:scoctt_edututo/core/componets/report_input_fields.dart';
 import 'package:scoctt_edututo/core/utils/background_template.dart';
 
 class ReportDetailView extends ConsumerWidget{
-  ReportDetailView({super.key});
+  const ReportDetailView({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

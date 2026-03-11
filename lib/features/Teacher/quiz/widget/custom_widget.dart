@@ -24,7 +24,7 @@ Widget buildFileListSection(List<PlatformFile> files, QuizController controller)
       onTap: onTap,
       child: CustomPaint(
         painter: DashedBorderPainter(),
-        child: Container(
+        child: SizedBox(
           width: 110.w,
           height: 90.h,
           child: Column(

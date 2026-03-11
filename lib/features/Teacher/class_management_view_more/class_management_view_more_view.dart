@@ -51,18 +51,23 @@ class ClassManagementViewMoreView extends ConsumerWidget {
         ),
       ),
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 64),
-      body: SingleChildScrollView(
-      child: Column(
-        children: [
-          ...students.map((student) => _buildStudentCard(
-              name: student.name,
-              email: student.email,
-              className: student.className,
-              courseName: student.courseName,
-              )
-            ),
-          ],
+      body: students.when(
+        data: (students) => SingleChildScrollView(
+          child: Column(
+            children: [
+              ...students.map(
+                (student) => _buildStudentCard(
+                  name: student.name,
+                  email: student.email,
+                  className: student.className,
+                  courseName: student.courseName,
+                ),
+              ),
+            ],
+          ),
         ),
+        loading: () => const Center(child: CircularProgressIndicator()),
+        error: (e, _) => Center(child: Text('Failed to load students')),
       ),
     );
   }

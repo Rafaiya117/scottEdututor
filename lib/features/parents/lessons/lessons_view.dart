@@ -11,7 +11,7 @@ import 'package:scoctt_edututo/features/parents/lessons/lessons_provider.dart';
 class LessonView extends ConsumerWidget {
   final String lessonId;
 
-  LessonView({super.key, required this.lessonId});
+  const LessonView({super.key, required this.lessonId});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

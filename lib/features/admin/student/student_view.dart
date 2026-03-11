@@ -11,7 +11,7 @@ import 'package:scoctt_edututo/features/admin/student/widget/popup.dart';
 import 'package:scoctt_edututo/features/admin/student/widget/student_view_details_popup.dart';
 
 class Student_View extends ConsumerWidget {
-  Student_View({super.key});
+  const Student_View({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

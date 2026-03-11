@@ -9,7 +9,7 @@ import 'package:scoctt_edututo/core/componets/report_input_fields.dart';
 import 'package:scoctt_edututo/core/utils/background_template.dart';
 
 class PrograssDetails extends ConsumerWidget{
-  PrograssDetails({super.key});
+  const PrograssDetails({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref){

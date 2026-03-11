@@ -10,7 +10,7 @@ import 'package:scoctt_edututo/features/auth/login/login_provider.dart';
 // import 'package:scoctt_edututo/features/user_role/user_role_provider.dart';
 
 class LoginView extends ConsumerWidget {
-  LoginView({super.key});
+  const LoginView({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

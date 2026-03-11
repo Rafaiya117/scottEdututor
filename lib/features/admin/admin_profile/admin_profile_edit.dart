@@ -9,7 +9,7 @@ import 'package:scoctt_edututo/core/utils/background_template.dart';
 import 'package:scoctt_edututo/features/admin/admin_profile/admin_profile_provider.dart';
 
 class AdminProfileEdit extends ConsumerWidget {
-  AdminProfileEdit({super.key});
+  const AdminProfileEdit({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

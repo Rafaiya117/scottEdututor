@@ -14,7 +14,7 @@ class QuestionBlock extends StatelessWidget {
   final int? selected;
   final WidgetRef ref;
 
-  const QuestionBlock({
+  const QuestionBlock({super.key, 
     required this.questionId, // Added this
     required this.questionLabel,
     required this.points,

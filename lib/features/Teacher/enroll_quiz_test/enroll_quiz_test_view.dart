@@ -7,6 +7,8 @@ import 'package:scoctt_edututo/core/utils/background_template.dart';
 import 'package:scoctt_edututo/features/Teacher/enroll_quiz_test/enroll_quiz_test_controller.dart';
 
 class EnrolQuizView extends ConsumerWidget {
+  const EnrolQuizView({super.key});
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final quizState = ref.watch(quizProvider);

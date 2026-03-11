@@ -11,6 +11,7 @@ import 'package:scoctt_edututo/features/privacy/privacy_provider.dart';
 class PrivacyView extends ConsumerWidget {
   const PrivacyView({super.key});
 
+  @override
   Widget build(BuildContext context, WidgetRef ref){
 
     final privacyController = ref.watch(PrivacyControllerProvider);

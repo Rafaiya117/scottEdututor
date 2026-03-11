@@ -11,6 +11,7 @@ import 'package:scoctt_edututo/features/term_condition/term_condition_provider.d
 class TermConditionView extends ConsumerWidget{
   const TermConditionView({super.key});
 
+  @override
   Widget build(BuildContext context, WidgetRef ref){
     final termController = ref.watch(TermConditionControllerProvider);
 

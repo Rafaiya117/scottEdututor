@@ -25,7 +25,7 @@ class TeacherHomeView extends ConsumerWidget{
   Widget build(BuildContext context, WidgetRef ref) {
      final List<SidebarItem> menuList = [
       SidebarItem(title: 'Dashboard', svgPath: 'assets/icons/dash_board.svg', route: '/student_home_view'),
-      SidebarItem(title: 'My Classes', svgPath: 'assets/icons/courses_icon.svg', route: '/my_courses'),
+      SidebarItem(title: 'My Classes', svgPath: 'assets/icons/courses_icon.svg', route: '/teacher/class_management'),
       SidebarItem(title: 'Courses', svgPath: 'assets/icons/courses_icon.svg', route: '/quizes'),
       SidebarItem(title: 'Enroll Quiz Test', svgPath: 'assets/icons/enroll_test_icon.svg', route: '/teacher/add_enroll_quiz_test'),
       SidebarItem(title: 'Quizzes', svgPath: 'assets/icons/quiz_icon.svg', route: '/ai_tutor'),
@@ -158,7 +158,7 @@ class TeacherHomeView extends ConsumerWidget{
                   isSelected: selectedCategory2?.id == cat.id,
                   onTap: () {
                     //ref.read(selectedClassCategoryProvider.notifier).state = cat;
-                    context.push('/class_management_details'); 
+                    context.push('/class_management_details/${cat.id}'); 
                   },
                 );
               }).toList(),

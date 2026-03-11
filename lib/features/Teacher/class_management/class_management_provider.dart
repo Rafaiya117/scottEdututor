@@ -5,3 +5,4 @@ import 'package:scoctt_edututo/features/Teacher/class_management/class_managemen
 
 final selectedClassCategory2Provider = StateProvider<ClassCategory2?>((ref) => null);
 final classmanagementController = Provider((ref) => ClassManagementController());
+final classManagementProvider = Provider((ref) => ClassManagementController());

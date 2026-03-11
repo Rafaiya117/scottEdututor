@@ -8,7 +8,7 @@ import 'package:scoctt_edututo/core/componets/report_input_fields.dart';
 import 'package:scoctt_edututo/core/utils/background_template.dart';
 
 class MyPrograssView extends ConsumerWidget{
-  MyPrograssView({super.key});
+  const MyPrograssView({super.key});
 
   @override
 

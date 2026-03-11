@@ -48,8 +48,12 @@ class _OTPTextFieldState extends ConsumerState<OTPTextField> {
 
   @override
   void dispose() {
-    for (var controller in controllers) controller.dispose();
-    for (var focusNode in focusNodes) focusNode.dispose();
+    for (var controller in controllers) {
+      controller.dispose();
+    }
+    for (var focusNode in focusNodes) {
+      focusNode.dispose();
+    }
     super.dispose();
   }
 

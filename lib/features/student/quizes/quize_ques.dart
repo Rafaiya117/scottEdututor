@@ -10,7 +10,7 @@ import 'package:scoctt_edututo/features/student/quizes/quiz_provider.dart';
 import 'package:scoctt_edututo/features/student/quizes/quizes_model.dart';
 
 class QuizeQues extends ConsumerWidget {
-  QuizeQues({super.key});
+  const QuizeQues({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -136,7 +136,7 @@ class QuizeQues extends ConsumerWidget {
                       SizedBox(height: 30.h),
                     ],
                   );
-                }).toList(),
+                }),
             
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,

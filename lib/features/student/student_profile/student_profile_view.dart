@@ -9,7 +9,7 @@ import 'package:scoctt_edututo/core/utils/background_template.dart';
 import 'package:scoctt_edututo/features/student/student_profile/student_profile_provider.dart';
 
 class StudentProfileView extends ConsumerWidget {
-  StudentProfileView({super.key});
+  const StudentProfileView({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
