@@ -69,7 +69,7 @@ class CourseView extends ConsumerWidget {
                     width: 200.w,
                     height: 37.h,
                     text: 'Create Course',
-                    onPressed: () => showCreateCoursePopup(context),
+                    onPressed: () => showCreateCoursePopup(context,ref),
                   ),
                 ),
                 SizedBox(height: 20.h),

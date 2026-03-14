@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SubjectCard extends StatelessWidget {
@@ -28,6 +29,7 @@ class SubjectCard extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
+        margin: EdgeInsets.only(bottom: 16.h),
         padding: const EdgeInsets.all(12.0),
         decoration: BoxDecoration(
           color: backgroundColor,

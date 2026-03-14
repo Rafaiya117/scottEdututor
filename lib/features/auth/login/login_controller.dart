@@ -20,18 +20,13 @@ class LoginController {
 
   Future<void> login(BuildContext context, WidgetRef ref) async {
     try {
-      final auth = await ref
-          .read(authServiceProvider)
-          .login(
-            email: emailController.text.trim(),
-            password: passwordController.text.trim(),
-          );
-
+      final auth = await ref.read(authServiceProvider).login(
+        email: emailController.text.trim(),
+        password: passwordController.text.trim(),
+      );
       // Save token always
       await TokenStorage.saveAuth(auth);
-
       showCustomSnackBar(context, "Login successful", CustomSnackType.success);
-
       if (context.mounted) {
         context.push('/main');
       }

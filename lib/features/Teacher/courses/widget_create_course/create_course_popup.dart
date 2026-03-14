@@ -1,20 +1,29 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:scoctt_edututo/core/componets/cusmon_snackbar.dart';
+import 'package:scoctt_edututo/core/utils/snackbar_helper.dart';
+import 'package:scoctt_edututo/features/Teacher/courses/course_model.dart';
+import 'package:scoctt_edututo/features/Teacher/courses/course_provider.dart';
 
-void showCreateCoursePopup(BuildContext context) {
+void showCreateCoursePopup(BuildContext context, WidgetRef ref) {
   final classController = TextEditingController();
   final courseController = TextEditingController();
-  List<PlatformFile> uploadedFiles = []; 
+
+  List<PlatformFile> uploadedFiles = [];
+  int? selectedClassId;
 
   showDialog(
     context: context,
     builder: (context) => StatefulBuilder(
       builder: (context, setState) => Dialog(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16.r),
+        ),
         insetPadding: EdgeInsets.symmetric(horizontal: 20.w),
         child: Container(
           padding: EdgeInsets.all(20.w),
@@ -23,7 +32,8 @@ void showCreateCoursePopup(BuildContext context) {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // 1. Fixed Dropdown Field
+
+              /// ⭐ Class dropdown (from API)
               _buildPopupField(
                 'Class Name',
                 'Select Class',
@@ -31,32 +41,35 @@ void showCreateCoursePopup(BuildContext context) {
                 isDropdown: true,
                 onTap: () => _showClassPicker(
                   context,
+                  ref,
                   classController,
                   setState,
-                ), // This will now trigger
+                  (id) => selectedClassId = id,
+                ),
               ),
+
               SizedBox(height: 16.h),
+
+              /// ⭐ Course name
               _buildPopupField(
                 'Course Name',
                 'Type course name',
                 courseController,
                 onTap: () {},
               ),
-              SizedBox(height: 20.h),            
-              // 2. Dynamic File Section
+
+              SizedBox(height: 20.h),
+
+              /// ⭐ File Upload Section
               if (uploadedFiles.isEmpty)
                 _buildEmptyState(
                   onTap: () async {
-                    try {
-                      final result = await FilePicker.platform.pickFiles(
-                        type: FileType.custom,
-                        allowedExtensions: ['pdf', 'doc'],
-                      );
-                      if (result != null) {
-                        setState(() => uploadedFiles.addAll(result.files));
-                      }
-                    } catch (e) {
-                      print("Error picking file: $e");
+                    final result = await FilePicker.platform.pickFiles(
+                      type: FileType.custom,
+                      allowedExtensions: ['pdf', 'doc'],
+                    );
+                    if (result != null) {
+                      setState(() => uploadedFiles.addAll(result.files));
                     }
                   },
                 )
@@ -65,49 +78,58 @@ void showCreateCoursePopup(BuildContext context) {
                   scrollDirection: Axis.horizontal,
                   child: Row(
                     children: [
-                      ...uploadedFiles.map(
-                        (file) => _buildFilePreview(file.name),
-                      ),
+                      ...uploadedFiles
+                          .map((file) => _buildFilePreview(file.name)),
                       SizedBox(width: 12.w),
                       _buildAddFileButton(
                         onTap: () async {
-                          WidgetsFlutterBinding.ensureInitialized(); // FIX
-                          final result = await FilePicker.platform.pickFiles(
+                          final result =
+                              await FilePicker.platform.pickFiles(
                             type: FileType.custom,
                             allowedExtensions: ['pdf', 'doc'],
                           );
                           if (result != null) {
-                            setState(() => uploadedFiles.addAll(result.files));
+                            setState(
+                                () => uploadedFiles.addAll(result.files));
                           }
                         },
                       ),
                     ],
                   ),
                 ),
-
               SizedBox(height: 32.h),
+              /// ⭐ Buttons
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   OutlinedButton(
                     onPressed: () => Navigator.pop(context),
-                    style: OutlinedButton.styleFrom(
-                      padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 12.h),
-                      side: BorderSide(color: Colors.grey.shade300),
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
-                    ),
-                    child: Text('Cancel', style: GoogleFonts.poppins(color: Colors.black87)),
+                    child: const Text('Cancel'),
                   ),
                   SizedBox(width: 12.w),
                   ElevatedButton(
-                    onPressed: () => Navigator.pop(context),
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFF424242),
-                      foregroundColor: Colors.white,
-                      padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 12.h),
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
-                    ),
-                    child: Text('Create Course', style: GoogleFonts.poppins()),
+                    onPressed: () async {
+                      if (selectedClassId == null) {
+                        debugPrint("No class selected!");
+                        return;
+                      }
+                      final classIds = [selectedClassId!];
+                      await ref.read(courseProvider).createCourseAndRefresh(
+                        ref: ref,
+                        name: courseController.text,
+                        classIds: classIds,
+                        files: uploadedFiles,
+                      );
+                      // ✅ Show success snackbar after creation
+                      showCustomSnackBar(
+                        context,
+                        "Course created successfully",
+                        CustomSnackType.success,
+                      );
+
+                      Navigator.pop(context);
+                    },
+                    child: const Text('Create Course'),
                   ),
                 ],
               ),
@@ -212,40 +234,72 @@ Widget _buildEmptyState({required VoidCallback onTap}) {
   );
 }
 
-void _showClassPicker(BuildContext context, TextEditingController controller, StateSetter setState) {
-  final classes = ['Class 1', 'Class 2', 'Class 3', 'Class 4'];
-  
+void _showClassPicker(
+  BuildContext context,
+  WidgetRef ref,
+  TextEditingController controller,
+  StateSetter setState,
+  Function(int id) onClassSelected,
+) {
   showDialog(
     context: context,
-    builder: (context) => Dialog(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.r)),
-      child: Container(
-        padding: EdgeInsets.symmetric(vertical: 10.h),
-        width: 250.w, // Smaller width for the center popup
-        child: Column(
-          mainAxisSize: MainAxisSize.min, // Shrinks to fit content
-          children: classes.map((className) => ListTile(
-            dense: true,
-            leading: Container(
-              width: 16.w, 
-              height: 16.h, 
-              decoration: BoxDecoration(
-                color: Colors.grey.shade300,
-                borderRadius: BorderRadius.circular(4.r),
-              ),
-            ),
-            title: Text(className, style: GoogleFonts.poppins(fontSize: 14.sp)),
-            onTap: () {
-              controller.text = className;
-              Navigator.pop(context);
-              setState(() {}); 
-            },
-          )).toList(),
-        ),
-      ),
+    builder: (context) => FutureBuilder<List<Map<String, dynamic>>>(
+      future: ref.read(courseProvider).fetchMyClasses(ref),
+      builder: (context, snapshot) {
+        if (!snapshot.hasData) {
+          return const Center(child: CircularProgressIndicator());
+        }
+
+        final classes = snapshot.data!;
+
+        return Dialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12.r),
+          ),
+          child: Container(
+            padding: EdgeInsets.symmetric(vertical: 10.h),
+            width: 250.w,
+            constraints: BoxConstraints(maxHeight: 300.h),
+            child: classes.isEmpty
+                ? Center(
+                    child: Padding(
+                      padding: EdgeInsets.all(16.h),
+                      child: Text(
+                        'No classes assigned',
+                        style: GoogleFonts.poppins(fontSize: 14.sp),
+                      ),
+                    ),
+                  )
+                : SingleChildScrollView(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: classes.map((c) {
+                        final classId = c['id'] as int;
+                        final className = c['class_name'] as String;
+
+                        return ListTile(
+                          dense: true,
+                          title: Text(
+                            className,
+                            style: GoogleFonts.poppins(fontSize: 14.sp),
+                          ),
+                          onTap: () {
+                            controller.text = className;
+                            onClassSelected(classId);
+                            Navigator.pop(context);
+                            setState(() {});
+                          },
+                        );
+                      }).toList(),
+                    ),
+                  ),
+          ),
+        );
+      },
     ),
   );
 }
+
 
 class DashedBorderPainter extends CustomPainter {
   @override
